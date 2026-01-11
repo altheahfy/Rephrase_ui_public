@@ -1,0 +1,4026 @@
+[
+  {
+    "image_file": "absence.png",
+    "folder": "common",
+    "meta_tags": [
+      "absence",
+      "absent",
+      "absences",
+      "absenced",
+      "absencing"
+    ],
+    "priority": 3,
+    "description": "不在、欠席 - absence/absent"
+  },
+  {
+    "image_file": "academic.png",
+    "folder": "common",
+    "meta_tags": [
+      "academic",
+      "academiced",
+      "academicing",
+      "academics"
+    ],
+    "priority": 3,
+    "description": "学術的な"
+  },
+  {
+    "image_file": "administrator.png",
+    "folder": "common",
+    "meta_tags": [
+      "administrator",
+      "administratored",
+      "administratoring",
+      "administrators"
+    ],
+    "priority": 3,
+    "description": "管理者"
+  },
+  {
+    "image_file": "adult.png",
+    "folder": "common",
+    "meta_tags": [
+      "adult",
+      "adulted",
+      "adulting",
+      "adults"
+    ],
+    "priority": 3,
+    "description": "大人"
+  },
+  {
+    "image_file": "afraid.png",
+    "folder": "common",
+    "meta_tags": [
+      "afraid",
+      "afraided",
+      "afraiding",
+      "afraids"
+    ],
+    "priority": 3,
+    "description": "恐れた"
+  },
+  {
+    "image_file": "afternoon.png",
+    "folder": "common",
+    "meta_tags": [
+      "afternoon",
+      "afternooned",
+      "afternooning",
+      "afternoons"
+    ],
+    "priority": 3,
+    "description": "午後"
+  },
+  {
+    "image_file": "alarm.png",
+    "folder": "common",
+    "meta_tags": [
+      "alarm",
+      "alarmed",
+      "alarming",
+      "alarms"
+    ],
+    "priority": 3,
+    "description": "警報"
+  },
+  {
+    "image_file": "alone.png",
+    "folder": "common",
+    "meta_tags": [
+      "alone",
+      "aloned",
+      "aloning",
+      "alones"
+    ],
+    "priority": 3,
+    "description": "alone"
+  },
+  {
+    "image_file": "amaging.png",
+    "folder": "common",
+    "meta_tags": [
+      "amaging",
+      "amaginged",
+      "amaginging",
+      "amagings"
+    ],
+    "priority": 3,
+    "description": "amaging"
+  },
+  {
+    "image_file": "analyze.png",
+    "folder": "common",
+    "meta_tags": [
+      "analyze",
+      "analyzed",
+      "analyzing",
+      "analyzes"
+    ],
+    "priority": 3,
+    "description": "分析する"
+  },
+  {
+    "image_file": "appear.png",
+    "folder": "common",
+    "meta_tags": [
+      "appear",
+      "appeared",
+      "appearing",
+      "appears"
+    ],
+    "priority": 3,
+    "description": "現れる"
+  },
+  {
+    "image_file": "ask.png",
+    "folder": "common",
+    "meta_tags": [
+      "ask",
+      "asked",
+      "asking",
+      "asks"
+    ],
+    "priority": 3,
+    "description": "尋ねる"
+  },
+  {
+    "image_file": "available.png",
+    "folder": "common",
+    "meta_tags": [
+      "available",
+      "availabled",
+      "availabling",
+      "availables"
+    ],
+    "priority": 3,
+    "description": "利用可能な"
+  },
+  {
+    "image_file": "avoid.png",
+    "folder": "common",
+    "meta_tags": [
+      "avoid",
+      "avoided",
+      "avoiding",
+      "avoids"
+    ],
+    "priority": 3,
+    "description": "避ける"
+  },
+  {
+    "image_file": "become.png",
+    "folder": "common",
+    "meta_tags": [
+      "become",
+      "becomes",
+      "becoming",
+      "became"
+    ],
+    "priority": 3,
+    "description": "なる"
+  },
+  {
+    "image_file": "begin.png",
+    "folder": "common",
+    "meta_tags": [
+      "begin",
+      "begins",
+      "beginning",
+      "began",
+      "begun"
+    ],
+    "priority": 3,
+    "description": "始める"
+  },
+  {
+    "image_file": "believe.png",
+    "folder": "common",
+    "meta_tags": [
+      "believe",
+      "believed",
+      "believing",
+      "believes"
+    ],
+    "priority": 3,
+    "description": "信じる"
+  },
+  {
+    "image_file": "belong.png",
+    "folder": "common",
+    "meta_tags": [
+      "belong",
+      "belonged",
+      "belonging",
+      "belongs"
+    ],
+    "priority": 3,
+    "description": "所属する"
+  },
+  {
+    "image_file": "below.png",
+    "folder": "common",
+    "meta_tags": [
+      "below",
+      "belowed",
+      "belowing",
+      "belows"
+    ],
+    "priority": 3,
+    "description": "below"
+  },
+  {
+    "image_file": "book.png",
+    "folder": "common",
+    "meta_tags": [
+      "book",
+      "booked",
+      "booking",
+      "books"
+    ],
+    "priority": 3,
+    "description": "本"
+  },
+  {
+    "image_file": "briefing.png",
+    "folder": "common",
+    "meta_tags": [
+      "briefing",
+      "briefinged",
+      "briefinging",
+      "briefings"
+    ],
+    "priority": 3,
+    "description": "説明会"
+  },
+  {
+    "image_file": "brother.png",
+    "folder": "common",
+    "meta_tags": [
+      "brother",
+      "brothered",
+      "brothering",
+      "brothers"
+    ],
+    "priority": 3,
+    "description": "兄弟"
+  },
+  {
+    "image_file": "building.png",
+    "folder": "common",
+    "meta_tags": [
+      "building",
+      "buildinged",
+      "buildinging",
+      "buildings"
+    ],
+    "priority": 3,
+    "description": "建物"
+  },
+  {
+    "image_file": "button.png",
+    "folder": "common",
+    "meta_tags": [
+      "button",
+      "buttoned",
+      "buttoning",
+      "buttons"
+    ],
+    "priority": 3,
+    "description": "ボタン"
+  },
+  {
+    "image_file": "capable.png",
+    "folder": "common",
+    "meta_tags": [
+      "capable",
+      "capabled",
+      "capabling",
+      "capables"
+    ],
+    "priority": 3,
+    "description": "有能な"
+  },
+  {
+    "image_file": "case.png",
+    "folder": "common",
+    "meta_tags": [
+      "case",
+      "cased",
+      "casing",
+      "cases"
+    ],
+    "priority": 3,
+    "description": "場合"
+  },
+  {
+    "image_file": "catch up.png",
+    "folder": "common",
+    "meta_tags": [
+      "catch up",
+      "catching up",
+      "caught up",
+      "catches up"
+    ],
+    "priority": 3,
+    "description": "追いつく"
+  },
+  {
+    "image_file": "catch.png",
+    "folder": "common",
+    "meta_tags": [
+      "catch",
+      "catches",
+      "catching",
+      "caught"
+    ],
+    "priority": 3,
+    "description": "捕まえる"
+  },
+  {
+    "image_file": "caught.png",
+    "folder": "common",
+    "meta_tags": [
+      "caught",
+      "caughted",
+      "caughting",
+      "caughts"
+    ],
+    "priority": 3,
+    "description": "caught"
+  },
+  {
+    "image_file": "central.png",
+    "folder": "common",
+    "meta_tags": [
+      "central",
+      "centraled",
+      "centraling",
+      "centrals"
+    ],
+    "priority": 3,
+    "description": "中央の"
+  },
+  {
+    "image_file": "certainly.png",
+    "folder": "common",
+    "meta_tags": [
+      "certainly",
+      "certainlyed",
+      "certainlying",
+      "certainlies"
+    ],
+    "priority": 3,
+    "description": "certainly"
+  },
+  {
+    "image_file": "challenge.png",
+    "folder": "common",
+    "meta_tags": [
+      "challenge",
+      "challenged",
+      "challenging",
+      "challenges"
+    ],
+    "priority": 3,
+    "description": "challenge"
+  },
+  {
+    "image_file": "change.png",
+    "folder": "common",
+    "meta_tags": [
+      "change",
+      "changed",
+      "changing",
+      "changes"
+    ],
+    "priority": 3,
+    "description": "変える"
+  },
+  {
+    "image_file": "charge.png",
+    "folder": "common",
+    "meta_tags": [
+      "charge",
+      "charged",
+      "charging",
+      "charges"
+    ],
+    "priority": 3,
+    "description": "charge"
+  },
+  {
+    "image_file": "choice.png",
+    "folder": "common",
+    "meta_tags": [
+      "choice",
+      "choiced",
+      "choicing",
+      "choices"
+    ],
+    "priority": 3,
+    "description": "選択"
+  },
+  {
+    "image_file": "chosen.png",
+    "folder": "common",
+    "meta_tags": [
+      "chosen",
+      "chosened",
+      "chosening",
+      "chosens"
+    ],
+    "priority": 3,
+    "description": "chosen"
+  },
+  {
+    "image_file": "clarity.png",
+    "folder": "common",
+    "meta_tags": [
+      "clarity",
+      "clarityed",
+      "claritying",
+      "clarities"
+    ],
+    "priority": 3,
+    "description": "明確さ"
+  },
+  {
+    "image_file": "clear.png",
+    "folder": "common",
+    "meta_tags": [
+      "clear",
+      "cleared",
+      "clearing",
+      "clears"
+    ],
+    "priority": 3,
+    "description": "明確な"
+  },
+  {
+    "image_file": "close.png",
+    "folder": "common",
+    "meta_tags": [
+      "close",
+      "closed",
+      "closing",
+      "closes"
+    ],
+    "priority": 3,
+    "description": "close"
+  },
+  {
+    "image_file": "clouded.png",
+    "folder": "common",
+    "meta_tags": [
+      "clouded",
+      "cloudeded",
+      "cloudeding",
+      "cloudeds"
+    ],
+    "priority": 3,
+    "description": "clouded"
+  },
+  {
+    "image_file": "committee.png",
+    "folder": "common",
+    "meta_tags": [
+      "committee",
+      "committeed",
+      "committeing",
+      "committees"
+    ],
+    "priority": 3,
+    "description": "委員会"
+  },
+  {
+    "image_file": "common.png",
+    "folder": "common",
+    "meta_tags": [
+      "common",
+      "commoned",
+      "commoning",
+      "commons"
+    ],
+    "priority": 3,
+    "description": "共通の"
+  },
+  {
+    "image_file": "company.png",
+    "folder": "common",
+    "meta_tags": [
+      "company",
+      "companyed",
+      "companying",
+      "companies"
+    ],
+    "priority": 3,
+    "description": "会社"
+  },
+  {
+    "image_file": "complete.png",
+    "folder": "common",
+    "meta_tags": [
+      "complete",
+      "completed",
+      "completing",
+      "completes"
+    ],
+    "priority": 3,
+    "description": "完了する"
+  },
+  {
+    "image_file": "complex.png",
+    "folder": "common",
+    "meta_tags": [
+      "complex",
+      "complexed",
+      "complexing",
+      "complexes"
+    ],
+    "priority": 3,
+    "description": "複雑な"
+  },
+  {
+    "image_file": "composure.png",
+    "folder": "common",
+    "meta_tags": [
+      "composure",
+      "composured",
+      "composuring",
+      "composures"
+    ],
+    "priority": 3,
+    "description": "冷静さ"
+  },
+  {
+    "image_file": "confident.png",
+    "folder": "common",
+    "meta_tags": [
+      "confident",
+      "confidence",
+      "confidents",
+      "confidented",
+      "confidenting"
+    ],
+    "priority": 3,
+    "description": "自信のある - confident/confidence"
+  },
+  {
+    "image_file": "confrontation.png",
+    "folder": "common",
+    "meta_tags": [
+      "confrontation",
+      "confrontationed",
+      "confrontationing",
+      "confrontations"
+    ],
+    "priority": 3,
+    "description": "confrontation"
+  },
+  {
+    "image_file": "consider.png",
+    "folder": "common",
+    "meta_tags": [
+      "consider",
+      "considered",
+      "considering",
+      "considers"
+    ],
+    "priority": 3,
+    "description": "考慮する"
+  },
+  {
+    "image_file": "content.png",
+    "folder": "common",
+    "meta_tags": [
+      "content",
+      "contented",
+      "contenting",
+      "contents"
+    ],
+    "priority": 3,
+    "description": "content"
+  },
+  {
+    "image_file": "control.png",
+    "folder": "common",
+    "meta_tags": [
+      "control",
+      "controled",
+      "controling",
+      "controls"
+    ],
+    "priority": 3,
+    "description": "制御する"
+  },
+  {
+    "image_file": "counting on.png",
+    "folder": "common",
+    "meta_tags": [
+      "counting on",
+      "count on",
+      "counts on",
+      "counted on"
+    ],
+    "priority": 3,
+    "description": "頼りにする"
+  },
+  {
+    "image_file": "counting.png",
+    "folder": "common",
+    "meta_tags": [
+      "counting",
+      "countinged",
+      "countinging",
+      "countings"
+    ],
+    "priority": 3,
+    "description": "counting"
+  },
+  {
+    "image_file": "critical.png",
+    "folder": "common",
+    "meta_tags": [
+      "critical",
+      "criticaled",
+      "criticaling",
+      "criticals"
+    ],
+    "priority": 3,
+    "description": "重要な"
+  },
+  {
+    "image_file": "crucial.png",
+    "folder": "common",
+    "meta_tags": [
+      "crucial",
+      "crucialed",
+      "crucialing",
+      "crucials"
+    ],
+    "priority": 3,
+    "description": "決定的な"
+  },
+  {
+    "image_file": "cruelty.png",
+    "folder": "common",
+    "meta_tags": [
+      "cruelty",
+      "crueltyed",
+      "crueltying",
+      "cruelties"
+    ],
+    "priority": 3,
+    "description": "cruelty"
+  },
+  {
+    "image_file": "data.png",
+    "folder": "common",
+    "meta_tags": [
+      "data",
+      "dataed",
+      "dataing",
+      "datas"
+    ],
+    "priority": 3,
+    "description": "データ"
+  },
+  {
+    "image_file": "day.png",
+    "folder": "common",
+    "meta_tags": [
+      "day",
+      "dayed",
+      "daying",
+      "daies"
+    ],
+    "priority": 3,
+    "description": "日"
+  },
+  {
+    "image_file": "decide.png",
+    "folder": "common",
+    "meta_tags": [
+      "decide",
+      "decided",
+      "deciding",
+      "decides"
+    ],
+    "priority": 3,
+    "description": "決める"
+  },
+  {
+    "image_file": "decisive.png",
+    "folder": "common",
+    "meta_tags": [
+      "decisive",
+      "decisived",
+      "decisiving",
+      "decisives"
+    ],
+    "priority": 3,
+    "description": "決定的な"
+  },
+  {
+    "image_file": "deep.png",
+    "folder": "common",
+    "meta_tags": [
+      "deep",
+      "deeped",
+      "deeping",
+      "deeps"
+    ],
+    "priority": 3,
+    "description": "deep"
+  },
+  {
+    "image_file": "deliver.png",
+    "folder": "common",
+    "meta_tags": [
+      "deliver",
+      "delivered",
+      "delivering",
+      "delivers"
+    ],
+    "priority": 3,
+    "description": "配達する"
+  },
+  {
+    "image_file": "dependable.png",
+    "folder": "common",
+    "meta_tags": [
+      "dependable",
+      "dependabled",
+      "dependabling",
+      "dependables"
+    ],
+    "priority": 3,
+    "description": "dependable"
+  },
+  {
+    "image_file": "detailed.png",
+    "folder": "common",
+    "meta_tags": [
+      "detailed",
+      "detaileded",
+      "detaileding",
+      "detaileds"
+    ],
+    "priority": 3,
+    "description": "detailed"
+  },
+  {
+    "image_file": "determined.png",
+    "folder": "common",
+    "meta_tags": [
+      "determined",
+      "determineded",
+      "determineding",
+      "determineds"
+    ],
+    "priority": 3,
+    "description": "determined"
+  },
+  {
+    "image_file": "difficult.png",
+    "folder": "common",
+    "meta_tags": [
+      "difficult",
+      "difficulted",
+      "difficulting",
+      "difficults"
+    ],
+    "priority": 3,
+    "description": "難しい"
+  },
+  {
+    "image_file": "direct.png",
+    "folder": "common",
+    "meta_tags": [
+      "direct",
+      "directed",
+      "directing",
+      "directs"
+    ],
+    "priority": 3,
+    "description": "直接的な"
+  },
+  {
+    "image_file": "discuss.png",
+    "folder": "common",
+    "meta_tags": [
+      "discuss",
+      "discussed",
+      "discussing",
+      "discusses"
+    ],
+    "priority": 3,
+    "description": "議論する"
+  },
+  {
+    "image_file": "doubt.png",
+    "folder": "common",
+    "meta_tags": [
+      "doubt",
+      "doubted",
+      "doubting",
+      "doubts"
+    ],
+    "priority": 3,
+    "description": "doubt"
+  },
+  {
+    "image_file": "early.png",
+    "folder": "common",
+    "meta_tags": [
+      "early",
+      "earlier",
+      "earliest"
+    ],
+    "priority": 3,
+    "description": "早い"
+  },
+  {
+    "image_file": "echo.png",
+    "folder": "common",
+    "meta_tags": [
+      "echo",
+      "echoed",
+      "echoing",
+      "echos"
+    ],
+    "priority": 3,
+    "description": "echo"
+  },
+  {
+    "image_file": "emotionally.png",
+    "folder": "common",
+    "meta_tags": [
+      "emotionally",
+      "emotionallyed",
+      "emotionallying",
+      "emotionallies"
+    ],
+    "priority": 3,
+    "description": "emotionally"
+  },
+  {
+    "image_file": "employee.png",
+    "folder": "common",
+    "meta_tags": [
+      "employee",
+      "employeed",
+      "employeing",
+      "employees"
+    ],
+    "priority": 3,
+    "description": "従業員"
+  },
+  {
+    "image_file": "encourage.png",
+    "folder": "common",
+    "meta_tags": [
+      "encourage",
+      "encouraged",
+      "encouraging",
+      "encourages"
+    ],
+    "priority": 3,
+    "description": "励ます"
+  },
+  {
+    "image_file": "end.png",
+    "folder": "common",
+    "meta_tags": [
+      "end",
+      "ended",
+      "ending",
+      "ends"
+    ],
+    "priority": 3,
+    "description": "end"
+  },
+  {
+    "image_file": "engineer.png",
+    "folder": "common",
+    "meta_tags": [
+      "engineer",
+      "engineered",
+      "engineering",
+      "engineers"
+    ],
+    "priority": 3,
+    "description": "エンジニア"
+  },
+  {
+    "image_file": "enhance.png",
+    "folder": "common",
+    "meta_tags": [
+      "enhance",
+      "enhanced",
+      "enhancing",
+      "enhances"
+    ],
+    "priority": 3,
+    "description": "向上させる"
+  },
+  {
+    "image_file": "enjoy.png",
+    "folder": "common",
+    "meta_tags": [
+      "enjoy",
+      "enjoyed",
+      "enjoying",
+      "enjoies"
+    ],
+    "priority": 3,
+    "description": "楽しむ"
+  },
+  {
+    "image_file": "enough.png",
+    "folder": "common",
+    "meta_tags": [
+      "enough",
+      "enoughed",
+      "enoughing",
+      "enoughs"
+    ],
+    "priority": 3,
+    "description": "enough"
+  },
+  {
+    "image_file": "environment.png",
+    "folder": "common",
+    "meta_tags": [
+      "environment",
+      "environmented",
+      "environmenting",
+      "environments"
+    ],
+    "priority": 3,
+    "description": "環境"
+  },
+  {
+    "image_file": "escape.png",
+    "folder": "common",
+    "meta_tags": [
+      "escape",
+      "escaped",
+      "escaping",
+      "escapes"
+    ],
+    "priority": 3,
+    "description": "逃げる"
+  },
+  {
+    "image_file": "even.png",
+    "folder": "common",
+    "meta_tags": [
+      "even",
+      "evened",
+      "evens"
+    ],
+    "priority": 3,
+    "description": "even"
+  },
+  {
+    "image_file": "everyone.png",
+    "folder": "common",
+    "meta_tags": [
+      "everyone",
+      "everyoned",
+      "everyoning",
+      "everyones"
+    ],
+    "priority": 3,
+    "description": "みんな"
+  },
+  {
+    "image_file": "example.png",
+    "folder": "common",
+    "meta_tags": [
+      "example",
+      "exampled",
+      "exampling",
+      "examples"
+    ],
+    "priority": 3,
+    "description": "例"
+  },
+  {
+    "image_file": "exhausted.png",
+    "folder": "common",
+    "meta_tags": [
+      "exhausted",
+      "exhausting",
+      "exhausts",
+      "exhaust",
+      "exhausteded",
+      "exhausteding",
+      "exhausteds"
+    ],
+    "priority": 3,
+    "description": "exhausted"
+  },
+  {
+    "image_file": "experiment.png",
+    "folder": "common",
+    "meta_tags": [
+      "experiment",
+      "experimented",
+      "experimenting",
+      "experiments"
+    ],
+    "priority": 3,
+    "description": "実験"
+  },
+  {
+    "image_file": "explain.png",
+    "folder": "common",
+    "meta_tags": [
+      "explain",
+      "explained",
+      "explaining",
+      "explains"
+    ],
+    "priority": 3,
+    "description": "説明する"
+  },
+  {
+    "image_file": "explaining.png",
+    "folder": "common",
+    "meta_tags": [
+      "explaining",
+      "explaininged",
+      "explaininging",
+      "explainings"
+    ],
+    "priority": 3,
+    "description": "explaining"
+  },
+  {
+    "image_file": "face.png",
+    "folder": "common",
+    "meta_tags": [
+      "face",
+      "faced",
+      "facing",
+      "faces"
+    ],
+    "priority": 3,
+    "description": "直面する"
+  },
+  {
+    "image_file": "far.png",
+    "folder": "common",
+    "meta_tags": [
+      "far",
+      "fared",
+      "faring",
+      "fars"
+    ],
+    "priority": 3,
+    "description": "far"
+  },
+  {
+    "image_file": "fast.png",
+    "folder": "common",
+    "meta_tags": [
+      "fast",
+      "faster",
+      "fastest",
+      "quickly"
+    ],
+    "priority": 3,
+    "description": "速い"
+  },
+  {
+    "image_file": "fatigue.png",
+    "folder": "common",
+    "meta_tags": [
+      "fatigue",
+      "fatigued",
+      "fatiguing",
+      "fatigues"
+    ],
+    "priority": 3,
+    "description": "疲労"
+  },
+  {
+    "image_file": "feared.png",
+    "folder": "common",
+    "meta_tags": [
+      "feared",
+      "feareded",
+      "feareding",
+      "feareds"
+    ],
+    "priority": 3,
+    "description": "feared"
+  },
+  {
+    "image_file": "feelings.png",
+    "folder": "common",
+    "meta_tags": [
+      "feelings",
+      "feelingsed",
+      "feelingsing",
+      "feelingses"
+    ],
+    "priority": 3,
+    "description": "感情"
+  },
+  {
+    "image_file": "figure out.png",
+    "folder": "common",
+    "meta_tags": [
+      "figure out",
+      "figures out",
+      "figured out",
+      "figuring out"
+    ],
+    "priority": 3,
+    "description": "理解する、解決する"
+  },
+  {
+    "image_file": "figure.png",
+    "folder": "common",
+    "meta_tags": [
+      "figure",
+      "figured",
+      "figuring",
+      "figures"
+    ],
+    "priority": 3,
+    "description": "人物、数字、図形"
+  },
+  {
+    "image_file": "fill.png",
+    "folder": "common",
+    "meta_tags": [
+      "fill",
+      "filled",
+      "filling",
+      "fills"
+    ],
+    "priority": 3,
+    "description": "fill"
+  },
+  {
+    "image_file": "final.png",
+    "folder": "common",
+    "meta_tags": [
+      "final",
+      "finaled",
+      "finaling",
+      "finals"
+    ],
+    "priority": 3,
+    "description": "最終的な"
+  },
+  {
+    "image_file": "find.png",
+    "folder": "common",
+    "meta_tags": [
+      "find",
+      "finds",
+      "finding",
+      "found"
+    ],
+    "priority": 3,
+    "description": "見つける"
+  },
+  {
+    "image_file": "flawlessly.jpg",
+    "folder": "common",
+    "meta_tags": [
+      "flawlessly",
+      "flawlesslyed",
+      "flawlesslying",
+      "flawlesslies"
+    ],
+    "priority": 3,
+    "description": "flawlessly"
+  },
+  {
+    "image_file": "full.png",
+    "folder": "common",
+    "meta_tags": [
+      "full",
+      "fulled",
+      "fulling",
+      "fulls"
+    ],
+    "priority": 3,
+    "description": "full"
+  },
+  {
+    "image_file": "game.png",
+    "folder": "common",
+    "meta_tags": [
+      "game",
+      "gamed",
+      "gaming",
+      "games"
+    ],
+    "priority": 3,
+    "description": "ゲーム"
+  },
+  {
+    "image_file": "general.png",
+    "folder": "common",
+    "meta_tags": [
+      "general",
+      "generaled",
+      "generaling",
+      "generals"
+    ],
+    "priority": 3,
+    "description": "general"
+  },
+  {
+    "image_file": "get.png",
+    "folder": "common",
+    "meta_tags": [
+      "get",
+      "gets",
+      "getting",
+      "got",
+      "gotten"
+    ],
+    "priority": 3,
+    "description": "得る"
+  },
+  {
+    "image_file": "give.png",
+    "folder": "common",
+    "meta_tags": [
+      "give",
+      "gives",
+      "giving",
+      "gave",
+      "given"
+    ],
+    "priority": 3,
+    "description": "与える"
+  },
+  {
+    "image_file": "good.png",
+    "folder": "common",
+    "meta_tags": [
+      "good",
+      "better",
+      "best"
+    ],
+    "priority": 3,
+    "description": "良い"
+  },
+  {
+    "image_file": "government.png",
+    "folder": "common",
+    "meta_tags": [
+      "government",
+      "governmented",
+      "governmenting",
+      "governments"
+    ],
+    "priority": 3,
+    "description": "政府"
+  },
+  {
+    "image_file": "ground.png",
+    "folder": "common",
+    "meta_tags": [
+      "ground",
+      "grounded",
+      "grounding",
+      "grounds"
+    ],
+    "priority": 3,
+    "description": "ground"
+  },
+  {
+    "image_file": "growth.png",
+    "folder": "common",
+    "meta_tags": [
+      "growth",
+      "growthed",
+      "growthing",
+      "growths"
+    ],
+    "priority": 3,
+    "description": "成長"
+  },
+  {
+    "image_file": "hand.png",
+    "folder": "common",
+    "meta_tags": [
+      "hand",
+      "handed",
+      "handing",
+      "hands"
+    ],
+    "priority": 3,
+    "description": "手"
+  },
+  {
+    "image_file": "happen.png",
+    "folder": "common",
+    "meta_tags": [
+      "happen",
+      "happened",
+      "happening",
+      "happens"
+    ],
+    "priority": 3,
+    "description": "起こる"
+  },
+  {
+    "image_file": "hard.png",
+    "folder": "common",
+    "meta_tags": [
+      "hard",
+      "harder",
+      "hardest"
+    ],
+    "priority": 3,
+    "description": "難しい"
+  },
+  {
+    "image_file": "he.png",
+    "folder": "common",
+    "meta_tags": [
+      "he",
+      "him",
+      "his",
+      "himself"
+    ],
+    "priority": 3,
+    "description": "彼"
+  },
+  {
+    "image_file": "head.png",
+    "folder": "common",
+    "meta_tags": [
+      "head",
+      "headed",
+      "heading",
+      "heads"
+    ],
+    "priority": 3,
+    "description": "頭"
+  },
+  {
+    "image_file": "health.png",
+    "folder": "common",
+    "meta_tags": [
+      "health",
+      "healthed",
+      "healthing",
+      "healths"
+    ],
+    "priority": 3,
+    "description": "健康"
+  },
+  {
+    "image_file": "help.png",
+    "folder": "common",
+    "meta_tags": [
+      "help",
+      "helped",
+      "helping",
+      "helps"
+    ],
+    "priority": 3,
+    "description": "助ける"
+  },
+  {
+    "image_file": "hesitation.png",
+    "folder": "common",
+    "meta_tags": [
+      "hesitation",
+      "hesitationed",
+      "hesitationing",
+      "hesitations"
+    ],
+    "priority": 3,
+    "description": "hesitation"
+  },
+  {
+    "image_file": "high.png",
+    "folder": "common",
+    "meta_tags": [
+      "high",
+      "higher",
+      "highest"
+    ],
+    "priority": 3,
+    "description": "高い"
+  },
+  {
+    "image_file": "home.png",
+    "folder": "common",
+    "meta_tags": [
+      "home",
+      "homed",
+      "homing",
+      "homes"
+    ],
+    "priority": 3,
+    "description": "家"
+  },
+  {
+    "image_file": "hurting.png",
+    "folder": "common",
+    "meta_tags": [
+      "hurting",
+      "hurtinged",
+      "hurtinging",
+      "hurtings"
+    ],
+    "priority": 3,
+    "description": "hurting"
+  },
+  {
+    "image_file": "i.png",
+    "folder": "common",
+    "meta_tags": [
+      "I",
+      "me",
+      "my",
+      "mine",
+      "myself"
+    ],
+    "priority": 3,
+    "description": "私"
+  },
+  {
+    "image_file": "idea.png",
+    "folder": "common",
+    "meta_tags": [
+      "idea",
+      "ideaed",
+      "ideaing",
+      "ideas"
+    ],
+    "priority": 3,
+    "description": "アイデア"
+  },
+  {
+    "image_file": "implementation.png",
+    "folder": "common",
+    "meta_tags": [
+      "implementation",
+      "implementationed",
+      "implementationing",
+      "implementations"
+    ],
+    "priority": 3,
+    "description": "implementation"
+  },
+  {
+    "image_file": "include.png",
+    "folder": "common",
+    "meta_tags": [
+      "include",
+      "included",
+      "including",
+      "includes"
+    ],
+    "priority": 3,
+    "description": "含む"
+  },
+  {
+    "image_file": "increase.png",
+    "folder": "common",
+    "meta_tags": [
+      "increase",
+      "increased",
+      "increasing",
+      "increases"
+    ],
+    "priority": 3,
+    "description": "増加する"
+  },
+  {
+    "image_file": "indecisive.png",
+    "folder": "common",
+    "meta_tags": [
+      "indecisive",
+      "indecisived",
+      "indecisiving",
+      "indecisives"
+    ],
+    "priority": 3,
+    "description": "indecisive"
+  },
+  {
+    "image_file": "instant.png",
+    "folder": "common",
+    "meta_tags": [
+      "instant",
+      "instanted",
+      "instanting",
+      "instants"
+    ],
+    "priority": 3,
+    "description": "瞬間"
+  },
+  {
+    "image_file": "instead.png",
+    "folder": "common",
+    "meta_tags": [
+      "instead",
+      "insteaded",
+      "insteading",
+      "insteads"
+    ],
+    "priority": 3,
+    "description": "instead"
+  },
+  {
+    "image_file": "instructor.jpg",
+    "folder": "common",
+    "meta_tags": [
+      "instructor",
+      "instructored",
+      "instructoring",
+      "instructors"
+    ],
+    "priority": 3,
+    "description": "指導者"
+  },
+  {
+    "image_file": "intend.png",
+    "folder": "common",
+    "meta_tags": [
+      "intend",
+      "intended",
+      "intending",
+      "intends"
+    ],
+    "priority": 3,
+    "description": "意図する"
+  },
+  {
+    "image_file": "intense.png",
+    "folder": "common",
+    "meta_tags": [
+      "intense",
+      "intensed",
+      "intensing",
+      "intenses"
+    ],
+    "priority": 3,
+    "description": "intense"
+  },
+  {
+    "image_file": "issue.png",
+    "folder": "common",
+    "meta_tags": [
+      "issue",
+      "issued",
+      "issuing",
+      "issues"
+    ],
+    "priority": 3,
+    "description": "問題"
+  },
+  {
+    "image_file": "job.png",
+    "folder": "common",
+    "meta_tags": [
+      "job",
+      "jobed",
+      "jobing",
+      "jobs"
+    ],
+    "priority": 3,
+    "description": "仕事"
+  },
+  {
+    "image_file": "joined.png",
+    "folder": "common",
+    "meta_tags": [
+      "joined",
+      "joineded",
+      "joineding",
+      "joineds"
+    ],
+    "priority": 3,
+    "description": "joined"
+  },
+  {
+    "image_file": "just.png",
+    "folder": "common",
+    "meta_tags": [
+      "just",
+      "justed",
+      "justing",
+      "justs"
+    ],
+    "priority": 3,
+    "description": "just"
+  },
+  {
+    "image_file": "keep.png",
+    "folder": "common",
+    "meta_tags": [
+      "keep",
+      "keeps",
+      "keeping",
+      "kept"
+    ],
+    "priority": 3,
+    "description": "保つ"
+  },
+  {
+    "image_file": "kind.png",
+    "folder": "common",
+    "meta_tags": [
+      "kind",
+      "kinded",
+      "kinding",
+      "kinds"
+    ],
+    "priority": 3,
+    "description": "kind"
+  },
+  {
+    "image_file": "know.png",
+    "folder": "common",
+    "meta_tags": [
+      "know",
+      "knows",
+      "knowing",
+      "knew",
+      "known"
+    ],
+    "priority": 3,
+    "description": "知る"
+  },
+  {
+    "image_file": "laboratory.png",
+    "folder": "common",
+    "meta_tags": [
+      "laboratory",
+      "laboratoryed",
+      "laboratorying",
+      "laboratories"
+    ],
+    "priority": 3,
+    "description": "研究室"
+  },
+  {
+    "image_file": "lacked.png",
+    "folder": "common",
+    "meta_tags": [
+      "lacked",
+      "lackeded",
+      "lackeding",
+      "lackeds"
+    ],
+    "priority": 3,
+    "description": "lacked"
+  },
+  {
+    "image_file": "last.png",
+    "folder": "common",
+    "meta_tags": [
+      "last",
+      "lasted",
+      "lasting",
+      "lasts"
+    ],
+    "priority": 3,
+    "description": "last"
+  },
+  {
+    "image_file": "leader.png",
+    "folder": "common",
+    "meta_tags": [
+      "leader",
+      "leadered",
+      "leadering",
+      "leaders"
+    ],
+    "priority": 3,
+    "description": "リーダー"
+  },
+  {
+    "image_file": "lesson.png",
+    "folder": "common",
+    "meta_tags": [
+      "lesson",
+      "lessoned",
+      "lessoning",
+      "lessons"
+    ],
+    "priority": 3,
+    "description": "授業"
+  },
+  {
+    "image_file": "like.png",
+    "folder": "common",
+    "meta_tags": [
+      "like",
+      "liked",
+      "liking",
+      "likes"
+    ],
+    "priority": 3,
+    "description": "好む"
+  },
+  {
+    "image_file": "lingered.png",
+    "folder": "common",
+    "meta_tags": [
+      "lingered",
+      "lingereded",
+      "lingereding",
+      "lingereds"
+    ],
+    "priority": 3,
+    "description": "lingered"
+  },
+  {
+    "image_file": "long.png",
+    "folder": "common",
+    "meta_tags": [
+      "long",
+      "longer",
+      "longest"
+    ],
+    "priority": 3,
+    "description": "長い"
+  },
+  {
+    "image_file": "make.png",
+    "folder": "common",
+    "meta_tags": [
+      "make",
+      "makes",
+      "making",
+      "made"
+    ],
+    "priority": 3,
+    "description": "作る"
+  },
+  {
+    "image_file": "manager.png",
+    "folder": "common",
+    "meta_tags": [
+      "manager",
+      "managered",
+      "managering",
+      "managers"
+    ],
+    "priority": 3,
+    "description": "管理者"
+  },
+  {
+    "image_file": "math.png",
+    "folder": "common",
+    "meta_tags": [
+      "math",
+      "mathed",
+      "mathing",
+      "maths"
+    ],
+    "priority": 3,
+    "description": "数学"
+  },
+  {
+    "image_file": "meeting.png",
+    "folder": "common",
+    "meta_tags": [
+      "meeting",
+      "meetinged",
+      "meetinging",
+      "meetings"
+    ],
+    "priority": 3,
+    "description": "会議"
+  },
+  {
+    "image_file": "mentally.png",
+    "folder": "common",
+    "meta_tags": [
+      "mentally",
+      "mentallyed",
+      "mentallying",
+      "mentallies"
+    ],
+    "priority": 3,
+    "description": "mentally"
+  },
+  {
+    "image_file": "meticulously.png",
+    "folder": "common",
+    "meta_tags": [
+      "meticulously",
+      "meticulouslyed",
+      "meticulouslying",
+      "meticulouslies"
+    ],
+    "priority": 3,
+    "description": "meticulously"
+  },
+  {
+    "image_file": "mind.png",
+    "folder": "common",
+    "meta_tags": [
+      "mind",
+      "minded",
+      "minding",
+      "minds"
+    ],
+    "priority": 3,
+    "description": "心"
+  },
+  {
+    "image_file": "missed.png",
+    "folder": "common",
+    "meta_tags": [
+      "missed",
+      "misseded",
+      "misseding",
+      "misseds"
+    ],
+    "priority": 3,
+    "description": "missed"
+  },
+  {
+    "image_file": "moment.png",
+    "folder": "common",
+    "meta_tags": [
+      "moment",
+      "momented",
+      "momenting",
+      "moments"
+    ],
+    "priority": 3,
+    "description": "瞬間"
+  },
+  {
+    "image_file": "morning.png",
+    "folder": "common",
+    "meta_tags": [
+      "morning",
+      "morninged",
+      "morninging",
+      "mornings"
+    ],
+    "priority": 3,
+    "description": "朝"
+  },
+  {
+    "image_file": "near.png",
+    "folder": "common",
+    "meta_tags": [
+      "near",
+      "neared",
+      "nearing",
+      "nears"
+    ],
+    "priority": 3,
+    "description": "near"
+  },
+  {
+    "image_file": "new.png",
+    "folder": "common",
+    "meta_tags": [
+      "new",
+      "newer",
+      "newest"
+    ],
+    "priority": 3,
+    "description": "新しい"
+  },
+  {
+    "image_file": "nonbody.png",
+    "folder": "common",
+    "meta_tags": [
+      "nonbody",
+      "nonbodyed",
+      "nonbodying",
+      "nonbodies"
+    ],
+    "priority": 3,
+    "description": "nonbody"
+  },
+  {
+    "image_file": "notice.png",
+    "folder": "common",
+    "meta_tags": [
+      "notice",
+      "noticed",
+      "noticing",
+      "notices"
+    ],
+    "priority": 3,
+    "description": "気づく"
+  },
+  {
+    "image_file": "occurred.png",
+    "folder": "common",
+    "meta_tags": [
+      "occur",
+      "occurs",
+      "occurred",
+      "occurring",
+      "occured",
+      "occureded",
+      "occureding",
+      "occureds"
+    ],
+    "priority": 3,
+    "description": "occur, occurred - 起こる、発生する"
+  },
+  {
+    "image_file": "offer.png",
+    "folder": "common",
+    "meta_tags": [
+      "offer",
+      "offered",
+      "offering",
+      "offers"
+    ],
+    "priority": 3,
+    "description": "提供する"
+  },
+  {
+    "image_file": "office.png",
+    "folder": "common",
+    "meta_tags": [
+      "office",
+      "officed",
+      "officing",
+      "offices"
+    ],
+    "priority": 3,
+    "description": "オフィス"
+  },
+  {
+    "image_file": "once.png",
+    "folder": "common",
+    "meta_tags": [
+      "once",
+      "onced",
+      "oncing",
+      "onces"
+    ],
+    "priority": 3,
+    "description": "once"
+  },
+  {
+    "image_file": "outage.png",
+    "folder": "common",
+    "meta_tags": [
+      "outage",
+      "outaged",
+      "outaging",
+      "outages"
+    ],
+    "priority": 3,
+    "description": "outage"
+  },
+  {
+    "image_file": "outcome.png",
+    "folder": "common",
+    "meta_tags": [
+      "outcome",
+      "outcomed",
+      "outcoming",
+      "outcomes"
+    ],
+    "priority": 3,
+    "description": "outcome"
+  },
+  {
+    "image_file": "outline.png",
+    "folder": "common",
+    "meta_tags": [
+      "outline",
+      "outlined",
+      "outlining",
+      "outlines"
+    ],
+    "priority": 3,
+    "description": "outline"
+  },
+  {
+    "image_file": "party.png",
+    "folder": "common",
+    "meta_tags": [
+      "party",
+      "partyed",
+      "partying",
+      "parties"
+    ],
+    "priority": 3,
+    "description": "party"
+  },
+  {
+    "image_file": "people.png",
+    "folder": "common",
+    "meta_tags": [
+      "people",
+      "peopled",
+      "peopling",
+      "peoples"
+    ],
+    "priority": 3,
+    "description": "人々"
+  },
+  {
+    "image_file": "placeholder.png",
+    "folder": "common",
+    "meta_tags": [
+      "placeholder",
+      "placeholdered",
+      "placeholdering",
+      "placeholders"
+    ],
+    "priority": 3,
+    "description": "placeholder"
+  },
+  {
+    "image_file": "plan.png",
+    "folder": "common",
+    "meta_tags": [
+      "plan",
+      "planed",
+      "planing",
+      "plans"
+    ],
+    "priority": 3,
+    "description": "計画"
+  },
+  {
+    "image_file": "point.png",
+    "folder": "common",
+    "meta_tags": [
+      "point",
+      "pointed",
+      "pointing",
+      "points"
+    ],
+    "priority": 3,
+    "description": "点"
+  },
+  {
+    "image_file": "policy.png",
+    "folder": "common",
+    "meta_tags": [
+      "policy",
+      "policyed",
+      "policying",
+      "policies"
+    ],
+    "priority": 3,
+    "description": "policy"
+  },
+  {
+    "image_file": "potential.png",
+    "folder": "common",
+    "meta_tags": [
+      "potential",
+      "potentialed",
+      "potentialing",
+      "potentials"
+    ],
+    "priority": 3,
+    "description": "potential"
+  },
+  {
+    "image_file": "power.png",
+    "folder": "common",
+    "meta_tags": [
+      "power",
+      "powered",
+      "powering",
+      "powers"
+    ],
+    "priority": 3,
+    "description": "力"
+  },
+  {
+    "image_file": "prepared.png",
+    "folder": "common",
+    "meta_tags": [
+      "prepared",
+      "prepareded",
+      "prepareding",
+      "prepareds"
+    ],
+    "priority": 3,
+    "description": "prepared"
+  },
+  {
+    "image_file": "presentation.png",
+    "folder": "common",
+    "meta_tags": [
+      "presentation",
+      "presentationed",
+      "presentationing",
+      "presentations"
+    ],
+    "priority": 3,
+    "description": "presentation"
+  },
+  {
+    "image_file": "pressure.png",
+    "folder": "common",
+    "meta_tags": [
+      "pressure",
+      "pressured",
+      "pressuring",
+      "pressures"
+    ],
+    "priority": 3,
+    "description": "pressure"
+  },
+  {
+    "image_file": "previous.png",
+    "folder": "common",
+    "meta_tags": [
+      "previous",
+      "previoused",
+      "previousing",
+      "previouses"
+    ],
+    "priority": 3,
+    "description": "previous"
+  },
+  {
+    "image_file": "principal.png",
+    "folder": "common",
+    "meta_tags": [
+      "principal",
+      "principaled",
+      "principaling",
+      "principals"
+    ],
+    "priority": 3,
+    "description": "principal"
+  },
+  {
+    "image_file": "project.png",
+    "folder": "common",
+    "meta_tags": [
+      "project",
+      "projected",
+      "projecting",
+      "projects"
+    ],
+    "priority": 3,
+    "description": "プロジェクト"
+  },
+  {
+    "image_file": "proposal.png",
+    "folder": "common",
+    "meta_tags": [
+      "proposal",
+      "proposaled",
+      "proposaling",
+      "proposals"
+    ],
+    "priority": 3,
+    "description": "proposal"
+  },
+  {
+    "image_file": "publication.png",
+    "folder": "common",
+    "meta_tags": [
+      "publication",
+      "publicationed",
+      "publicationing",
+      "publications"
+    ],
+    "priority": 3,
+    "description": "publication"
+  },
+  {
+    "image_file": "push.png",
+    "folder": "common",
+    "meta_tags": [
+      "push",
+      "pushed",
+      "pushing",
+      "pushes"
+    ],
+    "priority": 3,
+    "description": "押す"
+  },
+  {
+    "image_file": "question.png",
+    "folder": "common",
+    "meta_tags": [
+      "question",
+      "questioned",
+      "questioning",
+      "questions"
+    ],
+    "priority": 3,
+    "description": "質問"
+  },
+  {
+    "image_file": "recently.png",
+    "folder": "common",
+    "meta_tags": [
+      "recently",
+      "recentlyed",
+      "recentlying",
+      "recentlies"
+    ],
+    "priority": 3,
+    "description": "recently"
+  },
+  {
+    "image_file": "reflect.png",
+    "folder": "common",
+    "meta_tags": [
+      "reflect",
+      "reflected",
+      "reflecting",
+      "reflects"
+    ],
+    "priority": 3,
+    "description": "反映する"
+  },
+  {
+    "image_file": "refuse.png",
+    "folder": "common",
+    "meta_tags": [
+      "refuse",
+      "refused",
+      "refusing",
+      "refuses"
+    ],
+    "priority": 3,
+    "description": "拒否する"
+  },
+  {
+    "image_file": "remarkable.png",
+    "folder": "common",
+    "meta_tags": [
+      "remarkable",
+      "remarkabled",
+      "remarkabling",
+      "remarkables"
+    ],
+    "priority": 3,
+    "description": "remarkable"
+  },
+  {
+    "image_file": "reputation.png",
+    "folder": "common",
+    "meta_tags": [
+      "reputation",
+      "reputationed",
+      "reputationing",
+      "reputations"
+    ],
+    "priority": 3,
+    "description": "reputation"
+  },
+  {
+    "image_file": "request.png",
+    "folder": "common",
+    "meta_tags": [
+      "request",
+      "requested",
+      "requesting",
+      "requests"
+    ],
+    "priority": 3,
+    "description": "要求する"
+  },
+  {
+    "image_file": "research.png",
+    "folder": "common",
+    "meta_tags": [
+      "research",
+      "researched",
+      "researching",
+      "researches"
+    ],
+    "priority": 3,
+    "description": "研究"
+  },
+  {
+    "image_file": "respond.png",
+    "folder": "common",
+    "meta_tags": [
+      "respond",
+      "responded",
+      "responding",
+      "responds"
+    ],
+    "priority": 3,
+    "description": "応答する"
+  },
+  {
+    "image_file": "responsible.png",
+    "folder": "common",
+    "meta_tags": [
+      "responsible",
+      "responsibled",
+      "responsibling",
+      "responsibles"
+    ],
+    "priority": 3,
+    "description": "責任のある"
+  },
+  {
+    "image_file": "return.png",
+    "folder": "common",
+    "meta_tags": [
+      "return",
+      "returned",
+      "returning",
+      "returns"
+    ],
+    "priority": 3,
+    "description": "戻る"
+  },
+  {
+    "image_file": "room.png",
+    "folder": "common",
+    "meta_tags": [
+      "room",
+      "roomed",
+      "rooming",
+      "rooms"
+    ],
+    "priority": 3,
+    "description": "部屋"
+  },
+  {
+    "image_file": "school.png",
+    "folder": "common",
+    "meta_tags": [
+      "school",
+      "schooled",
+      "schooling",
+      "schools"
+    ],
+    "priority": 3,
+    "description": "学校"
+  },
+  {
+    "image_file": "scientist.png",
+    "folder": "common",
+    "meta_tags": [
+      "scientist",
+      "scientisted",
+      "scientisting",
+      "scientists"
+    ],
+    "priority": 3,
+    "description": "科学者"
+  },
+  {
+    "image_file": "second.png",
+    "folder": "common",
+    "meta_tags": [
+      "second",
+      "seconded",
+      "seconding",
+      "seconds"
+    ],
+    "priority": 3,
+    "description": "second"
+  },
+  {
+    "image_file": "seemed.png",
+    "folder": "common",
+    "meta_tags": [
+      "seemed",
+      "seemeded",
+      "seemeding",
+      "seemeds"
+    ],
+    "priority": 3,
+    "description": "seemed"
+  },
+  {
+    "image_file": "severe.png",
+    "folder": "common",
+    "meta_tags": [
+      "severe",
+      "severed",
+      "severing",
+      "severes"
+    ],
+    "priority": 3,
+    "description": "severe"
+  },
+  {
+    "image_file": "she.png",
+    "folder": "common",
+    "meta_tags": [
+      "she",
+      "her",
+      "hers",
+      "herself"
+    ],
+    "priority": 3,
+    "description": "彼女"
+  },
+  {
+    "image_file": "shown.png",
+    "folder": "common",
+    "meta_tags": [
+      "show",
+      "shows",
+      "showed",
+      "showing",
+      "shown",
+      "showned",
+      "showning",
+      "showns"
+    ],
+    "priority": 3,
+    "description": "見せる、示す - show/shown"
+  },
+  {
+    "image_file": "silence.png",
+    "folder": "common",
+    "meta_tags": [
+      "silence",
+      "silenced",
+      "silencing",
+      "silences"
+    ],
+    "priority": 3,
+    "description": "silence"
+  },
+  {
+    "image_file": "spoke.png",
+    "folder": "common",
+    "meta_tags": [
+      "spoke",
+      "spoked",
+      "spoking",
+      "spokes"
+    ],
+    "priority": 3,
+    "description": "spoke"
+  },
+  {
+    "image_file": "staff.png",
+    "folder": "common",
+    "meta_tags": [
+      "staff",
+      "staffed",
+      "staffing",
+      "staffs"
+    ],
+    "priority": 3,
+    "description": "staff"
+  },
+  {
+    "image_file": "student.png",
+    "folder": "common",
+    "meta_tags": [
+      "student",
+      "studented",
+      "studenting",
+      "students"
+    ],
+    "priority": 3,
+    "description": "学生"
+  },
+  {
+    "image_file": "suggestion.png",
+    "folder": "common",
+    "meta_tags": [
+      "suggestion",
+      "suggestioned",
+      "suggestioning",
+      "suggestions"
+    ],
+    "priority": 3,
+    "description": "suggestion"
+  },
+  {
+    "image_file": "support.png",
+    "folder": "common",
+    "meta_tags": [
+      "support",
+      "supports",
+      "supported",
+      "supporting",
+      "supportive",
+      "supporter",
+      "supporters"
+    ],
+    "priority": 3,
+    "description": "support - サポート、支援、支持"
+  },
+  {
+    "image_file": "summary.png",
+    "folder": "common",
+    "meta_tags": [
+      "summary",
+      "summaryed",
+      "summarying",
+      "summaries"
+    ],
+    "priority": 3,
+    "description": "summary"
+  },
+  {
+    "image_file": "take.png",
+    "folder": "common",
+    "meta_tags": [
+      "take",
+      "takes",
+      "taking",
+      "took",
+      "taken"
+    ],
+    "priority": 3,
+    "description": "取る"
+  },
+  {
+    "image_file": "teacher.png",
+    "folder": "common",
+    "meta_tags": [
+      "teacher",
+      "teachered",
+      "teachering",
+      "teachers"
+    ],
+    "priority": 3,
+    "description": "教師"
+  },
+  {
+    "image_file": "team.png",
+    "folder": "common",
+    "meta_tags": [
+      "team",
+      "teamed",
+      "teaming",
+      "teams"
+    ],
+    "priority": 3,
+    "description": "チーム"
+  },
+  {
+    "image_file": "they.png",
+    "folder": "common",
+    "meta_tags": [
+      "they",
+      "them",
+      "their",
+      "theirs",
+      "themselves"
+    ],
+    "priority": 3,
+    "description": "彼ら、彼女ら"
+  },
+  {
+    "image_file": "think.png",
+    "folder": "common",
+    "meta_tags": [
+      "think",
+      "thinks",
+      "thinking",
+      "thought"
+    ],
+    "priority": 3,
+    "description": "考える"
+  },
+  {
+    "image_file": "thoughtful.png",
+    "folder": "common",
+    "meta_tags": [
+      "thoughtful",
+      "thoughtfuled",
+      "thoughtfuling",
+      "thoughtfuls"
+    ],
+    "priority": 3,
+    "description": "thoughtful"
+  },
+  {
+    "image_file": "thoughts.png",
+    "folder": "common",
+    "meta_tags": [
+      "thoughts",
+      "thoughtsed",
+      "thoughtsing",
+      "thoughtses"
+    ],
+    "priority": 3,
+    "description": "thoughts"
+  },
+  {
+    "image_file": "transferred.png",
+    "folder": "common",
+    "meta_tags": [
+      "transferred",
+      "transferreded",
+      "transferreding",
+      "transferreds"
+    ],
+    "priority": 3,
+    "description": "transferred"
+  },
+  {
+    "image_file": "trying.png",
+    "folder": "common",
+    "meta_tags": [
+      "trying",
+      "tryinged",
+      "tryinging",
+      "tryings"
+    ],
+    "priority": 3,
+    "description": "trying"
+  },
+  {
+    "image_file": "uncertainty.png",
+    "folder": "common",
+    "meta_tags": [
+      "uncertainty",
+      "uncertaintyed",
+      "uncertaintying",
+      "uncertainties"
+    ],
+    "priority": 3,
+    "description": "uncertainty"
+  },
+  {
+    "image_file": "unexpected.png",
+    "folder": "common",
+    "meta_tags": [
+      "unexpected",
+      "unexpecteded",
+      "unexpecteding",
+      "unexpecteds"
+    ],
+    "priority": 3,
+    "description": "unexpected"
+  },
+  {
+    "image_file": "upsetting.png",
+    "folder": "common",
+    "meta_tags": [
+      "upsetting",
+      "upsettinged",
+      "upsettinging",
+      "upsettings"
+    ],
+    "priority": 3,
+    "description": "upsetting"
+  },
+  {
+    "image_file": "urgent.png",
+    "folder": "common",
+    "meta_tags": [
+      "urgent",
+      "urgented",
+      "urgenting",
+      "urgents"
+    ],
+    "priority": 3,
+    "description": "urgent"
+  },
+  {
+    "image_file": "voice.png",
+    "folder": "common",
+    "meta_tags": [
+      "voice",
+      "voiced",
+      "voicing",
+      "voices"
+    ],
+    "priority": 3,
+    "description": "声"
+  },
+  {
+    "image_file": "waiting.png",
+    "folder": "common",
+    "meta_tags": [
+      "waiting",
+      "waitinged",
+      "waitinging",
+      "waitings"
+    ],
+    "priority": 3,
+    "description": "waiting"
+  },
+  {
+    "image_file": "want.png",
+    "folder": "common",
+    "meta_tags": [
+      "want",
+      "wanted",
+      "wanting",
+      "wants"
+    ],
+    "priority": 3,
+    "description": "欲しい"
+  },
+  {
+    "image_file": "we.png",
+    "folder": "common",
+    "meta_tags": [
+      "we",
+      "us",
+      "our",
+      "ours",
+      "ourselves"
+    ],
+    "priority": 3,
+    "description": "私たち"
+  },
+  {
+    "image_file": "week.png",
+    "folder": "common",
+    "meta_tags": [
+      "week",
+      "week's",
+      "weeked",
+      "weeking",
+      "weeks"
+    ],
+    "priority": 3,
+    "description": "週"
+  },
+  {
+    "image_file": "wish.png",
+    "folder": "common",
+    "meta_tags": [
+      "wish",
+      "wished",
+      "wishing",
+      "wishes"
+    ],
+    "priority": 3,
+    "description": "願う"
+  },
+  {
+    "image_file": "without.png",
+    "folder": "common",
+    "meta_tags": [
+      "without",
+      "withouted",
+      "withouting",
+      "withouts"
+    ],
+    "priority": 3,
+    "description": "without"
+  },
+  {
+    "image_file": "woman.png",
+    "folder": "common",
+    "meta_tags": [
+      "woman",
+      "womaned",
+      "womaning",
+      "womans"
+    ],
+    "priority": 3,
+    "description": "女性"
+  },
+  {
+    "image_file": "working.png",
+    "folder": "common",
+    "meta_tags": [
+      "working",
+      "workinged",
+      "workinging",
+      "workings"
+    ],
+    "priority": 3,
+    "description": "working"
+  },
+  {
+    "image_file": "would_rather.png",
+    "folder": "common",
+    "meta_tags": [
+      "would rather",
+      "prefer",
+      "prefers",
+      "preferred"
+    ],
+    "priority": 3,
+    "description": "むしろ〜したい"
+  },
+  {
+    "image_file": "prior.png",
+    "folder": "common",
+    "meta_tags": [
+      "prior",
+      "previous",
+      "before",
+      "earlier",
+      "former"
+    ],
+    "priority": 3,
+    "description": "以前の、前の"
+  },
+  {
+    "image_file": "you.png",
+    "folder": "common",
+    "meta_tags": [
+      "you",
+      "your",
+      "yours",
+      "yourself"
+    ],
+    "priority": 3,
+    "description": "あなた"
+  },
+  {
+    "image_file": "message.png",
+    "folder": "common",
+    "meta_tags": [
+      "message",
+      "messages",
+      "messaged",
+      "messaging"
+    ],
+    "priority": 3,
+    "description": "メッセージ、伝言"
+  },
+  {
+    "image_file": "secret.png",
+    "folder": "common",
+    "meta_tags": [
+      "secret",
+      "secrets",
+      "secreted",
+      "secreting"
+    ],
+    "priority": 3,
+    "description": "秘密"
+  },
+  {
+    "image_file": "weekend.png",
+    "folder": "common",
+    "meta_tags": [
+      "weekend",
+      "weekends",
+      "weekended",
+      "weekending"
+    ],
+    "priority": 3,
+    "description": "週末"
+  },
+  {
+    "image_file": "curious.png",
+    "folder": "common",
+    "meta_tags": [
+      "curious",
+      "curiously",
+      "curiosity",
+      "curiosities"
+    ],
+    "priority": 3,
+    "description": "好奇心がある"
+  },
+  {
+    "image_file": "important.png",
+    "folder": "common",
+    "meta_tags": [
+      "important",
+      "importantly",
+      "importance",
+      "importances"
+    ],
+    "priority": 3,
+    "description": "重要な"
+  },
+  {
+    "image_file": "warning.png",
+    "folder": "common",
+    "meta_tags": [
+      "warning",
+      "warnings",
+      "warned",
+      "warning",
+      "warn",
+      "warns"
+    ],
+    "priority": 3,
+    "description": "警告"
+  },
+  {
+    "image_file": "surprise.png",
+    "folder": "common",
+    "meta_tags": [
+      "surprise",
+      "surprises",
+      "surprised",
+      "surprising",
+      "surprisingly"
+    ],
+    "priority": 3,
+    "description": "驚き"
+  },
+  {
+    "image_file": "friend.png",
+    "folder": "common",
+    "meta_tags": [
+      "friend",
+      "friends",
+      "friended",
+      "friending",
+      "friendly",
+      "friendship"
+    ],
+    "priority": 3,
+    "description": "友達"
+  },
+  {
+    "image_file": "news.png",
+    "folder": "common",
+    "meta_tags": [
+      "news",
+      "newspaper",
+      "article",
+      "media"
+    ],
+    "priority": 5,
+    "description": "ニュース、新聞、記事"
+  },
+  {
+    "image_file": "some.png",
+    "folder": "common",
+    "meta_tags": [
+      "some",
+      "something",
+      "sometime",
+      "somewhere",
+      "somewhat",
+      "any",
+      "few"
+    ],
+    "priority": 3,
+    "description": "いくつかの、何か"
+  },
+  {
+    "image_file": "tell.png",
+    "folder": "common",
+    "meta_tags": [
+      "tell",
+      "tells",
+      "told",
+      "telling"
+    ],
+    "priority": 3,
+    "description": "話す、教える"
+  },
+  {
+    "image_file": "story.png",
+    "folder": "common",
+    "meta_tags": [
+      "story",
+      "stories",
+      "storied",
+      "storying"
+    ],
+    "priority": 3,
+    "description": "物語、話"
+  },
+  {
+    "image_file": "truth.png",
+    "folder": "common",
+    "meta_tags": [
+      "truth",
+      "truths",
+      "truthed",
+      "truthing",
+      "true",
+      "truly"
+    ],
+    "priority": 3,
+    "description": "真実"
+  },
+  {
+    "image_file": "dinner.png",
+    "folder": "common",
+    "meta_tags": [
+      "dinner",
+      "dinners",
+      "dinnered",
+      "dinnering"
+    ],
+    "priority": 3,
+    "description": "夕食"
+  },
+  {
+    "image_file": "little.png",
+    "folder": "common",
+    "meta_tags": [
+      "little",
+      "littler",
+      "littlest",
+      "littled",
+      "littling"
+    ],
+    "priority": 3,
+    "description": "小さい"
+  },
+  {
+    "image_file": "funny.png",
+    "folder": "common",
+    "meta_tags": [
+      "funny",
+      "funnier",
+      "funniest",
+      "funnily",
+      "fun"
+    ],
+    "priority": 3,
+    "description": "面白い、楽しい"
+  },
+  {
+    "image_file": "recover.png",
+    "folder": "common",
+    "meta_tags": [
+      "recovered",
+      "recovering",
+      "recovers",
+      "recovery"
+    ],
+    "priority": 3,
+    "description": "回復した"
+  },
+  {
+    "image_file": "serious.png",
+    "folder": "common",
+    "meta_tags": [
+      "serious",
+      "seriously",
+      "seriousness"
+    ],
+    "priority": 3,
+    "description": "真剣な"
+  },
+  {
+    "image_file": "injury.png",
+    "folder": "common",
+    "meta_tags": [
+      "injury",
+      "injured",
+      "injuring",
+      "injuries"
+    ],
+    "priority": 3,
+    "description": "怪我"
+  },
+  {
+    "image_file": "painful.png",
+    "folder": "common",
+    "meta_tags": [
+      "painful",
+      "painfully",
+      "pain"
+    ],
+    "priority": 3,
+    "description": "痛い"
+  },
+  {
+    "image_file": "past.png",
+    "folder": "common",
+    "meta_tags": [
+      "past",
+      "previous",
+      "former"
+    ],
+    "priority": 3,
+    "description": "過去の"
+  },
+  {
+    "image_file": "athlete.png",
+    "folder": "common",
+    "meta_tags": [
+      "athlete",
+      "athletes",
+      "athletic"
+    ],
+    "priority": 3,
+    "description": "運動選手"
+  },
+  {
+    "image_file": "miraculously.png",
+    "folder": "common",
+    "meta_tags": [
+      "miraculously",
+      "miraculous",
+      "miracle"
+    ],
+    "priority": 3,
+    "description": "奇跡的に"
+  },
+  {
+    "image_file": "trauma.png",
+    "folder": "common",
+    "meta_tags": [
+      "trauma",
+      "traumatic",
+      "traumas"
+    ],
+    "priority": 3,
+    "description": "トラウマ"
+  },
+  {
+    "image_file": "illness.png",
+    "folder": "common",
+    "meta_tags": [
+      "illness",
+      "ill",
+      "sick",
+      "sickness"
+    ],
+    "priority": 3,
+    "description": "病気"
+  },
+  {
+    "image_file": "start.png",
+    "folder": "common",
+    "meta_tags": [
+      "start",
+      "started",
+      "starting",
+      "starts"
+    ],
+    "priority": 3,
+    "description": "始める"
+  },
+  {
+    "image_file": "promptly.png",
+    "folder": "common",
+    "meta_tags": [
+      "promptly",
+      "prompt",
+      "quickly",
+      "immediately"
+    ],
+    "priority": 3,
+    "description": "迅速に"
+  },
+  {
+    "image_file": "movie.png",
+    "folder": "common",
+    "meta_tags": [
+      "movie",
+      "movies",
+      "film",
+      "cinema"
+    ],
+    "priority": 3,
+    "description": "映画"
+  },
+  {
+    "image_file": "right.png",
+    "folder": "common",
+    "meta_tags": [
+      "right",
+      "correct",
+      "proper"
+    ],
+    "priority": 3,
+    "description": "正しい"
+  },
+  {
+    "image_file": "time.png",
+    "folder": "common",
+    "meta_tags": [
+      "time",
+      "times",
+      "timing"
+    ],
+    "priority": 3,
+    "description": "時間"
+  },
+  {
+    "image_file": "schedule.png",
+    "folder": "common",
+    "meta_tags": [
+      "schedule",
+      "scheduled",
+      "scheduling",
+      "schedules"
+    ],
+    "priority": 3,
+    "description": "スケジュール"
+  },
+  {
+    "image_file": "noon.png",
+    "folder": "common",
+    "meta_tags": [
+      "noon",
+      "midday",
+      "twelve"
+    ],
+    "priority": 3,
+    "description": "正午"
+  },
+  {
+    "image_file": "concert.png",
+    "folder": "common",
+    "meta_tags": [
+      "concert",
+      "concerts",
+      "performance",
+      "show"
+    ],
+    "priority": 3,
+    "description": "コンサート"
+  },
+  {
+    "image_file": "delay.png",
+    "folder": "common",
+    "meta_tags": [
+      "delay",
+      "delayed",
+      "delaying",
+      "delays"
+    ],
+    "priority": 3,
+    "description": "遅延"
+  },
+  {
+    "image_file": "rain.png",
+    "folder": "common",
+    "meta_tags": [
+      "rain",
+      "raining",
+      "rainy",
+      "rains"
+    ],
+    "priority": 3,
+    "description": "雨"
+  },
+  {
+    "image_file": "tomorrow.png",
+    "folder": "common",
+    "meta_tags": [
+      "tomorrow",
+      "next day"
+    ],
+    "priority": 3,
+    "description": "明日"
+  },
+  {
+    "image_file": "next.png",
+    "folder": "common",
+    "meta_tags": [
+      "next",
+      "following",
+      "subsequent"
+    ],
+    "priority": 3,
+    "description": "次の"
+  },
+  {
+    "image_file": "throughout.png",
+    "folder": "common",
+    "meta_tags": [
+      "throughout",
+      "during",
+      "across"
+    ],
+    "priority": 3,
+    "description": "～を通して"
+  },
+  {
+    "image_file": "open.png",
+    "folder": "common",
+    "meta_tags": [
+      "open",
+      "opened",
+      "opening",
+      "opens"
+    ],
+    "priority": 3,
+    "description": "開く"
+  },
+  {
+    "image_file": "window.png",
+    "folder": "common",
+    "meta_tags": [
+      "window",
+      "windows"
+    ],
+    "priority": 3,
+    "description": "窓"
+  },
+  {
+    "image_file": "smoking.png",
+    "folder": "common",
+    "meta_tags": [
+      "smoking",
+      "smoke",
+      "smoked",
+      "smokes"
+    ],
+    "priority": 3,
+    "description": "喫煙"
+  },
+  {
+    "image_file": "noise.png",
+    "folder": "common",
+    "meta_tags": [
+      "noise",
+      "noisy",
+      "loud",
+      "sound"
+    ],
+    "priority": 3,
+    "description": "騒音"
+  },
+  {
+    "image_file": "talking.png",
+    "folder": "common",
+    "meta_tags": [
+      "talking",
+      "talk",
+      "talked",
+      "talks",
+      "conversation"
+    ],
+    "priority": 3,
+    "description": "話している"
+  },
+  {
+    "image_file": "care.png",
+    "folder": "common",
+    "meta_tags": [
+      "care",
+      "caring",
+      "cared",
+      "cares"
+    ],
+    "priority": 3,
+    "description": "世話をする"
+  },
+  {
+    "image_file": "standing.png",
+    "folder": "common",
+    "meta_tags": [
+      "standing",
+      "stand",
+      "stood",
+      "stands"
+    ],
+    "priority": 3,
+    "description": "立っている"
+  },
+  {
+    "image_file": "entrance.png",
+    "folder": "common",
+    "meta_tags": [
+      "entrance",
+      "entrances",
+      "entry"
+    ],
+    "priority": 3,
+    "description": "入り口"
+  },
+  {
+    "image_file": "door.png",
+    "folder": "common",
+    "meta_tags": [
+      "door",
+      "doors"
+    ],
+    "priority": 3,
+    "description": "ドア"
+  },
+  {
+    "image_file": "desk.png",
+    "folder": "common",
+    "meta_tags": [
+      "desk",
+      "desks"
+    ],
+    "priority": 3,
+    "description": "机"
+  },
+  {
+    "image_file": "sofa.png",
+    "folder": "common",
+    "meta_tags": [
+      "sofa",
+      "sofas",
+      "couch"
+    ],
+    "priority": 3,
+    "description": "ソファ"
+  },
+  {
+    "image_file": "phone.png",
+    "folder": "common",
+    "meta_tags": [
+      "phone",
+      "phones",
+      "telephone"
+    ],
+    "priority": 3,
+    "description": "電話"
+  },
+  {
+    "image_file": "kitchen.png",
+    "folder": "common",
+    "meta_tags": [
+      "kitchen",
+      "kitchens"
+    ],
+    "priority": 3,
+    "description": "キッチン"
+  },
+  {
+    "image_file": "laptop.png",
+    "folder": "common",
+    "meta_tags": [
+      "laptop",
+      "laptops",
+      "computer"
+    ],
+    "priority": 3,
+    "description": "ノートパソコン"
+  },
+  {
+    "image_file": "go.png",
+    "folder": "common",
+    "meta_tags": [
+      "go",
+      "went",
+      "gone",
+      "goes",
+      "going"
+    ],
+    "priority": 3,
+    "description": "行く"
+  },
+  {
+    "image_file": "grocery store.png",
+    "folder": "common",
+    "meta_tags": [
+      "grocery store",
+      "grocery",
+      "supermarket",
+      "store"
+    ],
+    "priority": 3,
+    "description": "食料品店"
+  },
+  {
+    "image_file": "night.png",
+    "folder": "common",
+    "meta_tags": [
+      "night",
+      "nights",
+      "nighttime",
+      "evening",
+      "evenings"
+    ],
+    "priority": 3,
+    "description": "夜、夕方"
+  },
+  {
+    "image_file": "hospital.png",
+    "folder": "common",
+    "meta_tags": [
+      "hospital",
+      "hospitals"
+    ],
+    "priority": 3,
+    "description": "病院"
+  },
+  {
+    "image_file": "mom.png",
+    "folder": "common",
+    "meta_tags": [
+      "mom",
+      "mother",
+      "mama"
+    ],
+    "priority": 3,
+    "description": "お母さん"
+  },
+  {
+    "image_file": "bank.png",
+    "folder": "common",
+    "meta_tags": [
+      "bank",
+      "banks"
+    ],
+    "priority": 3,
+    "description": "銀行"
+  },
+  {
+    "image_file": "amusement park.png",
+    "folder": "common",
+    "meta_tags": [
+      "amusement park",
+      "theme park",
+      "park"
+    ],
+    "priority": 3,
+    "description": "遊園地"
+  },
+  {
+    "image_file": "pay.png",
+    "folder": "common",
+    "meta_tags": [
+      "pay",
+      "paid",
+      "paying",
+      "pays",
+      "payment"
+    ],
+    "priority": 3,
+    "description": "支払う"
+  },
+  {
+    "image_file": "coffee.png",
+    "folder": "common",
+    "meta_tags": [
+      "coffee",
+      "coffees"
+    ],
+    "priority": 3,
+    "description": "コーヒー"
+  },
+  {
+    "image_file": "father.png",
+    "folder": "common",
+    "meta_tags": [
+      "father",
+      "dad",
+      "papa"
+    ],
+    "priority": 3,
+    "description": "お父さん"
+  },
+  {
+    "image_file": "lunch.png",
+    "folder": "common",
+    "meta_tags": [
+      "lunch",
+      "lunches"
+    ],
+    "priority": 3,
+    "description": "昼食"
+  },
+  {
+    "image_file": "ticket.png",
+    "folder": "common",
+    "meta_tags": [
+      "ticket",
+      "tickets"
+    ],
+    "priority": 3,
+    "description": "チケット"
+  },
+  {
+    "image_file": "god.png",
+    "folder": "common",
+    "meta_tags": [
+      "god",
+      "gods",
+      "divine"
+    ],
+    "priority": 3,
+    "description": "神"
+  },
+  {
+    "image_file": "justice.png",
+    "folder": "common",
+    "meta_tags": [
+      "justice",
+      "fair",
+      "fairness"
+    ],
+    "priority": 3,
+    "description": "正義"
+  },
+  {
+    "image_file": "many.png",
+    "folder": "common",
+    "meta_tags": [
+      "many",
+      "multiple",
+      "numerous"
+    ],
+    "priority": 3,
+    "description": "たくさんの"
+  },
+  {
+    "image_file": "love.png",
+    "folder": "common",
+    "meta_tags": [
+      "love",
+      "loved",
+      "loving",
+      "loves"
+    ],
+    "priority": 3,
+    "description": "愛"
+  },
+  {
+    "image_file": "miracles.png",
+    "folder": "common",
+    "meta_tags": [
+      "miracles",
+      "miracle",
+      "miraculous"
+    ],
+    "priority": 3,
+    "description": "奇跡"
+  },
+  {
+    "image_file": "lay.png",
+    "folder": "common",
+    "meta_tags": [
+      "lay",
+      "laid",
+      "laying",
+      "lays"
+    ],
+    "priority": 3,
+    "description": "横になる"
+  },
+  {
+    "image_file": "couch.png",
+    "folder": "common",
+    "meta_tags": [
+      "couch",
+      "couches",
+      "sofa"
+    ],
+    "priority": 3,
+    "description": "カウチ"
+  },
+  {
+    "image_file": "babies.png",
+    "folder": "common",
+    "meta_tags": [
+      "babies",
+      "baby",
+      "infant"
+    ],
+    "priority": 3,
+    "description": "赤ちゃん"
+  },
+  {
+    "image_file": "floor.png",
+    "folder": "common",
+    "meta_tags": [
+      "floor",
+      "floors"
+    ],
+    "priority": 3,
+    "description": "床"
+  },
+  {
+    "image_file": "blanket.png",
+    "folder": "common",
+    "meta_tags": [
+      "blanket",
+      "blankets"
+    ],
+    "priority": 3,
+    "description": "毛布"
+  },
+  {
+    "image_file": "bed.png",
+    "folder": "common",
+    "meta_tags": [
+      "bed",
+      "beds",
+      "bedroom"
+    ],
+    "priority": 3,
+    "description": "ベッド"
+  },
+  {
+    "image_file": "apologize.png",
+    "folder": "common",
+    "meta_tags": [
+      "apologize",
+      "apologized",
+      "apologizing",
+      "apology"
+    ],
+    "priority": 3,
+    "description": "謝る"
+  },
+  {
+    "image_file": "japanese.png",
+    "folder": "common",
+    "meta_tags": [
+      "japanese",
+      "japan"
+    ],
+    "priority": 3,
+    "description": "日本の"
+  },
+  {
+    "image_file": "players.png",
+    "folder": "common",
+    "meta_tags": [
+      "players",
+      "player",
+      "team"
+    ],
+    "priority": 3,
+    "description": "選手たち"
+  },
+  {
+    "image_file": "behavior.png",
+    "folder": "common",
+    "meta_tags": [
+      "behavior",
+      "behaviour",
+      "conduct"
+    ],
+    "priority": 3,
+    "description": "行動"
+  },
+  {
+    "image_file": "mistake.png",
+    "folder": "common",
+    "meta_tags": [
+      "mistake",
+      "mistakes",
+      "error"
+    ],
+    "priority": 3,
+    "description": "間違い"
+  },
+  {
+    "image_file": "confusion.png",
+    "folder": "common",
+    "meta_tags": [
+      "confusion",
+      "confused",
+      "confusing"
+    ],
+    "priority": 3,
+    "description": "混乱"
+  },
+  {
+    "image_file": "listen.png",
+    "folder": "common",
+    "meta_tags": [
+      "listen",
+      "listened",
+      "listening",
+      "listens"
+    ],
+    "priority": 3,
+    "description": "聞く"
+  },
+  {
+    "image_file": "music.png",
+    "folder": "common",
+    "meta_tags": [
+      "music",
+      "musical"
+    ],
+    "priority": 3,
+    "description": "音楽"
+  },
+  {
+    "image_file": "radio.png",
+    "folder": "common",
+    "meta_tags": [
+      "radio",
+      "radios"
+    ],
+    "priority": 3,
+    "description": "ラジオ"
+  },
+  {
+    "image_file": "classical.png",
+    "folder": "common",
+    "meta_tags": [
+      "classical",
+      "classic"
+    ],
+    "priority": 3,
+    "description": "クラシックの"
+  },
+  {
+    "image_file": "song.png",
+    "folder": "common",
+    "meta_tags": [
+      "song",
+      "songs",
+      "singing"
+    ],
+    "priority": 3,
+    "description": "歌"
+  },
+  {
+    "image_file": "podcast.png",
+    "folder": "common",
+    "meta_tags": [
+      "podcast",
+      "podcasts"
+    ],
+    "priority": 3,
+    "description": "ポッドキャスト"
+  },
+  {
+    "image_file": "leave.png",
+    "folder": "common",
+    "meta_tags": [
+      "leave",
+      "left",
+      "leaving",
+      "leaves"
+    ],
+    "priority": 3,
+    "description": "去る"
+  },
+  {
+    "image_file": "tokyo.png",
+    "folder": "common",
+    "meta_tags": [
+      "tokyo"
+    ],
+    "priority": 3,
+    "description": "東京"
+  },
+  {
+    "image_file": "paris.png",
+    "folder": "common",
+    "meta_tags": [
+      "paris"
+    ],
+    "priority": 3,
+    "description": "パリ"
+  },
+  {
+    "image_file": "boss.png",
+    "folder": "common",
+    "meta_tags": [
+      "boss",
+      "bosses",
+      "manager"
+    ],
+    "priority": 3,
+    "description": "上司"
+  },
+  {
+    "image_file": "airport.png",
+    "folder": "common",
+    "meta_tags": [
+      "airport",
+      "airports"
+    ],
+    "priority": 3,
+    "description": "空港"
+  },
+  {
+    "image_file": "new york.png",
+    "folder": "common",
+    "meta_tags": [
+      "new york",
+      "newyork"
+    ],
+    "priority": 5,
+    "description": "ニューヨーク"
+  },
+  {
+    "image_file": "vitality.png",
+    "folder": "common",
+    "meta_tags": [
+      "vitality",
+      "vital",
+      "vigor",
+      "vigorous",
+      "energetic",
+      "lively",
+      "vibrant"
+    ],
+    "priority": 4,
+    "description": "活力、生命力"
+  },
+  {
+    "image_file": "old.png",
+    "folder": "common",
+    "meta_tags": [
+      "old",
+      "older",
+      "oldest",
+      "elderly",
+      "aged",
+      "ancient",
+      "senior"
+    ],
+    "priority": 5,
+    "description": "年老いた、古い"
+  },
+  {
+    "image_file": "man.png",
+    "folder": "common",
+    "meta_tags": [
+      "man",
+      "male",
+      "gentleman",
+      "guy",
+      "fellow"
+    ],
+    "priority": 5,
+    "description": "男性、男の人"
+  },
+  {
+    "image_file": "stamina.png",
+    "folder": "common",
+    "meta_tags": [
+      "stamina",
+      "endurance",
+      "persistence",
+      "staying power",
+      "resilience",
+      "durability"
+    ],
+    "priority": 4,
+    "description": "持久力、スタミナ"
+  },
+  {
+    "image_file": "energy.png",
+    "folder": "common",
+    "meta_tags": [
+      "energy",
+      "energies",
+      "power",
+      "force",
+      "vigor",
+      "dynamism"
+    ],
+    "priority": 5,
+    "description": "エネルギー、活力"
+  },
+  {
+    "image_file": "boy.png",
+    "folder": "common",
+    "meta_tags": [
+      "boy",
+      "boys",
+      "lad",
+      "youth",
+      "young man",
+      "kid",
+      "child"
+    ],
+    "priority": 5,
+    "description": "少年、男の子"
+  },
+  {
+    "image_file": "strength.png",
+    "folder": "common",
+    "meta_tags": [
+      "strength",
+      "strong",
+      "stronger",
+      "strongest",
+      "power",
+      "force",
+      "muscle"
+    ],
+    "priority": 5,
+    "description": "力、強さ"
+  },
+  {
+    "image_file": "men.png",
+    "folder": "common",
+    "meta_tags": [
+      "men",
+      "man",
+      "males",
+      "gentlemen",
+      "guys",
+      "fellows"
+    ],
+    "priority": 5,
+    "description": "男性たち、男の人々"
+  },
+  {
+    "image_file": "island.png",
+    "folder": "common",
+    "meta_tags": [
+      "island",
+      "islands",
+      "isle",
+      "islet",
+      "archipelago"
+    ],
+    "priority": 4,
+    "description": "島"
+  }
+]

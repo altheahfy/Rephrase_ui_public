@@ -1,0 +1,15 @@
+# 本番環境用 .gitignore
+# 管理パネル関連ファイル（本番デプロイから除外）
+training/explanation/admin-panel.html
+training/explanation/generator.js
+
+# 開発用ファイル
+*.tmp
+*.log
+.DS_Store
+.vscode/
+node_modules/
+
+# バックアップファイル
+*.backup
+backup/

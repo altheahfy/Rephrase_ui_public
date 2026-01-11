@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# 管理パネルを検索エンジンから除外
+Disallow: /training/explanation/admin-panel.html
+Disallow: /training/explanation/generator.js
+
+# Sitemap location
+Sitemap: https://altheahfy.github.io/Rephrase-Project02/sitemap.xml
+
+# 重要なページ
+Allow: /training/
+Allow: /training/matrix/
+Allow: /training/grammar/
+
+# プライベートエリア（認証必要）
+Disallow: /training/auth.html
+Disallow: /training/js/
+Disallow: /server/
+
+# 開発・テスト用ファイル
+Disallow: /*.log
+Disallow: /test/
+Disallow: /debug/
+
+# Crawl delay (秒)
+Crawl-delay: 1

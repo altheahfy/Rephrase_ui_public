@@ -1,0 +1,213 @@
+/* ====================================
+   使い方ガイドモーダル スタイル
+   ==================================== */
+
+/* オーバーレイ + モーダルコンテナ */
+.usage-guide-modal {
+  display: none; /* 初期非表示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  justify-content: center;
+  align-items: flex-start; /* 上部に配置 */
+  padding-top: 80px; /* 上から80px */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.usage-guide-modal.show {
+  opacity: 1;
+}
+
+/* 半透明オーバーレイ */
+.usage-guide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* モーダルコンテンツ */
+.usage-guide-content {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  max-width: 580px;
+  width: 90%;
+  z-index: 1;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.usage-guide-modal.show .usage-guide-content {
+  transform: translateY(0);
+}
+
+/* 閉じるボタン */
+.usage-guide-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.usage-guide-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* 見出し */
+.usage-guide-content h2 {
+  margin: 0 0 24px 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* ステップコンテナ */
+.usage-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* 各ステップ */
+.usage-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.usage-step:hover {
+  background: #e9ecef;
+  transform: translateX(4px);
+}
+
+/* ステップ番号 */
+.step-number {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ステップテキスト */
+.step-text {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 注釈 */
+.usage-note {
+  padding: 12px;
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #856404;
+  margin-bottom: 24px;
+}
+
+/* 始めるボタン */
+.usage-guide-start {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.usage-guide-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.usage-guide-start:active {
+  transform: translateY(0);
+}
+
+/* チェックボックス */
+.usage-guide-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  user-select: none;
+}
+
+.usage-guide-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .usage-guide-modal {
+    padding-top: 40px;
+  }
+
+  .usage-guide-content {
+    padding: 24px;
+    max-width: 95%;
+  }
+
+  .usage-guide-content h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .step-text {
+    font-size: 14px;
+  }
+
+  .usage-note {
+    font-size: 13px;
+  }
+
+  .usage-guide-start {
+    padding: 12px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,3050 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <!-- 🔒 セキュリティヘッダー（強化版） -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob:; media-src 'self' blob:; object-src 'none'; frame-src 'none';">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <title>
+   Rephrase トレーニングUI v2025.7.27-rollback
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="css/voice_progress.css" rel="stylesheet"/>
+  <!-- 📱 モバイル最適化CSS -->
+  <link href="mobile-split-view-simple.css" rel="stylesheet"/>
+  <!-- 📱 音声パネル モバイル最適化CSS -->
+  <link href="css/voice-panel-mobile.css" rel="stylesheet"/>
+  <!-- � 音声進捗表示CSS -->
+  <link href="css/voice_progress.css" rel="stylesheet"/>
+  
+  <!-- 📱 モバイルデバイス検出スクリプト（最優先実行） -->
+  <script>
+    // User-Agentベースのモバイル検出（即座に実行）
+    (function() {
+      console.log('モバイル検出スクリプト開始');
+      console.log('User-Agent:', navigator.userAgent);
+      console.log('画面サイズ:', window.innerWidth + 'x' + window.innerHeight);
+      
+      // 画面サイズベースのモバイル検出（DevTools対応）
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isTouchDevice = 'ontouchstart' in window;
+      const isSmallScreen = window.innerWidth <= 768; // 768px以下はモバイル扱い
+      
+      console.log('isMobile:', isMobile);
+      console.log('isTouchDevice:', isTouchDevice);
+      console.log('isSmallScreen:', isSmallScreen);
+      
+      // より緩い条件でモバイル判定（画面サイズ優先）
+      if (isMobile || isTouchDevice || isSmallScreen) {
+        console.log('モバイルデバイスと判定されました');
+        document.documentElement.classList.add('mobile-device');
+        
+        // 初期向き設定
+        function setOrientation() {
+          document.documentElement.classList.remove('portrait-mode', 'landscape-mode');
+          if (window.innerHeight > window.innerWidth) {
+            document.documentElement.classList.add('portrait-mode');
+            console.log('縦画面モード設定');
+          } else {
+            document.documentElement.classList.add('landscape-mode');
+            console.log('横画面モード設定');
+          }
+          console.log('現在のクラス:', document.documentElement.className);
+        }
+        
+        // DOMが読み込まれてから実行
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setOrientation);
+        } else {
+          setOrientation();
+        }
+        
+        // 向き変更の監視
+        window.addEventListener('orientationchange', function() {
+          setTimeout(setOrientation, 100);
+        });
+        
+        // リサイズイベントでも向きを再確認
+        window.addEventListener('resize', function() {
+          setTimeout(setOrientation, 100);
+        });
+      } else {
+        console.log('PCデバイスと判定されました');
+      }
+    })();
+  </script>
+  
+  <!-- ⚡ パフォーマンス最適化CSS -->
+  <style>
+    /* 画像遅延読み込み用スタイル */
+    .slot-image {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .slot-image.loaded {
+      opacity: 1;
+    }
+    
+    /* ローディングスピナー */
+    .image-loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+  
+  <!-- 🔒 セキュリティモジュール（最優先で読み込み） -->
+  <script type="module">
+    import { initSecurity } from './js/security.js';
+    // DOMContentLoaded前にセキュリティ初期化
+    initSecurity();
+  </script>
+  
+  <!-- 🔐 認証システム -->
+  <script>
+    // 簡易セキュリティユーティリティ（index.html用）
+    window.securityUtils = {
+        escapeHtml: function(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        },
+        
+        secureLocalStorageSet: function(key, data) {
+            try {
+                const jsonString = JSON.stringify(data);
+                const encoded = btoa(jsonString);
+                localStorage.setItem(key, encoded);
+            } catch (error) {
+                console.error('Storage set error:', error);
+            }
+        },
+        
+        secureLocalStorageGet: function(key) {
+            try {
+                const encoded = localStorage.getItem(key);
+                if (!encoded) return null;
+                
+                const jsonString = atob(encoded);
+                return JSON.parse(jsonString);
+            } catch (error) {
+                console.error('Storage get error:', error);
+                return null;
+            }
+        }
+    };
+  </script>
+  <script src="js/rate-limiter.js"></script>
+  <script src="js/error-handler.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/auth.js"></script>
+  
+  <!-- 🎯 状態管理システム（最優先読み込み） -->
+  <script src="js/core/state-manager.js"></script>
+  
+  <!-- 🎯 スムーズレンダリング制御システム -->
+  <script src="js/smooth_render_controller.js"></script>
+  
+  <!-- 🌐 言語切り替えシステム -->
+  <script src="js/language_switcher.js"></script>
+
+  <!-- エラーハンドリング関数の確実な定義 -->
+  <script>
+    // 即座に関数を定義（DOMContentLoadedを待たない）
+    console.log('🔧 エラーハンドリング関数を即座に定義中...');
+    
+    window.showUserError = function(errorCode, details) {
+      console.log('🔧 showUserError called:', errorCode, details);
+      if (window.errorHandler) {
+        window.errorHandler.showUserFriendlyError(errorCode, details);
+      } else {
+        console.error('エラーハンドリングシステムが読み込まれていません');
+        alert(`エラー: ${errorCode} - ${details}`);
+      }
+    };
+
+    window.forceShowErrorModal = function(message) {
+      console.log('🔧 forceShowErrorModal called:', message);
+      if (window.errorHandler) {
+        window.errorHandler.showUserFriendlyError('system.unknown', message || 'テストエラー');
+      } else {
+        console.error('エラーハンドリングシステムが読み込まれていません');
+        alert(`テストエラー: ${message}`);
+      }
+    };
+
+    window.testErrorHandler = function() {
+      console.log('🧪 エラーハンドリングテスト開始');
+      console.log('現在のスクリプト実行タイミング:', document.readyState);
+      console.log('errorHandler:', typeof window.errorHandler);
+      console.log('showUserError:', typeof window.showUserError);
+      console.log('forceShowErrorModal:', typeof window.forceShowErrorModal);
+      
+      // 基本テスト
+      console.log('📝 基本テスト実行中...');
+      window.showUserError('auth.invalid_credentials', 'テスト用認証エラー');
+    };
+
+    window.checkErrorHandlerStatus = function() {
+      console.log('🔍 エラーハンドリングシステム状態:');
+      console.log('  - window.errorHandler:', !!window.errorHandler);
+      console.log('  - errorHandler type:', typeof window.errorHandler);
+      if (window.errorHandler) {
+        console.log('  - getErrorLog:', typeof window.errorHandler.getErrorLog);
+        console.log('  - showUserFriendlyError:', typeof window.errorHandler.showUserFriendlyError);
+        console.log('  - エラーログ件数:', window.errorHandler.getErrorLog(1).length);
+      }
+    };
+
+    console.log('✅ エラーハンドリング関数を即座に定義しました');
+    console.log('🧪 利用可能なコマンド:');
+    console.log('  - window.testErrorHandler()');
+    console.log('  - window.checkErrorHandlerStatus()');
+    console.log('  - window.showUserError("auth.invalid_credentials")');
+    console.log('  - window.forceShowErrorModal("テストメッセージ")');
+
+    // 🔐 管理者専用機能の隠しアクセス
+    window.showAdminPanel = function() {
+      const adminPanel = document.getElementById('adminPanel');
+      if (adminPanel) {
+        adminPanel.style.display = 'flex';
+        console.log('🔐 管理者パネルを表示しました');
+        console.log('🛡️ 監視ダッシュボード: rate-limit-dashboard.html');
+        console.log('⚠️ エラーダッシュボード: error-dashboard.html');
+      }
+    };
+
+    window.hideAdminPanel = function() {
+      const adminPanel = document.getElementById('adminPanel');
+      if (adminPanel) {
+        adminPanel.style.display = 'none';
+        console.log('🔐 管理者パネルを非表示にしました');
+      }
+    };
+
+    // キーボードショートカット（Ctrl+Shift+A）で管理者パネルを切り替え
+    document.addEventListener('keydown', function(event) {
+      if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+        event.preventDefault();
+        const adminPanel = document.getElementById('adminPanel');
+        if (adminPanel) {
+          if (adminPanel.style.display === 'none' || !adminPanel.style.display) {
+            window.showAdminPanel();
+          } else {
+            window.hideAdminPanel();
+          }
+        }
+      }
+    });
+
+    // URLパラメータでの管理者パネル表示
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('admin') === 'true') {
+      setTimeout(() => window.showAdminPanel(), 1000);
+    }
+
+    // エラーハンドリングシステムの読み込み完了を待機
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📱 DOM読み込み完了 - エラーハンドリング最終チェック');
+      window.checkErrorHandlerStatus();
+    });
+  </script>
+  
+  <!-- ⚡ パフォーマンス最適化JavaScript -->
+  <script>
+    // 画像遅延読み込み機能
+    window.RephraseImageOptimizer = {
+      init: function() {
+        this.setupLazyLoading();
+        this.optimizeExistingImages();
+      },
+      
+      // 既存の画像を最適化
+      optimizeExistingImages: function() {
+        const images = document.querySelectorAll('.slot-image');
+        images.forEach(img => {
+          // loading="lazy"属性を追加
+          img.setAttribute('loading', 'lazy');
+          
+          // 読み込み完了時のイベント
+          img.addEventListener('load', () => {
+            img.classList.add('loaded');
+            img.classList.remove('image-loading');
+          });
+          
+          // エラー時の処理
+          img.addEventListener('error', () => {
+            img.style.display = 'none';
+            console.warn('画像読み込み失敗:', img.src);
+          });
+          
+          // 初期状態では透明
+          if (!img.complete) {
+            img.classList.add('image-loading');
+          } else {
+            img.classList.add('loaded');
+          }
+        });
+      },
+      
+      // 新しく追加される画像の遅延読み込み設定
+      setupLazyLoading: function() {
+        // MutationObserverで新しい画像を監視
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+              if (node.nodeType === 1) { // Element node
+                const images = node.querySelectorAll ? node.querySelectorAll('img') : [];
+                images.forEach(img => {
+                  img.setAttribute('loading', 'lazy');
+                  img.addEventListener('load', () => {
+                    img.classList.add('loaded');
+                  });
+                });
+              }
+            });
+          });
+        });
+        
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      }
+    };
+    
+    // DOMContentLoaded時に初期化
+    document.addEventListener('DOMContentLoaded', () => {
+      window.RephraseImageOptimizer.init();
+      console.log('⚡ 画像最適化が有効になりました');
+    });
+  </script>
+  
+  <script src="js/subslot_toggle.js">
+  </script>
+  <script src="js/randomizer_individual.js">
+  </script>
+  <script src="js/control_panel_manager.js">
+  </script>
+  <script src="js/visibility_control.js?v=20260105">
+  </script>
+  <!-- inline_visibility_toggle.jsは不要（既存の動作するボタンを使用） -->
+  <!-- <script src="js/inline_visibility_toggle.js"></script> -->
+  <script src="js/subslot_visibility_control.js">
+  </script>
+  <!-- ImageAutoHideManager モジュール -->
+  <script src="js/image_auto_hide.js">
+  </script>
+  <script src="js/universal_image_system.js">
+  </script>
+  <!-- � イラストヒントトーストシステム -->
+  <script src="js/illustration-hint-toast.js"></script>
+  <!-- �🚫 古い疑問詞管理システムは無効化（visibility_control.jsに統合済み） -->
+  <!-- <script src="js/question_word_visibility.js"></script> -->
+  <script src="js/voice_system.js">
+  </script>
+  <script src="js/voice_progress_tracker.js">
+  </script>
+  <script src="js/voice_progress_ui.js">
+  </script>
+  <!-- ExplanationManager モジュール -->
+  <script src="js/modules/explanation-manager.js">
+  </script>
+  <!-- ZoomControllerManager モジュール -->
+  <script src="js/modules/zoom-controller-manager.js">
+  </script>
+  <script src="js/modules/zoom-controller-manager-test.js">
+  </script>
+  <!-- 初回ガイドツールチップシステム -->
+  <script src="js/guide_tooltip.js">
+  </script>
+ </head>
+ <body>
+
+<!-- 🔐 認証チェックとユーザー情報表示 -->
+<script>
+// 🚧 開発時の認証スキップフラグ（本番時はfalseにする）
+const SKIP_AUTH_FOR_DEVELOPMENT = true; // 公開版：認証スキップ
+
+// 🧪 テスト環境チェック（クエリパラメータで制御）
+const urlParams = new URLSearchParams(window.location.search);
+const isTestEnvironment = urlParams.get('skipAuth') === 'true';
+
+if (isTestEnvironment) {
+    console.log('🧪 テスト環境検出 - 認証スキップ');
+}
+
+// 🔒 セッションベースの認証チェック（シンプル版）
+function isAuthenticatedUser() {
+    try {
+        // 認証システムが利用可能かチェック
+        if (!window.authSystem || !window.securityUtils) {
+            console.log('🔍 認証システム未読み込み');
+            return false;
+        }
+        
+        // 実際のログイン状態をチェック
+        const isLoggedIn = window.authSystem.isLoggedIn();
+        const currentUser = window.authSystem.getCurrentUser();
+        
+        console.log('🔐 認証状態確認:', {
+            isLoggedIn: isLoggedIn,
+            hasUser: !!currentUser,
+            user: currentUser
+        });
+        
+        return isLoggedIn && currentUser;
+    } catch (error) {
+        console.error('❌ 認証チェックエラー:', error);
+        return false;
+    }
+}
+
+// 🔍 デバッグログを永続化
+function debugLog(message, data = null) {
+    const timestamp = new Date().toISOString();
+    const logEntry = `[${timestamp}] ${message}${data ? ': ' + JSON.stringify(data) : ''}`;
+    console.log(logEntry);
+    
+    // localStorageに保存（最大50件まで）
+    try {
+        const logs = JSON.parse(localStorage.getItem('rephrase_debug_logs') || '[]');
+        logs.push(logEntry);
+        if (logs.length > 50) logs.shift(); // 古いログを削除
+        localStorage.setItem('rephrase_debug_logs', JSON.stringify(logs));
+    } catch (error) {
+        console.warn('デバッグログ保存失敗:', error);
+    }
+}
+
+// 🔍 デバッグログを表示する関数
+window.showDebugLogs = function() {
+    try {
+        const logs = JSON.parse(localStorage.getItem('rephrase_debug_logs') || '[]');
+        console.log('=== Rephrase デバッグログ ===');
+        logs.forEach(log => console.log(log));
+        console.log('=== ログ終了 ===');
+        return logs;
+    } catch (error) {
+        console.error('ログ表示エラー:', error);
+        return [];
+    }
+};
+
+// 🔍 デバッグログをクリアする関数
+window.clearDebugLogs = function() {
+    localStorage.removeItem('rephrase_debug_logs');
+    console.log('デバッグログをクリアしました');
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    debugLog('DOM読み込み完了');
+    
+    if (SKIP_AUTH_FOR_DEVELOPMENT || isTestEnvironment) {
+        debugLog('開発モード/テスト環境 - 認証チェックをスキップ');
+        console.log('🚧 認証チェックをスキップ');
+        console.log('📋 利用可能なデバッグコマンド:');
+        console.log('  - window.showDebugLogs() : デバッグログを表示');
+        console.log('  - window.clearDebugLogs() : デバッグログをクリア');
+        
+        // テスト環境フラグをグローバルに設定（他のスクリプトから参照可能）
+        window.REPHRASE_TEST_MODE = true;
+        
+        return;
+    }
+    
+    console.log('🔐 認証チェック開始');
+    
+    // 認証システムが読み込まれるまで待機
+    function waitForAuth() {
+        if (window.authSystem && window.securityUtils) {
+            console.log('✅ 認証システム読み込み完了');
+            
+            // シンプルな認証チェック
+            if (isAuthenticatedUser()) {
+                console.log('✅ 認証済みユーザー - トレーニングUI開始');
+                // 認証済みの場合は何もしない（UIを表示）
+                return;
+            } else {
+                console.log('❌ 未認証 - 認証チェックページにリダイレクト');
+                // 未認証の場合は認証チェックページへ
+                window.location.href = 'auth-check.html';
+                return;
+            }
+        } else {
+            // 認証システムがまだ読み込まれていない場合は100ms後に再試行
+            setTimeout(waitForAuth, 100);
+        }
+    }
+    
+    // テスト環境ではwaitForAuth()を実行しない
+    if (!isTestEnvironment && !SKIP_AUTH_FOR_DEVELOPMENT) {
+        waitForAuth();
+    }
+});
+
+// ログアウト処理
+function handleLogout() {
+    if (window.authSystem && confirm('ログアウトしますか？')) {
+        console.log('ログアウト実行');
+        window.authSystem.logout();
+        window.location.href = 'auth.html';
+    }
+}
+</script>
+
+<!-- シンプルなナビゲーションリンク -->
+<div id="navigation-float-menu" style="position: fixed; top: 5px; left: 5px; z-index: 16000; background: rgba(255,255,255,0.9); padding: 4px 6px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 6px; height: 28px; white-space: nowrap; overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none;">
+  <a href="../" style="text-decoration: none; color: #2196F3; font-size: 14px; font-weight: bold; flex-shrink: 0;">🏠 ホーム</a>
+  <span style="color: #ccc; flex-shrink: 0; font-size: 12px;">|</span>
+  <a href="matrix/" style="text-decoration: none; color: #2196F3; font-size: 14px; flex-shrink: 0;">📚 文法</a>
+  <span style="color: #ccc; flex-shrink: 0; font-size: 12px;">|</span>
+  
+  <!-- 🔐 管理者専用機能（隠し機能） -->
+  <div id="adminPanel" style="display: none; align-items: center; gap: 6px; flex-shrink: 0;">
+    <a href="rate-limit-dashboard.html" style="text-decoration: none; color: #ff6b35; font-size: 14px; flex-shrink: 0;">🛡️ 監視</a>
+    <a href="error-dashboard.html" style="text-decoration: none; color: #ff6b35; font-size: 14px; flex-shrink: 0;">⚠️ エラー</a>
+    <span style="color: #ccc; flex-shrink: 0; font-size: 12px;">|</span>
+  </div>
+  
+  <!-- サンプルデータ選択 -->
+  <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
+    <label style="font-size: 12px; font-weight: bold; color: #333; white-space: nowrap;" data-i18n="data-label">📋 データ</label>
+    <select id="presetSelect" style="width: 120px; padding: 2px; border: 1px solid #ddd; border-radius: 3px; font-size: 12px; height: 20px;">
+      <option value="" data-i18n="data-select-placeholder">-- 選択 --</option>
+      <option value="data/slot_order_data.json" data-i18n="data-option-main">🎯 メイン</option>
+      <option value="data/slot_order_data2.json" data-i18n="data-option-2">📚 例文2</option>
+      <option value="data/V自動詞第1文型.json" data-i18n="data-option-intransitive">📝 自動詞第1文型</option>
+    </select>
+    <button id="loadPresetButton" style="background-color: #4CAF50; color: white; border: none; padding: 2px 6px; font-size: 11px; cursor: pointer; border-radius: 3px; font-weight: bold; white-space: nowrap; flex-shrink: 0; height: 20px;" data-i18n="btn-load">読込</button>
+  </div>
+  
+  <!-- 🌐 言語切り替えボタン -->
+  <div style="display: flex; gap: 0; border: 2px solid #4CAF50; border-radius: 6px; overflow: hidden; flex-shrink: 0;">
+    <button id="lang-btn-ja" class="lang-btn active" style="
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 3px 12px;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      height: 20px;
+      line-height: 1;
+    ">JP</button>
+    <button id="lang-btn-en" class="lang-btn" style="
+      background: white;
+      color: #4CAF50;
+      border: none;
+      padding: 3px 12px;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      height: 20px;
+      line-height: 1;
+    ">EN</button>
+  </div>
+</div>
+
+<style>
+/* フロートメニューのスクロールバーを隠す */
+#navigation-float-menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* 言語切り替えボタンのスタイル */
+.lang-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.lang-btn.active {
+  background: #4CAF50 !important;
+  color: white !important;
+}
+
+.lang-btn:not(.active) {
+  background: white !important;
+  color: #4CAF50 !important;
+}
+</style>
+
+<!-- 🎭 ローディングオーバーレイ（強化版） -->
+<div id="loading-overlay" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: 8000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  pointer-events: none;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+">
+  <div class="loading-content" style="text-align: left; pointer-events: auto; max-width: 400px; padding: 20px;">
+    <!-- 改善されたローディングアニメーション -->
+    <div class="loading-spinner" style="
+      width: 80px;
+      height: 80px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top: 3px solid #fff;
+      border-radius: 50%;
+      animation: spin 1.2s linear infinite;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    "></div>
+    
+    <!-- 動的メッセージ -->
+    <h2 id="loading-title" style="margin: 0 0 12px 0; font-size: 24px; font-weight: 400;">
+      データを準備しています...
+    </h2>
+    <p id="loading-description" style="margin: 0 0 16px 0; font-size: 14px; opacity: 0.9; line-height: 1.4;">
+      JSONファイルをロードしてください
+    </p>
+    
+    <!-- プログレスバー -->
+    <div style="
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    ">
+      <div id="loading-progress" style="
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #fff, rgba(255,255,255,0.8));
+        border-radius: 2px;
+        transition: width 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      "></div>
+    </div>
+    
+    <!-- ローディングのヒント -->
+    <div id="loading-tips" style="font-size: 12px; opacity: 0.7; text-align: left;">
+      💡 <span id="loading-tip-text">高速化機能が有効になっています</span>
+    </div>
+  </div>
+    </p>
+  </div>
+</div>
+
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 🌟 プログレスバー光沢効果 */
+@keyframes progress-shine {
+  0% { 
+    transform: translateX(-100%); 
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(400%); 
+    opacity: 0;
+  }
+}
+
+/* プログレスバー内の光沢要素 */
+#loading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255,255,255,0.4), 
+    transparent
+  );
+  animation: progress-shine 2.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+/* ローディングスピナー強化 */
+
+/* 🎯 初回ガイド矢印アニメーション */
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.9));
+  }
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 20px rgba(255, 193, 7, 1));
+  }
+}
+
+.start-here-arrow {
+  position: absolute;
+  left: -20px;
+  top: -10px;
+  z-index: 10002;
+  animation: bounce-arrow 1.5s ease-in-out infinite, pulse-glow 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.start-here-arrow svg {
+  width: 60px;
+  height: 60px;
+  fill: #FFC107;
+}
+
+.start-here-text {
+  position: absolute;
+  left: -320px;
+  top: -5px;
+  background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.5);
+  z-index: 10001;
+  animation: pulse-glow 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.guide-highlight-fade-out {
+  animation: fade-out 1s ease-out forwards;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ローディングスピナー強化 */
+.loading-spinner {
+  position: relative;
+}
+
+.loading-spinner::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  animation: spin 2.5s linear infinite reverse;
+}
+
+/* ローディング要素のフェードイン効果 */
+.loading-content > * {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.loading-content > *:nth-child(1) { animation-delay: 0.1s; }
+.loading-content > *:nth-child(2) { animation-delay: 0.2s; }
+.loading-content > *:nth-child(3) { animation-delay: 0.3s; }
+.loading-content > *:nth-child(4) { animation-delay: 0.4s; }
+.loading-content > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<!-- タイトル（常に表示） -->
+<div style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 15px; margin-top: 20px; position: relative; z-index: 10000; background: rgba(255,255,255,0.95); padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); gap: 20px;">
+  <h1 style="margin: 0; color: #333; font-size: 28px; font-weight: bold; flex-shrink: 0;" data-i18n="app-title">
+   🔄 Rephrase 例文トレーニング
+  </h1>
+  
+  <!-- 使い方ガイド（コンパクト版） -->
+  <div style="display: flex; gap: 10px; font-size: 13px; color: #495057; align-items: center; flex-wrap: wrap; margin-left: 20px;">
+    <span id="guide-step-1" style="display: flex; align-items: center; gap: 4px; position: relative;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #6c757d; color: white; border-radius: 50%; font-weight: bold; font-size: 11px;">①</span>
+      <span style="display: inline-flex; align-items: center; justify-content: center; background: #ff9800; color: white; border: none; padding: 3px 6px; border-radius: 3px; font-size: 10px; font-weight: bold; margin-right: 4px;" data-i18n="btn-shuffle-all">🎲 全シャッフル</span>
+      <span data-i18n="guide-text-1">を押して出てくる英語とイラストのセットを覚えよう</span>
+    </span>
+    <span id="guide-step-2" style="display: flex; align-items: center; gap: 4px; position: relative;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #6c757d; color: white; border-radius: 50%; font-weight: bold; font-size: 11px;">②</span>
+      <span style="display: inline-flex; align-items: center; justify-content: center; background: #4CAF50; color: white; border: none; padding: 2px 4px; border-radius: 3px; font-size: 9px; font-weight: bold; margin-right: 4px; line-height: 1.2;" class="allow-html" data-i18n="btn-english-off">英語<br>OFF</span>
+      <span data-i18n="guide-text-2">を押して練習したい場所の英語を消そう</span>
+    </span>
+    <span id="guide-step-3" style="display: flex; align-items: center; gap: 4px; position: relative;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #6c757d; color: white; border-radius: 50%; font-weight: bold; font-size: 11px;">③</span>
+      <span style="display: inline-flex; align-items: center; justify-content: center; background: #ff9800; color: white; border: none; padding: 3px 6px; border-radius: 3px; font-size: 10px; font-weight: bold; margin-right: 4px;" data-i18n="btn-shuffle-all">🎲 全シャッフル</span>
+      <span style="display: inline-flex; align-items: center; justify-content: center; background: #ff9800; color: white; border: none; padding: 3px 6px; border-radius: 3px; font-size: 10px; font-weight: bold; margin-right: 4px;" data-i18n="btn-shuffle">🎲</span>
+      <span data-i18n="guide-text-3">で練習（一部～全部）</span>
+    </span>
+    <span id="guide-step-4" style="display: flex; align-items: center; gap: 4px; position: relative;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #6c757d; color: white; border-radius: 50%; font-weight: bold; font-size: 11px;">④</span>
+      <span style="display: inline-flex; align-items: center; justify-content: center; background: #2196f3; color: white; border: none; padding: 3px 6px; border-radius: 3px; font-size: 10px; font-weight: bold; margin-right: 4px;" data-i18n="btn-detail">▼ 詳細</span>
+      <span data-i18n="guide-text-4">を押すと隠れている英語が出ます</span>
+    </span>
+  </div>
+</div>
+
+<!-- 🎯 UI全体の自動スケール調整コンテナ -->
+<div id="main-ui-container">
+
+<!-- 🎯 メインコンテンツエリア（ローディング完了まで非表示） -->
+<div id="main-content" style="display: none;">
+
+<!-- 🔹 分離疑問詞用表示領域 -->
+<div id="display-top-question-word">
+  <div class="question-word-label">WH</div>
+  <div class="question-word-image"></div>
+  <div class="question-word-spacer"></div>
+  <div class="question-word-auxtext"></div>
+  <div class="question-word-text"></div>
+  <div class="question-word-button-placeholder"></div>
+  <div class="question-word-button-placeholder"></div>
+</div>
+
+  <section>
+  </section>
+  
+  <!-- 制御パネル表示ボタン（非表示） -->
+  <div style="display: none; align-items: center; justify-content: flex-start; margin-bottom: 15px;">
+    <button id="toggle-control-panels" style="
+      background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="btn-control-panel">
+      📝 制御パネル
+    </button>
+  </div>
+  
+  <!-- 🎯 上位スロット表示制御パネル（デフォルト非表示） -->
+  <div id="visibility-control-panel-inline" style="display: none; background: rgba(255, 255, 255, 0.95); padding: 8px; border-radius: 5px; border: 1px solid #ddd; margin-bottom: 15px;">
+      <div style="display: flex; gap: 8px; align-items: center; font-size: 12px;">
+        
+        <!-- 疑問詞 スロット -->
+        <div class="slot-control-group" data-slot="question-word" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">疑問詞</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="question-word" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="question-word" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- M1 スロット -->
+        <div class="slot-control-group" data-slot="m1" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">M1</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="m1" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="m1" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- S スロット -->
+        <div class="slot-control-group" data-slot="s" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">S</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="s" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="s" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- Aux スロット -->
+        <div class="slot-control-group" data-slot="aux" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">Aux</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="aux" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="aux" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- M2 スロット -->
+        <div class="slot-control-group" data-slot="m2" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">M2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="m2" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="m2" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- V スロット -->
+        <div class="slot-control-group" data-slot="v" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">V</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="v" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="v" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- C1 スロット -->
+        <div class="slot-control-group" data-slot="c1" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">C1</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="c1" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="c1" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- O1 スロット -->
+        <div class="slot-control-group" data-slot="o1" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">O1</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="o1" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="o1" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- O2 スロット -->
+        <div class="slot-control-group" data-slot="o2" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">O2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="o2" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="o2" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- C2 スロット -->
+        <div class="slot-control-group" data-slot="c2" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">C2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="c2" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="c2" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- M3 スロット -->
+        <div class="slot-control-group" data-slot="m3" style="padding: 4px; border: 1px solid #f0f0f0; border-radius: 3px;">
+          <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px; color: #444; text-align: left;">M3</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 10px;">
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="m3" data-type="auxtext" checked> 📝補助</label>
+            <label style="display: flex; align-items: center; gap: 2px;"><input type="checkbox" class="visibility-checkbox" data-slot="m3" data-type="text" checked> 📄英文</label>
+          </div>
+        </div>
+        
+        <!-- 全表示ボタン -->
+        <button id="reset-all-visibility" style="background-color: #4CAF50; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px; margin-left: 8px;" data-i18n="btn-reset-visibility">全表示</button>
+        
+        <!-- 全英文非表示ボタンは上部に移動しました -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- 🤖 Android専用音声パネル -->
+  <div id="voice-control-panel-android" style="
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 10px !important;
+    z-index: 15000 !important;
+    background: rgba(255, 255, 255, 0.9) !important; 
+    padding: 12px !important; 
+    border-radius: 8px !important; 
+    border: 2px solid rgba(200, 200, 200, 0.8) !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    min-width: 280px !important;
+    max-width: 320px !important;
+    transition: all 0.3s ease !important;
+    display: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+    max-height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+  ">
+    <!-- Android基本パネル（固定サイズ） -->
+    <div id="voice-panel-basic-android" style="position: relative;">
+      <div style="display: flex; gap: 8px; align-items: center; font-size: 12px;">
+        <h3 style="margin: 0; color: #333; font-size: 16px; font-weight: bold;">🤖 Android音声学習システム</h3>
+        <button id="voice-panel-close-btn-android" style="background-color: #f44336; color: white; border: none; padding: 4px 8px; font-size: 11px; cursor: pointer; border-radius: 3px; margin-left: auto;">✕</button>
+      </div>
+      
+      <!-- 📱 Android操作ガイド（分析ボタン専用） -->
+      <div style="background: #E3F2FD; border-radius: 4px; padding: 4px 6px; margin: 6px 0; color: #1976D2; font-size: 9px;">
+        <strong><span style="color: transparent;">　　　　　　</span>押してすぐ言う、終わってすぐ押す ↓</strong>
+      </div>
+      
+      <!-- Android専用音声コントロールボタン -->
+      <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
+        <button id="voice-record-btn-android" class="voice-btn-android" style="background-color: #2196F3; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🎤 録音のみ</button>
+        <button id="voice-play-btn-android" class="voice-btn-android" style="background-color: #FF9800; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🔊 再生</button>
+        <button id="voice-tts-btn-android" class="voice-btn-android" style="background-color: #9C27B0; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🗣️ 読み上げ</button>
+        <button id="voice-analyze-btn-android" class="voice-btn-android" style="background-color: #E91E63; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;" title="押して開始、押して停止">📊 分析</button>
+      </div>
+      
+      <!-- Android専用ステータス表示 -->
+      <div id="voice-status-android" class="voice-status-android info" style="color: #333; font-size: 11px; background: rgba(200, 200, 200, 0.3); padding: 3px 6px; border-radius: 12px; margin: 8px 0; text-align: left;">Android待機中...</div>
+      
+      <!-- Android専用録音タイマー -->
+      <div style="text-align: left; margin: 8px 0;">
+        <span style="color: #333; font-family: monospace; font-size: 14px; font-weight: bold;" id="voice-recording-timer-android">⏱️ 00:00</span>
+      </div>
+      
+      <!-- Android専用音量バー -->
+      <div style="margin: 8px 0;">
+        <div style="width: 100%; height: 6px; background: rgba(200,200,200,0.4); border-radius: 3px; overflow: hidden;">
+          <div id="voice-volume-bar-android" style="height: 100%; background: #666; width: 0%; transition: width 0.1s;"></div>
+        </div>
+      </div>
+      
+      <!-- Android専用分析結果表示エリア -->
+      <div id="voice-analysis-results-android" style="background: rgba(240,240,240,0.8); border-radius: 6px; padding: 8px; min-height: 30px; max-height: 400px; overflow-y: auto; color: #333; font-size: 11px; margin: 8px 0;">Android分析結果がここに表示されます</div>
+      
+      <!-- Android専用進捗表示ボタン -->
+      <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
+        <button id="voice-progress-btn-android" class="voice-btn-android" style="background-color: #607D8B; color: white; border: none; padding: 6px 12px; font-size: 11px; cursor: pointer; border-radius: 3px;">📈 学習進捗</button>
+        <button id="android-debug-btn" class="voice-btn-android" style="background-color: #795548; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🔧 デバッグ</button>
+      </div>
+      
+      <!-- Android専用音声認識状態表示 -->
+      <div id="mobile-voice-status-android" style="
+        border-left: 4px solid #fff;
+        background: rgba(255,255,255,0.1);
+        padding: 6px;
+        margin: 8px 0;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 10px;
+        display: none;
+      ">Android音声認識状態</div>
+    </div>
+  </div>
+
+  <!-- 💻 通常版音声パネル -->
+  <div id="voice-control-panel" style="
+    position: fixed !important;
+    top: 120px !important;
+    right: 10px !important;
+    z-index: 15000 !important;
+    background: rgba(255, 255, 255, 0.95) !important; 
+    padding: 12px !important; 
+    border-radius: 8px !important; 
+    border: 2px solid #667eea !important; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    min-width: 280px !important;
+    max-width: 320px !important;
+    transition: all 0.3s ease !important;
+    display: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+    max-height: calc(100vh - 140px) !important;
+    overflow-y: auto !important;
+  ">
+    <!-- 基本パネル（固定サイズ） -->
+    <div id="voice-panel-basic" style="position: relative;">
+      <div style="display: flex; gap: 8px; align-items: center; font-size: 12px;">
+        <h3 style="margin: 0; color: #333; font-size: 16px; font-weight: bold;">🎤 音声学習システム</h3>
+        <button id="voice-panel-close-btn" style="background-color: #f44336; color: white; border: none; padding: 4px 8px; font-size: 11px; cursor: pointer; border-radius: 3px; margin-left: auto;">✕</button>
+      </div>
+      
+      <!-- 音声コントロールボタン -->
+      <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
+        <button id="voice-record-btn" class="voice-btn" style="background-color: #4CAF50; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🎤 録音</button>
+        <button id="voice-play-btn" class="voice-btn" style="background: linear-gradient(135deg, #fffbeb, #fef3c7); color: #78716c; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🔊 再生</button>
+        <button id="voice-tts-btn" class="voice-btn" style="background-color: #FF9800; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">🗣️ 読み上げ</button>
+        <button id="voice-analyze-btn" class="voice-btn" style="background-color: #9C27B0; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">📊 分析</button>
+        <button id="voice-stop-btn" class="voice-btn" style="display: none; background-color: #f44336; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">⏹️ 停止</button>
+      </div>
+      
+      <!-- ステータス表示 -->
+      <div id="voice-status" class="voice-status info" style="color: #333; font-size: 11px; background: rgba(76, 175, 80, 0.1); padding: 3px 6px; border-radius: 12px; margin: 8px 0; text-align: left;">待機中...</div>
+      
+      <!-- 録音タイマー -->
+      <div style="text-align: left; margin: 8px 0;">
+        <span style="color: #333; font-family: monospace; font-size: 14px; font-weight: bold;" id="voice-recording-timer">⏱️ 00:00</span>
+      </div>
+      
+      <!-- 音量バー -->
+      <div style="margin: 8px 0;">
+        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.1); border-radius: 3px; overflow: hidden;">
+          <div id="voice-volume-bar" style="height: 100%; background: linear-gradient(90deg, #4CAF50, #FFC107, #FF5722); width: 0%; transition: width 0.1s ease;"></div>
+        </div>
+      </div>
+      
+      <!-- 分析結果表示エリア（基本パネル内） -->
+      <div id="voice-analysis-results" style="background: rgba(0,0,0,0.05); border-radius: 6px; padding: 8px; min-height: 30px; max-height: 400px; overflow-y: auto; color: #333; font-size: 11px; margin: 8px 0;">分析結果がここに表示されます</div>
+      
+      <!-- 進捗表示ボタン -->
+      <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
+        <button id="voice-progress-btn" class="voice-btn" style="background-color: #607D8B; color: white; border: none; padding: 6px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">📊 学習進捗</button>
+        <!-- 📱 スマホ用デバッグボタン -->
+        <button id="mobile-debug-btn" class="voice-btn" style="
+          background-color: #17a2b8; 
+          color: white; 
+          border: none; 
+          padding: 6px 10px; 
+          font-size: 11px; 
+          cursor: pointer; 
+          border-radius: 3px;
+          display: block;
+        ">📱 デバッグ</button>
+      </div>
+      
+      <!-- 📱 スマホ用音声認識状態表示 -->
+      <div id="mobile-voice-status" style="
+        margin-top: 10px; 
+        padding: 8px; 
+        background-color: #f8f9fa; 
+        border-radius: 4px; 
+        font-size: 12px; 
+        display: none;
+        border-left: 4px solid #007bff;
+      ">
+        🎤 音声認識状態: 初期化中...
+      </div>
+    </div>
+  </div>
+  
+  <!-- モバイル専用音声デバッグパネル -->
+  <div id="voice-debug-panel" style="
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    z-index: 25000 !important;
+    background: white !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3) !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    display: none !important;
+  " class="mobile-voice-debug-panel">
+    <!-- モバイル専用システムがここに内容を動的生成 -->
+  </div>
+  
+  <section>
+   <div class="control-bar" style="display: flex; gap: 10px; margin-bottom: 20px; align-items: center;">
+     <button id="randomize-all" style="
+       background: #ff9800;
+       color: white;
+       border: none;
+       padding: 12px 20px;
+       border-radius: 5px;
+       cursor: pointer;
+       font-size: 16px;
+       font-weight: bold;
+       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+       transition: all 0.2s ease;
+     " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="shuffle-all-text">
+      🎲 例文全シャッフル
+     </button>
+     
+     <!-- 既存の動作する「全英文非表示」ボタンを移動・トグル化 -->
+     <button id="hide-all-english-visibility" style="
+       background: #4CAF50;
+       color: white;
+       border: none;
+       padding: 12px 20px;
+       border-radius: 5px;
+       cursor: pointer;
+       font-size: 16px;
+       font-weight: bold;
+       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+       transition: all 0.2s ease;
+     " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="btn-hide-all-english">
+      🙈 英語全OFF
+     </button>
+     
+     <!-- 💡 例文解説ボタンは explanation-manager.js が hide-all-english-visibility の直後に動的追加 -->
+     <!-- 🎤 音声学習ボタンは解説ボタンの直後に動的追加（または下記の静的ボタンを使用） -->
+     <button id="voice-panel-open-btn" style="
+       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+       color: white;
+       border: none;
+       padding: 12px 20px;
+       border-radius: 5px;
+       cursor: pointer;
+       font-size: 16px;
+       font-weight: bold;
+       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+       transition: all 0.2s ease;
+       margin-left: 0;
+     " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="btn-voice-learning">
+      🎤 音声学習
+     </button>
+     
+     <!-- 最終順序: シャッフル → 英語OFF/ON → 解説(JS) → 音声学習 -->
+   </div>
+
+   <div class="slot-wrapper">
+    <div class="slot-container" id="slot-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="m1">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="m1-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="s">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="s-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="slot-container" id="slot-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="m2">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="m2-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="slot-container" id="slot-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="c1">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="c1-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="o1">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="o1-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="o2">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="o2-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="c2">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="c2-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+    <div class="slot-container" id="slot-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+     <div class="subslot-toggle-button">
+      <button data-subslot-toggle="m3">▼ 詳細</button>
+     </div>
+     <div class="individual-randomize-button">
+      <button class="m3-individual-randomize-btn">🎲</button>
+     </div>
+    </div>
+   </div>
+   <div class="slot-wrapper" id="slot-o1-sub" style="display: none;">
+    <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+     現在展開中：O1 の subslot
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o1-sub-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+   </div>
+   <div class="slot-wrapper" id="slot-m1-sub" style="display: none;">
+    <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+     現在展開中：M1 の subslot
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m1-sub-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+   </div>
+   <div class="slot-wrapper" id="slot-o2-sub" style="display: none;">
+    <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+     現在展開中：O2 の subslot
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-o2-sub-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+   </div>
+   <div class="slot-wrapper" id="slot-m2-sub" style="display: none;">
+    <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+     現在展開中：M2 の subslot
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m2-sub-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+   </div>
+   <div class="slot-wrapper" id="slot-c2-sub" style="display: none;">
+    <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+     現在展開中：C2 の subslot
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-c2-sub-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+   </div>
+   <div class="slot-wrapper" id="slot-m3-sub" style="display: none;">
+    <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+     現在展開中：M3 の subslot
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-m1">
+     <label>M1</label>
+     <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-s">
+     <label>S</label>
+     <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-aux">
+     <label>AUX</label>
+     <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-m2">
+     <label>M2</label>
+     <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-v">
+     <label>V</label>
+     <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-c1">
+     <label>C1</label>
+     <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-o1">
+     <label>O1</label>
+     <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-o2">
+     <label>O2</label>
+     <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-c2">
+     <label>C2</label>
+     <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+    <div class="subslot-container" id="slot-m3-sub-m3">
+     <label>M3</label>
+     <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+     <div class="slot-text"></div>
+     <div class="slot-phrase"></div>
+    </div>
+   </div>
+  </section>
+  <div class="slot-wrapper" id="slot-s-sub" style="display: none;">
+   <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+    現在展開中：S の subslot
+   </div>
+   <div class="subslot-container" id="slot-s-sub-m1">
+    <label>M1</label>
+    <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-s">
+    <label>S</label>
+    <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-aux">
+    <label>AUX</label>
+    <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-m2">
+    <label>M2</label>
+    <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-v">
+    <label>V</label>
+    <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-c1">
+    <label>C1</label>
+    <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-o1">
+    <label>O1</label>
+    <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-o2">
+    <label>O2</label>
+    <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-c2">
+    <label>C2</label>
+    <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-s-sub-m3">
+    <label>M3</label>
+    <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+  </div>
+  <div class="slot-wrapper" id="slot-c1-sub" style="display: none;">
+   <div class="subslot-label" style="font-weight: bold; margin-bottom: 0.5rem;">
+    現在展開中：C1 の subslot
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-m1">
+    <label>M1</label>
+    <img alt="image for M1" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-s">
+    <label>S</label>
+    <img alt="image for S" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-aux">
+    <label>AUX</label>
+    <img alt="image for AUX" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-m2">
+    <label>M2</label>
+    <img alt="image for M2" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-v">
+    <label>V</label>
+    <img alt="image for V" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-c1">
+    <label>C1</label>
+    <img alt="image for C1" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-o1">
+    <label>O1</label>
+    <img alt="image for O1" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-o2">
+    <label>O2</label>
+    <img alt="image for O2" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-c2">
+    <label>C2</label>
+    <img alt="image for C2" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+   <div class="subslot-container" id="slot-c1-sub-m3">
+    <label>M3</label>
+    <img alt="image for M3" class="slot-image" src="slot_images/common/placeholder.png"/>
+    <div class="slot-text"></div>
+    <div class="slot-phrase"></div>
+   </div>
+  </div>
+  
+  
+<script src="js/insert_test_data_clean.js?v=20260105"></script>
+
+<!-- 動的記載エリア用のセクション要素を追加 -->
+<section id="dynamic-area-container" style="margin-top: 30px;">
+  <button id="toggle-dynamic-area" style="background-color: #4CAF50; color: white; border: none; padding: 8px 16px; font-size: 16px; cursor: pointer; border-radius: 4px; margin-bottom: 5px;">
+    ▼ 解答全文
+  </button>
+  <!-- 動的記載エリアがここに生成されます -->
+  <div id="dynamic-slot-area-wrapper" style="display: none;"></div>
+</section>
+
+<script>
+  // 動的エリアの生成位置を指定
+  window.addEventListener("DOMContentLoaded", () => {
+    const dynamicArea = document.getElementById("dynamic-slot-area");
+    const wrapper = document.getElementById("dynamic-slot-area-wrapper");
+    
+    // 既存のdynamic-slot-areaがあれば移動
+    if (dynamicArea && wrapper) {
+      // 動的エリアをラッパーに移動
+      wrapper.appendChild(dynamicArea);
+      
+      // さらに、動的エリアのコンテナを文書の末尾に移動
+      const container = document.getElementById("dynamic-area-container");
+      if (container) {
+        document.body.appendChild(container);
+        console.log("✅ 動的記載エリアコンテナを文書の最後に移動しました");
+      }
+      
+      console.log("✅ 動的記載エリアを適切な位置に移動しました");
+    } else {
+      console.warn("⚠ 動的記載エリアまたはラッパーが見つかりません");
+    }
+  });
+
+  // 解答全文の表示・非表示切り替え機能
+  document.getElementById("toggle-dynamic-area").addEventListener("click", () => {
+    const wrapper = document.getElementById("dynamic-slot-area-wrapper");
+    const button = document.getElementById("toggle-dynamic-area");
+    
+    if (wrapper.style.display === "none") {
+      wrapper.style.display = "block";
+      button.textContent = "▲ 解答全文";
+      button.style.backgroundColor = "#f44336"; // 赤色（閉じる状態）
+      console.log("✅ 解答全文エリアを表示しました");
+    } else {
+      wrapper.style.display = "none";
+      button.textContent = "▼ 解答全文";
+      button.style.backgroundColor = "#4CAF50"; // 緑色（開く状態）
+      console.log("✅ 解答全文エリアを非表示にしました");
+    }
+  });
+
+  // syncDynamicToStatic() をDOM描画完了後に遅延実行
+  window.addEventListener("load", () => {
+    // サブスロットを明示的に初期化（再度実行して確実に閉じる）
+    if (typeof initializeSubslots === 'function') {
+      console.log("🔒 ページ読み込み完了時にサブスロットを初期化");
+      initializeSubslots();
+    }
+    
+    setTimeout(() => {
+      console.log("🚀 syncDynamicToStatic() 遅延呼び出し");
+      if (typeof syncDynamicToStatic === "function") {
+        syncDynamicToStatic();
+      } else {
+        console.warn("⚠ syncDynamicToStatic 関数が未定義です");
+      }
+    }, 200);
+  });
+</script>
+
+<script>
+        function loadScript(src) {
+          const script = document.createElement('script');
+          script.src = src;
+          document.head.appendChild(script);
+        }
+      </script>
+</div> <!-- main-content の終了 -->
+
+</div> <!-- main-ui-container の終了 -->
+
+    <!-- 既存のスクリプト -->
+<script type="module">
+import { randomizeAll, randomizeAllWithStateManagement } from './js/randomizer_all.js';
+import { buildStructure } from './js/structure_builder.js';
+
+let loadedJsonData = null;
+
+// 🎯 **プリセットJSONファイルをロードする機能**
+document.getElementById("loadPresetButton").addEventListener("click", () => {
+  const presetSelect = document.getElementById("presetSelect");
+  const selectedPreset = presetSelect.value;
+  
+  if (!selectedPreset) {
+    alert("サンプルデータを選択してください");
+    return;
+  }
+  
+  // 🎭 ローディング画面を表示
+  console.log("🎭 プリセットJSONロード開始 - ローディング画面を表示");
+  showLoadingOverlay();
+  
+  // ローディングメッセージを更新
+  const loadingText = document.querySelector('#loading-overlay p');
+  if (loadingText) {
+    loadingText.textContent = `${selectedPreset} を読み込み中...`;
+  }
+  
+  // 🎯 **修正：JSONデータを直接埋め込み（CORSエラー回避）**
+  let presetData = null;
+  
+  if (selectedPreset.startsWith('data/') && selectedPreset.endsWith('.json')) {
+    // 🎯 **データセット：fetchでJSONファイルを読み込み**
+    // 🔄 キャッシュバスター追加（常に最新のJSONを取得）
+    const cacheBuster = '?t=' + Date.now();
+    fetch(selectedPreset + cacheBuster)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // データ処理を直接実行
+        try {
+          // 🔄 JSONロード時にサブスロット表示設定をリセット
+          localStorage.removeItem('rephrase_subslot_visibility_state');
+          console.log('📁 プリセットJSONロード時にサブスロット表示設定をリセットしました');
+          
+          loadedJsonData = data;
+          window.loadedJsonData = loadedJsonData;  // コンソール確認用
+          console.log("🟢 window.loadedJsonData セット完了:", window.loadedJsonData);
+          
+          // 🔍 デバッグ：ランダマイズ前のデータを確認
+          console.log("🔍 ランダマイズ前のloadedJsonDataの最初の5件:", loadedJsonData.slice(0, 5));
+          
+          // 🎯 **重複回避機能付きランダマイズを実行**
+          const processedData = randomizeAllWithStateManagement(loadedJsonData);
+          console.log("🎯 重複回避ランダマイズ結果詳細:", JSON.stringify(processedData, null, 2));
+          
+          // 🔍 デバッグ：ランダマイズ後のprocessedDataを確認
+          console.log("🔍 ランダマイズ後のprocessedDataの最初の5件:", processedData.slice(0, 5));
+          console.log("🔍 processedDataの上位スロット（M1）:", processedData.filter(item => item.Slot === 'M1' && !item.SubslotID));
+          
+          validateSlotsModified(processedData);
+          
+          // 🎯 修正：ローカルファイル読み込みと同じパターンに変更
+          window.loadedJsonData = processedData;
+          
+          // 🎤 音声システム用: processedDataをwindow.lastSelectedSlotsにも保存
+          // （randomizeAll内で設定されたwindow.lastSelectedSlotsを保持）
+          console.log("🎤 音声システム用 lastSelectedSlots確認:", window.lastSelectedSlots ? `${window.lastSelectedSlots.length}件` : '未設定');
+          
+          // 構造を構築（processedDataは表示用、lastSelectedSlotsは音声システム用として分離）
+          buildStructure(processedData);
+          syncDynamicToStatic();
+          
+          // サブスロットの初期化も実行
+          if (typeof initializeSubslots === 'function') {
+            console.log("🔒 プリセットJSONロード後にサブスロットを初期化");
+            initializeSubslots();
+          }
+          
+          // 明示的に上位スロットとサブスロットの同期を呼び出す（ローカルファイルと同じ処理）
+          if (typeof syncUpperSlotsFromJson === 'function') {
+            console.log("🔄 プリセットJSONロード後の明示的同期呼び出し");
+            syncUpperSlotsFromJson(processedData);
+            if (typeof syncSubslotsFromJson === 'function') {
+              syncSubslotsFromJson(processedData);
+            }
+            
+            // 表示順制御機能の呼び出し
+            if (typeof applyOrderToAllSlots === 'function') {
+              console.log("🔢 プリセットJSONロード後にスロット表示順適用");
+              applyOrderToAllSlots(processedData);
+            }
+            
+            if (typeof debugM1Slot === 'function') {
+              console.log("🔍 M1スロットのデバッグ実行");
+              debugM1Slot();
+            }
+          }
+          
+          // 🎭 ローディング画面を非表示
+          console.log("🎭 プリセットJSONロード完了 - ローディング画面を非表示");
+          hideLoadingOverlay();
+        } catch (error) {
+          console.error("プリセットJSONデータの処理に失敗:", error);
+          if (window.errorHandler) {
+            window.errorHandler.handleError(error, { action: 'preset_json_processing' }, 'data.load_failed');
+          } else {
+            alert(`プリセットJSONデータの処理に失敗しました: ${error.message}`);
+          }
+          hideLoadingOverlay();
+        }
+      })
+      .catch(error => {
+        console.error(`${selectedPreset}の読み込みに失敗:`, error);
+        if (window.errorHandler) {
+          window.errorHandler.handleError(error, { action: 'preset_json_loading', preset: selectedPreset }, 'network.connection_failed');
+        } else {
+          alert(`データセットの読み込みに失敗しました。\nローカルファイルの場合は、ファイル選択から対応するJSONファイルを選択してください。\n\nエラー詳細: ${error.message}`);
+        }
+        hideLoadingOverlay();
+      });
+    return; // 早期リターン
+  } else {
+    if (window.errorHandler) {
+      window.errorHandler.handleError(new Error('Unknown preset selected'), { preset: selectedPreset }, 'data.validation_failed');
+    } else {
+      alert("不明なプリセットが選択されました");
+    }
+    hideLoadingOverlay();
+    return;
+  }
+});
+
+document.getElementById("randomize-all").addEventListener("click", () => {
+  if (!loadedJsonData || !Array.isArray(loadedJsonData)) {
+    alert("先に正しいJSONデータをロードしてください");
+    console.error("❌ 全体ランダマイズ：ロード済データが不正または未ロード");
+    return;
+  }
+  
+  // 🎯 **重複回避機能付きランダマイズを実行**
+  const data = randomizeAllWithStateManagement(loadedJsonData);
+  console.log("🎯 重複回避ランダマイズ結果詳細（全体ボタン）:", JSON.stringify(data, null, 2));
+  validateSlotsModified(data);
+  window.loadedJsonData = data;
+  buildStructure(data);
+  syncDynamicToStatic();
+  
+  // サブスロットの初期化も実行
+  if (typeof initializeSubslots === 'function') {
+    console.log("🔒 ランダマイズ後にサブスロットを初期化");
+    initializeSubslots();
+  }
+  
+  // ランダマイズ後も表示順制御を適用
+  if (typeof applyOrderToAllSlots === 'function') {
+    console.log("🔢 ランダマイズ後のスロット表示順適用");
+    applyOrderToAllSlots(data);
+  }
+});
+
+// Sスロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const sIndividualBtn = document.querySelector(".s-individual-randomize-btn");
+  if (sIndividualBtn) {
+    sIndividualBtn.addEventListener("click", () => {
+      console.log("🎲 Sスロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotSIndividual === "function") {
+        window.randomizeSlotSIndividual();
+      } else {
+        console.error("❌ randomizeSlotSIndividual関数が見つかりません");
+        alert("エラー: Sスロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ Sスロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ Sスロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// M1スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const m1IndividualBtn = document.querySelector(".m1-individual-randomize-btn");
+  if (m1IndividualBtn) {
+    m1IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 M1スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotM1Individual === "function") {
+        window.randomizeSlotM1Individual();
+      } else {
+        console.error("❌ randomizeSlotM1Individual関数が見つかりません");
+        alert("エラー: M1スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ M1スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ M1スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// M2スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const m2IndividualBtn = document.querySelector(".m2-individual-randomize-btn");
+  if (m2IndividualBtn) {
+    m2IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 M2スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotM2Individual === "function") {
+        window.randomizeSlotM2Individual();
+      } else {
+        console.error("❌ randomizeSlotM2Individual関数が見つかりません");
+        alert("エラー: M2スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ M2スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ M2スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// C1スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const c1IndividualBtn = document.querySelector(".c1-individual-randomize-btn");
+  if (c1IndividualBtn) {
+    c1IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 C1スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotC1Individual === "function") {
+        window.randomizeSlotC1Individual();
+      } else {
+        console.error("❌ randomizeSlotC1Individual関数が見つかりません");
+        alert("エラー: C1スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ C1スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ C1スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// O1スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const o1IndividualBtn = document.querySelector(".o1-individual-randomize-btn");
+  if (o1IndividualBtn) {
+    o1IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 O1スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotO1Individual === "function") {
+        window.randomizeSlotO1Individual();
+      } else {
+        console.error("❌ randomizeSlotO1Individual関数が見つかりません");
+        alert("エラー: O1スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ O1スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ O1スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// O2スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const o2IndividualBtn = document.querySelector(".o2-individual-randomize-btn");
+  if (o2IndividualBtn) {
+    o2IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 O2スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotO2Individual === "function") {
+        window.randomizeSlotO2Individual();
+      } else {
+        console.error("❌ randomizeSlotO2Individual関数が見つかりません");
+        alert("エラー: O2スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ O2スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ O2スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// C2スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const c2IndividualBtn = document.querySelector(".c2-individual-randomize-btn");
+  if (c2IndividualBtn) {
+    c2IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 C2スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotC2Individual === "function") {
+        window.randomizeSlotC2Individual();
+      } else {
+        console.error("❌ randomizeSlotC2Individual関数が見つかりません");
+        alert("エラー: C2スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ C2スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ C2スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// M3スロット個別ランダマイズボタンのイベントハンドラー
+document.addEventListener("DOMContentLoaded", () => {
+  const m3IndividualBtn = document.querySelector(".m3-individual-randomize-btn");
+  if (m3IndividualBtn) {
+    m3IndividualBtn.addEventListener("click", () => {
+      console.log("🎲 M3スロット個別ランダマイズボタンがクリックされました");
+      if (typeof window.randomizeSlotM3Individual === "function") {
+        window.randomizeSlotM3Individual();
+      } else {
+        console.error("❌ randomizeSlotM3Individual関数が見つかりません");
+        alert("エラー: M3スロット個別ランダマイズ機能が読み込まれていません。");
+      }
+    });
+    console.log("✅ M3スロット個別ランダマイズボタンのイベントハンドラーを設定しました");
+  } else {
+    console.error("❌ M3スロット個別ランダマイズボタンが見つかりません");
+  }
+});
+
+// 🎯 **全体ランダマイズの重複回避用グローバル状態管理**
+window.currentRandomizedState = {
+  vGroupKey: null,           // 現在選択されているV_group_key
+  exampleId: null,           // 現在選択されている例文ID
+  lastRandomizedTime: null,  // 最後にランダマイズされた時刻
+  selectedSlots: []          // 現在選択されているスロット情報
+};
+
+// 🎯 **重複回避用ローカルストレージ管理**
+window.randomizeHistory = {
+  // ローカルストレージから履歴を読み込み
+  load: function() {
+    try {
+      const saved = localStorage.getItem('rephrase_randomize_history');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          vGroupKeys: parsed.vGroupKeys || [],
+          exampleIds: parsed.exampleIds || [],
+          maxHistorySize: 3 // 最近3回の履歴を保持
+        };
+      }
+    } catch (error) {
+      console.log('重複回避履歴の読み込みに失敗:', error);
+    }
+    return {
+      vGroupKeys: [],
+      exampleIds: [],
+      maxHistorySize: 3
+    };
+  },
+  
+  // ローカルストレージに履歴を保存
+  save: function(vGroupKey, exampleId) {
+    try {
+      console.log('🎯 [デバッグ] 履歴保存試行:', { vGroupKey, exampleId });
+      const history = this.load();
+      
+      // 新しい選択を履歴に追加
+      if (vGroupKey) {
+        history.vGroupKeys.push(vGroupKey);
+        if (history.vGroupKeys.length > history.maxHistorySize) {
+          history.vGroupKeys.shift(); // 古い履歴を削除
+        }
+        console.log('🎯 [デバッグ] vGroupKey履歴更新:', history.vGroupKeys);
+      } else {
+        console.log('🎯 [デバッグ] vGroupKeyが空のため履歴保存しません');
+      }
+      
+      if (exampleId) {
+        history.exampleIds.push(exampleId);
+        if (history.exampleIds.length > history.maxHistorySize) {
+          history.exampleIds.shift(); // 古い履歴を削除
+        }
+        console.log('🎯 [デバッグ] exampleId履歴更新:', history.exampleIds);
+      } else {
+        console.log('🎯 [デバッグ] exampleIdが空のため履歴保存しません');
+      }
+      
+      localStorage.setItem('rephrase_randomize_history', JSON.stringify(history));
+      console.log('🎯 重複回避履歴を保存:', { vGroupKey, exampleId, history });
+    } catch (error) {
+      console.log('重複回避履歴の保存に失敗:', error);
+    }
+  },
+  
+  // 重複回避用フィルタリング
+  filterAvoidDuplicates: function(candidates, currentValue, historyKey) {
+    const history = this.load();
+    const recentValues = history[historyKey] || [];
+    
+    // 現在の値と履歴の値を除外
+    const valuesToAvoid = currentValue ? [currentValue, ...recentValues] : recentValues;
+    const filtered = candidates.filter(candidate => !valuesToAvoid.includes(candidate));
+    
+    console.log(`🎯 重複回避フィルタリング: ${candidates.length} → ${filtered.length}件`);
+    console.log(`🎯 回避対象: ${valuesToAvoid.join(', ')}`);
+    
+    // フィルタリング後に候補がない場合は全候補を返す
+    return filtered.length > 0 ? filtered : candidates;
+  }
+};
+
+
+function validateSlotsModified(data) {
+  const requiredSlots = ["M1", "S", "V"];
+  const presentSlots = data.map(d => d.Slot);
+  requiredSlots.forEach(slot => {
+    if (!presentSlots.includes(slot)) {
+      console.warn(`⚠ 必須スロット ${slot} がランダマイズ結果に含まれていません`);
+    }
+  });
+}
+
+// ページ読み込み時に疑問詞エリアを初期化
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("🔄 ページ読み込み時の疑問詞エリア初期化");
+  if (window.initializeQuestionWordArea) {
+    window.initializeQuestionWordArea();
+  }
+  
+  // 制御パネル表示/非表示ボタンの機能を追加
+  const toggleControlPanelsBtn = document.getElementById('toggle-control-panels');
+  
+  if (toggleControlPanelsBtn) {
+    // 制御パネルの表示・非表示を制御する関数を定義
+    window.toggleAllControlPanels = function() {
+      const controlPanel = document.getElementById('visibility-control-panel-inline');
+      const voicePanel = document.getElementById('voice-control-panel');
+      
+      if (controlPanel) {
+        const isCurrentlyVisible = controlPanel.style.display === 'block';
+        
+        if (isCurrentlyVisible) {
+          // パネルを非表示にする
+          controlPanel.style.display = 'none';
+          if (voicePanel && voicePanel.style.display === 'block') {
+            voicePanel.style.display = 'none';
+          }
+          // サブスロット制御パネルも非表示
+          if (window.updateSubslotControlPanelsVisibility) {
+            window.updateSubslotControlPanelsVisibility(false);
+          }
+          // 制御パネル非表示状態を state-manager 経由で保存
+          try {
+            if (window.RephraseState) {
+              window.RephraseState.setState('visibility.subslots.global_control_panels_visible', false);
+              console.log('💾 制御パネル非表示状態をstate-manager経由で保存');
+            } else {
+              // フォールバック：直接localStorage保存
+              let state = {};
+              const saved = localStorage.getItem('rephrase_subslot_visibility_state');
+              if (saved) {
+                state = JSON.parse(saved);
+              }
+              state['global_control_panels_visible'] = false;
+              localStorage.setItem('rephrase_subslot_visibility_state', JSON.stringify(state));
+              console.log('💾 制御パネル非表示状態を直接localStorageに保存（state-manager未利用）');
+            }
+          } catch (error) {
+            console.warn('⚠️ 制御パネル状態保存エラー:', error);
+          }
+          toggleControlPanelsBtn.innerHTML = '📝 制御パネル';
+          console.log('🔒 制御パネルを非表示にしました');
+        } else {
+          // パネルを表示する  
+          controlPanel.style.display = 'block';
+          // サブスロット制御パネルも表示
+          if (window.updateSubslotControlPanelsVisibility) {
+            window.updateSubslotControlPanelsVisibility(true);
+          }
+          // 制御パネル表示状態を state-manager 経由で保存
+          try {
+            if (window.RephraseState) {
+              window.RephraseState.setState('visibility.subslots.global_control_panels_visible', true);
+              console.log('💾 制御パネル表示状態をstate-manager経由で保存');
+            } else {
+              // フォールバック：直接localStorage保存
+              let state = {};
+              const saved = localStorage.getItem('rephrase_subslot_visibility_state');
+              if (saved) {
+                state = JSON.parse(saved);
+              }
+              state['global_control_panels_visible'] = true;
+              localStorage.setItem('rephrase_subslot_visibility_state', JSON.stringify(state));
+              console.log('💾 制御パネル表示状態を直接localStorageに保存（state-manager未利用）');
+            }
+          } catch (error) {
+            console.warn('⚠️ 制御パネル状態保存エラー:', error);
+          }
+          toggleControlPanelsBtn.innerHTML = '📝 パネル閉じる';
+          console.log('🔓 制御パネルを表示しました');
+        }
+      }
+    };
+    
+    toggleControlPanelsBtn.addEventListener('click', function() {
+      if (window.toggleAllControlPanels) {
+        window.toggleAllControlPanels();
+      } else {
+        console.error("❌ toggleAllControlPanels関数が見つかりません");
+      }
+    });
+    
+    console.log("✅ 制御パネル表示/非表示機能を初期化しました");
+  } else {
+    console.warn("⚠ 制御パネルボタンが見つかりません");
+  }
+  
+  // ランダマイズボタンクリック時も疑問詞エリアを初期化
+  const randomizeAllButton = document.getElementById('randomize-all');
+  if (randomizeAllButton) {
+    randomizeAllButton.addEventListener('click', function() {
+      // ランダマイズ処理の前に疑問詞エリアを初期化
+      setTimeout(() => {
+        if (window.initializeQuestionWordArea) {
+          window.initializeQuestionWordArea();
+          console.log("🔄 ランダマイズ後の疑問詞エリア初期化");
+        }
+      }, 100); // ランダマイズ処理完了後に実行
+    });
+  }
+});
+
+// 🔧 **プリセット設定を動的に読み込む機能**
+async function loadPresetConfig() {
+  try {
+    const response = await fetch('data/preset_config.json');
+    if (!response.ok) {
+      console.log('preset_config.jsonが見つかりません。デフォルトのプリセットを使用します。');
+      return;
+    }
+    
+    const config = await response.json();
+    const presetSelect = document.getElementById('presetSelect');
+    
+    if (presetSelect && config.presets) {
+      // 現在の言語を取得
+      const currentLang = localStorage.getItem('rephrase_language') || 'ja';
+      
+      // 既存のオプションをクリア（最初のデフォルトオプションは保持)
+      const defaultOption = presetSelect.querySelector('option[value=""]');
+      presetSelect.innerHTML = '';
+      if (defaultOption) {
+        presetSelect.appendChild(defaultOption);
+      } else {
+        const placeholderText = currentLang === 'ja' ? '-- データを選択 --' : '-- Select Data --';
+        presetSelect.innerHTML = `<option value="">${placeholderText}</option>`;
+      }
+      
+      // 設定ファイルからプリセットを追加
+      config.presets.forEach(preset => {
+        const option = document.createElement('option');
+        option.value = preset.file;
+        // 言語に応じて表示名を切り替え
+        option.textContent = currentLang === 'en' && preset.nameEn ? preset.nameEn : preset.name;
+        option.title = preset.description;
+        presetSelect.appendChild(option);
+      });
+      
+      console.log(`🔧 プリセット設定を動的に読み込み完了: ${config.presets.length}件`);
+    }
+  } catch (error) {
+    console.log('プリセット設定の読み込みに失敗しました。デフォルトのプリセットを使用します。', error);
+  }
+}
+
+// DOMContentLoadedでプリセット設定を読み込み
+document.addEventListener('DOMContentLoaded', loadPresetConfig);
+
+// 🌐 言語切り替え時にプリセットを再読み込み
+window.addEventListener('languageChanged', () => {
+  console.log('🌐 言語変更検出 - プリセット選択を更新');
+  loadPresetConfig();
+});
+
+
+
+// 🎭 ローディング制御関数
+function hideLoadingOverlay() {
+  console.log("🎭 hideLoadingOverlay() 関数が呼ばれました");
+  const overlay = document.getElementById('loading-overlay');
+  const mainContent = document.getElementById('main-content');
+  
+  console.log("🎭 overlay要素:", overlay);
+  console.log("🎭 mainContent要素:", mainContent);
+  
+  if (overlay && mainContent) {
+    console.log("🎭 ローディング完了 - メインコンテンツを表示準備中...");
+    
+    // シンプルな遅延でローディングを隠す
+    setTimeout(() => {
+      console.log("🎭 ローディングオーバーレイを隠します");
+      
+      // ローディングオーバーレイを即座に隠す
+      overlay.style.display = 'none';
+      console.log("🎭 overlay.style.display = 'none' 実行完了");
+      
+      // メインコンテンツを表示
+      mainContent.style.display = 'block';
+      mainContent.style.opacity = '1';
+      console.log("🎭 mainContent表示設定完了");
+      
+      console.log("🎭 メインコンテンツ表示完了");
+      
+      // 🎯 初回ガイド矢印を表示（初回のみ）
+      showStartHereGuide();
+    }, 500); // シンプルな500ms遅延
+  } else {
+    console.error("🎭 エラー: overlay または mainContent 要素が見つかりません");
+  }
+}
+
+// 🎯 初回ガイド矢印表示関数
+function showStartHereGuide() {
+  // ×ボタンで閉じられた場合のみスキップ
+  const hasClosedGuide = localStorage.getItem('rephrase_guide_closed_by_user');
+  if (hasClosedGuide === 'true') {
+    console.log('🎯 ガイドはユーザーが×ボタンで閉じたためスキップ');
+    return;
+  }
+  
+  const guideStep1 = document.getElementById('guide-step-1');
+  if (!guideStep1) {
+    console.error('🎯 guide-step-1 要素が見つかりません');
+    return;
+  }
+  
+  // 矢印SVGを作成（右向き、全て黄色）
+  const arrow = document.createElement('div');
+  arrow.className = 'start-here-arrow';
+  arrow.innerHTML = `
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 17l5-5-5-5v10z" fill="#FFC107"/>
+      <path d="M4 12h11" stroke="#FFC107" stroke-width="2" fill="none"/>
+    </svg>
+  `;
+  
+  // テキストと×ボタンを含むコンテナを作成
+  const text = document.createElement('div');
+  text.className = 'start-here-text';
+  text.style.cssText = 'display: inline-flex; align-items: center; gap: 8px;';
+  
+  // テキスト部分
+  const textSpan = document.createElement('span');
+  textSpan.setAttribute('data-i18n', 'guide-hover-text');
+  // 現在の言語に応じて初期テキストを設定
+  const currentLang = localStorage.getItem('rephrase_language') || 'ja';
+  textSpan.textContent = currentLang === 'ja' ? 'ポインタをかざすと説明が出ます' : 'Hover to see instructions';
+  
+  // ×ボタンを作成
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'start-here-close-btn';
+  closeBtn.innerHTML = '×';
+  closeBtn.setAttribute('data-i18n-title', 'guide-close-hint');
+  // 現在の言語に応じて初期titleを設定
+  closeBtn.title = currentLang === 'ja' ? 'このガイドを非表示にする' : 'Hide this guide';
+  closeBtn.style.cssText = `
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+  `;
+  
+  // ×ボタンのクリックイベント
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    // フェードアウト
+    arrow.classList.add('guide-highlight-fade-out');
+    text.classList.add('guide-highlight-fade-out');
+    
+    // アニメーション完了後に削除
+    setTimeout(() => {
+      arrow.remove();
+      text.remove();
+      console.log('🎯 ユーザーが×ボタンでガイドを閉じました');
+    }, 1000);
+    
+    // ユーザーが閉じたフラグを保存（今後表示しない）
+    localStorage.setItem('rephrase_guide_closed_by_user', 'true');
+  });
+  
+  // テキストコンテナに要素を追加
+  text.appendChild(textSpan);
+  text.appendChild(closeBtn);
+  
+  // 要素を追加（元の順番通り）
+  guideStep1.appendChild(arrow);
+  guideStep1.appendChild(text);
+  
+  console.log('🎯 初回ガイド矢印を表示しました（×ボタン付き、時間制限なし）');
+}
+
+function showLoadingOverlay() {
+  console.log("🎭 showLoadingOverlay() 関数が呼ばれました");
+  const overlay = document.getElementById('loading-overlay');
+  const mainContent = document.getElementById('main-content');
+  
+  console.log("🎭 overlay要素:", overlay);
+  console.log("🎭 mainContent要素:", mainContent);
+  
+  if (overlay && mainContent) {
+    console.log("🎭 ローディング開始 - メインコンテンツを隠す");
+    
+    // 確実にローディングを表示し、メインコンテンツを隠す
+    overlay.style.display = 'flex';
+    overlay.style.opacity = '1';
+    overlay.style.transition = 'none'; // トランジションをリセット
+    console.log("🎭 overlay表示設定完了");
+    
+    mainContent.style.display = 'none';
+    mainContent.style.opacity = '0';
+    mainContent.style.transition = 'none'; // トランジションをリセット
+    console.log("🎭 mainContent非表示設定完了");
+  } else {
+    console.error("🎭 エラー: overlay または mainContent 要素が見つかりません");
+  }
+}
+
+// JSONローディング表示管理
+document.addEventListener('DOMContentLoaded', function() {
+  const loadingTitle = document.getElementById('loading-title');
+  const loadingDescription = document.getElementById('loading-description');
+  const loadingProgress = document.getElementById('loading-progress');
+  const loadingTips = document.getElementById('loading-tip-text');
+  
+  // 📈 ローディング進捗管理
+  let loadingStage = 0;
+  const loadingStages = [
+    { progress: 0, title: "🚀 Rephrase 準備中...", desc: "システム初期化中", tip: "高速化機能が有効になっています" },
+    { progress: 20, title: "📂 ファイル準備完了", desc: "JSON構造を確認中", tip: "セキュリティヘッダーが強化されています" },
+    { progress: 60, title: "⚡ データ最適化中", desc: "高速表示のための前処理中", tip: "画像遅延読み込みでメモリ節約" },
+    { progress: 90, title: "🎯 最終調整中", desc: "インタラクティブ機能準備完了", tip: "パフォーマンス最適化済み" },
+    { progress: 100, title: "✅ 準備完了！", desc: "快適な学習環境をお楽しみください", tip: "すべての機能が利用可能です" }
+  ];
+  
+  // 🎭 ローディング進捗アニメーション
+  function updateLoadingStage(stage) {
+    if (stage < loadingStages.length) {
+      const stageData = loadingStages[stage];
+      
+      if (loadingTitle) loadingTitle.textContent = stageData.title;
+      if (loadingDescription) loadingDescription.textContent = stageData.desc;
+      if (loadingTips) loadingTips.textContent = stageData.tip;
+      if (loadingProgress) {
+        loadingProgress.style.width = stageData.progress + '%';
+      }
+      
+      console.log(`🎭 ローディングステージ ${stage + 1}/5: ${stageData.title}`);
+    }
+  }
+  
+  // 🚀 自動進捗シミュレーション
+  function simulateLoadingProgress() {
+    loadingStage = 0;
+    updateLoadingStage(loadingStage);
+    
+    const progressInterval = setInterval(() => {
+      loadingStage++;
+      if (loadingStage < loadingStages.length) {
+        updateLoadingStage(loadingStage);
+      } else {
+        clearInterval(progressInterval);
+      }
+    }, 800); // 各ステージ800ms
+    
+    return progressInterval;
+  }
+  
+  // ファイル選択時の処理
+  if (fileInput) {
+    fileInput.addEventListener('change', function() {
+      if (this.files.length > 0) {
+        const fileName = this.files[0].name;
+        if (loadingTitle) loadingTitle.textContent = "📁 " + fileName;
+        if (loadingDescription) loadingDescription.textContent = "ファイル読み込み準備完了 - 開始ボタンをクリック";
+        if (loadingProgress) loadingProgress.style.width = '15%';
+        if (loadingTips) loadingTips.textContent = "最適化されたファイル処理で高速読み込み";
+      } else {
+        updateLoadingStage(0); // 初期状態に戻す
+      }
+    });
+  }
+  
+  // 🎬 初期状態で進捗アニメーションを開始
+  simulateLoadingProgress();
+});
+
+// 🎯 **重複回避デバッグ用関数**
+window.debugRandomizeAvoidance = function() {
+  console.log('🎯 === 重複回避機能デバッグ情報 ===');
+  
+  if (window.currentRandomizedState) {
+    console.log('🎯 現在の状態:', window.currentRandomizedState);
+  } else {
+    console.log('🎯 現在の状態: 未初期化');
+  }
+  
+  if (window.randomizeHistory) {
+    const history = window.randomizeHistory.load();
+    console.log('🎯 履歴:', history);
+  } else {
+    console.log('🎯 履歴: 履歴管理機能なし');
+  }
+  
+  // 元データから直接V_group_keyを取得
+  let groups = [];
+  if (window.loadedJsonData && Array.isArray(window.loadedJsonData)) {
+    // 処理済みデータの場合、元データを検索
+    groups = [...new Set(window.loadedJsonData.map(entry => entry.V_group_key).filter(v => v))];
+    
+    // 元データが見つからない場合は、フルプールから取得
+    if (groups.length === 0 && window.fullSlotPool) {
+      groups = [...new Set(window.fullSlotPool.map(entry => entry.V_group_key).filter(v => v))];
+    }
+  }
+  
+  console.log('🎯 利用可能なV_group_key:', groups);
+  console.log('🎯 利用可能なV_group_key数:', groups.length);
+  
+  // 追加のデバッグ情報
+  if (window.fullSlotPool) {
+    console.log('🎯 fullSlotPool サイズ:', window.fullSlotPool.length);
+    const fullPoolGroups = [...new Set(window.fullSlotPool.map(entry => entry.V_group_key).filter(v => v))];
+    console.log('🎯 fullSlotPool内のV_group_key:', fullPoolGroups);
+  }
+};
+
+// 🎯 **重複回避履歴クリア関数**
+window.clearRandomizeHistory = function() {
+  try {
+    localStorage.removeItem('rephrase_randomize_history');
+    if (window.currentRandomizedState) {
+      window.currentRandomizedState.vGroupKey = null;
+      window.currentRandomizedState.exampleId = null;
+      window.currentRandomizedState.lastRandomizedTime = null;
+      window.currentRandomizedState.selectedSlots = [];
+    }
+    console.log('🎯 重複回避履歴をクリアしました');
+  } catch (error) {
+    console.error('🎯 重複回避履歴のクリアに失敗:', error);
+  }
+};
+
+
+</script>
+
+<!-- 音声学習システムのスクリプト -->
+<!-- 音声システム（デバイス別読み込み） -->
+<script>
+// 🔧 デバイス検出とスクリプト読み込み制御
+(function() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    'ontouchstart' in window ||
+                    window.innerWidth <= 768;
+    
+    console.log('🔧 デバイス検出結果:', {
+        isMobile: isMobile,
+        userAgent: navigator.userAgent,
+        screenWidth: window.innerWidth
+    });
+    
+    if (isMobile) {
+        console.log('📱 モバイルデバイス検出: 従来の音声システムを使用');
+        
+        // � 従来のVoiceSystemを使用
+        const mobileScript = document.createElement('script');
+        mobileScript.src = 'js/voice_system.js';
+        mobileScript.onload = function() {
+            console.log('🎤 VoiceSystemスクリプト読み込み完了 - DOM準備待機中...');
+            
+            // DOM読み込み完了を確実に待つ
+            function initVoiceSystem() {
+                console.log(`📄 DOM状態: ${document.readyState}`);
+                window.voiceSystem = new VoiceSystem();
+                console.log('✅ VoiceSystemインスタンス作成完了 - 初期化開始...');
+                window.voiceSystem.init().then(() => {
+                    console.log('✅ VoiceSystem初期化完了');
+                }).catch(error => {
+                    console.error('❌ VoiceSystem初期化エラー:', error);
+                });
+            }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initVoiceSystem);
+            } else {
+                // DOM既に読み込み済み
+                setTimeout(initVoiceSystem, 100); // 少し待機してから実行
+            }
+        };
+        document.head.appendChild(mobileScript);
+        console.log('✅ 従来の音声システムでモバイル対応完了');
+        
+    } else {
+        console.log('💻 デスクトップデバイス検出: 既存システムを読み込み');
+        
+        // デスクトップでは既存システムを読み込み
+        const desktopScript = document.createElement('script');
+        desktopScript.src = 'js/voice_system.js';
+        desktopScript.onload = function() {
+            console.log('🎤 VoiceSystemスクリプト読み込み完了 - DOM準備待機中...');
+            
+            // DOM読み込み完了を確実に待つ
+            function initVoiceSystem() {
+                console.log(`📄 DOM状態: ${document.readyState}`);
+                
+                window.voiceSystem = new VoiceSystem();
+                console.log('✅ VoiceSystemインスタンス作成完了 - 初期化開始...');
+                window.voiceSystem.init().then(() => {
+                    console.log('✅ VoiceSystem初期化完了');
+                }).catch(error => {
+                    console.error('❌ VoiceSystem初期化エラー:', error);
+                });
+            }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initVoiceSystem);
+            } else {
+                // DOM既に読み込み済み
+                setTimeout(initVoiceSystem, 100); // 少し待機してから実行
+            }
+        };
+        document.head.appendChild(desktopScript);
+    }
+})();
+</script>
+<script src="js/voice_progress_tracker.js"></script>
+<script src="js/voice_progress_ui.js"></script>
+
+<!-- 📚 解説システム用モーダル -->
+<div id="explanationModal" class="explanation-modal">
+  <div class="explanation-modal-content">
+    <div class="explanation-modal-header">
+      <h3 id="explanationTitle">解説</h3>
+      <span class="explanation-close">&times;</span>
+    </div>
+    <div class="explanation-modal-body">
+      <div id="explanationContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 🧪 ExplanationManager 統合版初期化 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🧪 ExplanationManager統合版初期化開始');
+  
+  // 🎤 音声学習ボタンを正しい位置に移動（最優先実行）
+  setTimeout(() => {
+    const voiceBtn = document.getElementById('voice-panel-open-btn');
+    const explanationBtn = document.getElementById('explanation-btn');
+    const hideEnglishBtn = document.getElementById('hide-all-english-visibility');
+    
+    if (voiceBtn && hideEnglishBtn) {
+      console.log('🔧 音声学習ボタンを移動中...');
+      
+      // 解説ボタンがある場合はその後ろに、なければ英語OFFボタンの後ろに配置
+      if (explanationBtn) {
+        explanationBtn.insertAdjacentElement('afterend', voiceBtn);
+        console.log('✅ 音声学習ボタンを解説ボタンの右横に移動');
+      } else {
+        hideEnglishBtn.insertAdjacentElement('afterend', voiceBtn);
+        console.log('✅ 音声学習ボタンを英語OFFボタンの右横に移動（解説ボタン待機中）');
+      }
+      
+      voiceBtn.style.marginLeft = '10px';
+    }
+  }, 100);
+  
+  // RephraseStateManagerの確認
+  if (typeof window.RephraseState !== 'undefined') {
+    console.log('✅ RephraseState利用可能');
+    console.log('デバッグ:', window.RephraseState);
+  } else {
+    console.error('❌ RephraseStateが見つかりません');
+  }
+  
+  // ExplanationManagerの初期化
+  if (typeof ExplanationManager !== 'undefined') {
+    console.log('✅ ExplanationManagerクラス利用可能');
+    window.explanationManager = new ExplanationManager();
+    window.explanationManager.initialize().then(success => {
+      if (success) {
+        console.log('✅ ExplanationManager初期化成功');
+        
+        // 解説ボタンが追加された後、音声学習ボタンを再度移動
+        setTimeout(() => {
+          const voiceBtn = document.getElementById('voice-panel-open-btn');
+          const explanationBtn = document.getElementById('explanation-btn');
+          
+          if (voiceBtn && explanationBtn) {
+            explanationBtn.insertAdjacentElement('afterend', voiceBtn);
+            voiceBtn.style.marginLeft = '10px';
+            console.log('✅ 音声学習ボタンを最終位置に移動（解説ボタンの右横）');
+          }
+        }, 200);
+      } else {
+        console.error('❌ ExplanationManager初期化失敗');
+      }
+    });
+  } else {
+    console.error('❌ ExplanationManagerクラスが見つかりません');
+  }
+  
+  // 🎯 文法項目自動選択システム：URLパラメータから自動JSON読み込み
+  const urlParams = new URLSearchParams(window.location.search);
+  const grammarParam = urlParams.get('grammar');
+  
+  if (grammarParam) {
+    console.log('🎯 文法項目自動選択検出:', grammarParam);
+    
+    // メタデータから動的にマッピングを生成
+    async function loadGrammarMetadata() {
+      try {
+        // 🔄 キャッシュバスター追加（メタデータも常に最新を取得）
+        const cacheBuster = '?t=' + Date.now();
+        const response = await fetch('explanation/grammar-metadata.json' + cacheBuster);
+        if (response.ok) {
+          const metadata = await response.json();
+          console.log('📋 文法メタデータ読み込み成功:', metadata);
+          
+          // 指定された文法項目を検索
+          let targetJsonFile = null;
+          
+          for (const [key, data] of Object.entries(metadata)) {
+            if (data.grammarKey === grammarParam || data.displayName === grammarParam) {
+              // jsonFileからdata/を付けて完全パスを生成
+              targetJsonFile = `data/${data.jsonFile}`;
+              if (!targetJsonFile.endsWith('.json')) {
+                targetJsonFile += '.json';
+              }
+              console.log('✅ マッチする文法項目発見:', {
+                key: key,
+                displayName: data.displayName,
+                grammarKey: data.grammarKey,
+                jsonFile: targetJsonFile
+              });
+              break;
+            }
+          }
+          
+          if (targetJsonFile) {
+            console.log('✅ 対応するJSONファイル発見:', targetJsonFile);
+            
+            // プリセット選択を自動設定
+            setTimeout(() => {
+              const presetSelect = document.getElementById('presetSelect');
+              if (presetSelect) {
+                presetSelect.value = targetJsonFile;
+                console.log('🎯 プリセット選択を自動設定:', targetJsonFile);
+                
+                // 自動的にJSON読み込みを実行
+                const loadButton = document.getElementById('loadPresetButton');
+                if (loadButton) {
+                  loadButton.click();
+                  console.log('🚀 文法項目JSONを自動読み込み開始');
+                }
+              }
+            }, 500);
+          } else {
+            console.warn('⚠️ 未対応の文法項目:', grammarParam);
+          }
+        } else {
+          console.error('❌ 文法メタデータ読み込み失敗:', response.status);
+          // フォールバック：手動マッピング
+          fallbackMapping();
+        }
+      } catch (error) {
+        console.error('❌ 文法メタデータ読み込みエラー:', error);
+        // フォールバック：手動マッピング
+        fallbackMapping();
+      }
+    }
+    
+    // フォールバック用手動マッピング
+    function fallbackMapping() {
+      console.log('💡 フォールバックマッピングを使用');
+      const grammarToJsonMap = {
+        '自動詞第1文型': 'data/V自動詞第1文型.json',
+        '他動詞第3,4文型': 'data/第3,4文型.json'
+      };
+      
+      const jsonFile = grammarToJsonMap[grammarParam];
+      
+      if (jsonFile) {
+        console.log('✅ フォールバックで対応するJSONファイル発見:', jsonFile);
+        
+        // プリセット選択を自動設定
+        setTimeout(() => {
+          const presetSelect = document.getElementById('presetSelect');
+          if (presetSelect) {
+            presetSelect.value = jsonFile;
+            console.log('🎯 プリセット選択を自動設定:', jsonFile);
+            
+            // 自動的にJSON読み込みを実行
+            const loadButton = document.getElementById('loadPresetButton');
+            if (loadButton) {
+              loadButton.click();
+              console.log('🚀 文法項目JSONを自動読み込み開始');
+            }
+          }
+        }, 500);
+      } else {
+        console.warn('⚠️ 未対応の文法項目:', grammarParam);
+      }
+    }
+    
+    // メタデータ読み込み開始
+    loadGrammarMetadata();
+  }
+});
+</script>
+
+</body>
+</html>

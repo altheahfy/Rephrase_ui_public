@@ -1,0 +1,161 @@
+  /**
+   * Test-1: DBに存在する全てのサブスロットが画面上に一度以上表示されるか
+   * 
+   * 目的: DBに存在するサブスロット構造が、UI表示ロジック上で欠落していないことを保証
+   * 
+   * ロジック:
+   * 1. DB内の各例文について、親スロットごとのサブスロット構造をマップ化
+   *    例: make/ex007 → S に [sub-s, sub-aux, sub-m2, sub-v, sub-o1]
+   * 2. ランダマイズで各例文を表示し、各親スロットのサブスロットが全て表示されているか確認
+   * 3. DB内の全サブスロット組み合わせ（親+サブ）がUIに出現するまで繰り返す
+   */
+  test('[必須] DBの全サブスロット種別がUIに表示される', async ({ page }) => {
+    test.setTimeout(180000); // 3分
+    
+    // 1. DBから例文構造をマップ化：各例文の各親スロットにどのサブスロットがあるか
+    const exampleStructure = new Map<string, Map<string, Set<string>>>();
+    // 形式: Map<"V_group_key/例文ID", Map<"親スロット", Set<"サブスロット種別">>>
+    
+    for (const row of dbData) {
+      if (row.SubslotID && row.Slot && row.V_group_key && row.例文ID) {
+        const exampleKey = `${row.V_group_key}/${row.例文ID}`;
+        if (!exampleStructure.has(exampleKey)) {
+          exampleStructure.set(exampleKey, new Map());
+        }
+        const example = exampleStructure.get(exampleKey)!;
+        const parentSlot = row.Slot.toLowerCase();
+        if (!example.has(parentSlot)) {
+          example.set(parentSlot, new Set());
+        }
+        example.get(parentSlot)!.add(row.SubslotID);
+      }
+    }
+    
+    console.log(`📋 DB内の例文数: ${exampleStructure.size}`);
+    
+    // DB内の全サブスロット組み合わせ（親+サブ）を集計
+    const allDbCombinations = new Set<string>();
+    exampleStructure.forEach((parentMap, exampleKey) => {
+      parentMap.forEach((subslots, parentSlot) => {
+        subslots.forEach(subslotId => {
+          allDbCombinations.add(`${parentSlot}-${subslotId}`);
+        });
+      });
+    });
+    
+    console.log(`📊 DB内の全サブスロット組み合わせ: ${allDbCombinations.size}種類`);
+    console.log(`   ${Array.from(allDbCombinations).sort().join(', ')}`);
+    
+    if (allDbCombinations.size === 0) {
+      console.log('⚠️ DBにサブスロットが存在しない');
+      test.skip();
+      return;
+    }
+    
+    // 2. ランダマイズして各例文の各親スロットのサブスロットが全て表示されるか確認
+    const uiFoundCombinations = new Set<string>();
+    const randomizeBtn = page.locator('#randomize-all');
+    const MAX_RANDOMIZE = 50;
+    
+    for (let i = 0; i < MAX_RANDOMIZE; i++) {
+      await randomizeBtn.click();
+      await page.waitForTimeout(1000);
+      
+      // 現在表示中のサブスロットトグルボタンを取得
+      const toggleBtns = page.locator('button[data-subslot-toggle]');
+      const toggleCount = await toggleBtns.count();
+      
+      if (toggleCount === 0) {
+        console.log(`  ⚠️ ${i + 1}回目: サブスロットトグルボタンなし（スキップ）`);
+        continue;
+      }
+      
+      console.log(`\n━━━ ${i + 1}回目のランダマイズ: トグルボタン ${toggleCount}個 ━━━`);
+      
+      // 各親スロットを開いてサブスロットを確認
+      for (let j = 0; j < toggleCount; j++) {
+        const toggleBtn = toggleBtns.nth(j);
+        const parentSlot = await toggleBtn.getAttribute('data-subslot-toggle');
+        if (!parentSlot) continue;
+        
+        // 親スロットを開く
+        await toggleBtn.evaluate((btn: HTMLElement) => btn.click());
+        await page.waitForTimeout(500);
+        
+        // 静的DOM内の実際のサブスロット要素を確認
+        const staticWrapperId = `slot-${parentSlot}-sub`;
+        const actualSubslots = await page.evaluate((wrapperId) => {
+          const wrapper = document.getElementById(wrapperId);
+          if (!wrapper) return [];
+          
+          const containers = wrapper.querySelectorAll('.slot-container, .subslot-container');
+          const found: string[] = [];
+          
+          containers.forEach((container) => {
+            const id = container.id;
+            if (!id) return;
+            
+            // ID形式: "slot-s-sub-s" → sub-s
+            const match = id.match(/slot-\w+-sub-(\w+)$/);
+            if (!match) return;
+            
+            // 実際にコンテンツがあるか確認（.slot-phraseまたは.slot-textに内容があるか）
+            const slotPhrase = container.querySelector('.slot-phrase');
+            const slotText = container.querySelector('.slot-text');
+            const hasContent = (slotPhrase?.textContent?.trim() && slotPhrase.textContent.trim() !== '') ||
+                             (slotText?.textContent?.trim() && slotText.textContent.trim() !== '');
+            
+            if (hasContent) {
+              const subslotType = `sub-${match[1]}`;
+              found.push(subslotType);
+            }
+          });
+          
+          return found;
+        }, staticWrapperId);
+        
+        // 見つかったサブスロットを記録
+        actualSubslots.forEach(subslotId => {
+          const combination = `${parentSlot}-${subslotId}`;
+          if (!uiFoundCombinations.has(combination)) {
+            uiFoundCombinations.add(combination);
+            console.log(`  ✅ ${combination} を発見`);
+          }
+        });
+        
+        // 親スロットを閉じる
+        await toggleBtn.evaluate((btn: HTMLElement) => btn.click());
+        await page.waitForTimeout(300);
+      }
+      
+      // 全種類揃ったら早期終了
+      if (uiFoundCombinations.size >= allDbCombinations.size) {
+        console.log(`\n✅ ${i + 1}回のランダマイズで全サブスロット組み合わせが出現`);
+        break;
+      }
+      
+      if ((i + 1) % 10 === 0) {
+        console.log(`\n📊 ${i + 1}回ランダマイズ: ${uiFoundCombinations.size}/${allDbCombinations.size}種類出現`);
+      }
+    }
+    
+    // 3. 検証：DB内の全組み合わせがUIに出現したか
+    const missingCombinations: string[] = [];
+    allDbCombinations.forEach(combination => {
+      if (!uiFoundCombinations.has(combination)) {
+        missingCombinations.push(combination);
+      }
+    });
+    
+    console.log(`\n📊 最終結果:`);
+    console.log(`   DB内の全組み合わせ: ${allDbCombinations.size}種類`);
+    console.log(`   UI出現: ${uiFoundCombinations.size}種類`);
+    
+    if (missingCombinations.length > 0) {
+      console.log(`\n❌ 未出現: ${missingCombinations.join(', ')}`);
+    }
+    
+    expect(uiFoundCombinations.size).toBeGreaterThanOrEqual(allDbCombinations.size);
+    console.log('\n🎉 DB内の全サブスロット種別が静的スロットDOMに正しく表示される');
+  });
+});

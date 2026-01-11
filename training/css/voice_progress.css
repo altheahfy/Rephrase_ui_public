@@ -1,0 +1,442 @@
+/* 音声学習進捗表示UI専用スタイル */
+
+.voice-progress-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 15000;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.progress-panel-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.progress-panel-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.progress-panel-content {
+    height: calc(90vh - 80px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* スクロールバーのスタイル */
+.progress-panel-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.progress-panel-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.progress-panel-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.progress-panel-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 期間選択タブ */
+.period-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+.period-tab {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    color: #495057;
+    transition: all 0.2s;
+}
+
+.period-tab:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.period-tab.active {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+/* 統計表示 */
+.progress-loading {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #e9ecef;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #212529;
+}
+
+/* レベル分布 */
+.level-distribution {
+    margin-bottom: 12px;
+}
+
+.level-distribution h4 {
+    margin: 0 0 8px 0;
+    color: #495057;
+    font-size: 14px;
+}
+
+.level-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.level-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.level-label {
+    width: 60px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.bar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.bar {
+    height: 12px;
+    border-radius: 6px;
+    transition: width 0.3s ease;
+    min-width: 2px;
+}
+
+.bar.beginner { background: #fd7e14; }
+.bar.intermediate { background: #ffc107; }
+.bar.advanced { background: #20c997; }
+.bar.expert { background: #6f42c1; }
+
+.bar-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+    min-width: 16px;
+}
+
+/* 進捗チャート */
+.progress-chart-container {
+    margin-bottom: 10px;
+}
+
+.progress-chart-container h4 {
+    margin: 0 0 8px 0;
+    color: #495057;
+    font-size: 14px;
+}
+
+#progress-chart {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 最高記録 */
+.voice-progress-panel .best-performance {
+    margin-bottom: 15px !important;
+}
+
+.voice-progress-panel .best-performance h4 {
+    margin: 0 0 8px 0 !important;
+    color: #495057;
+    font-size: 14px !important;
+}
+
+.voice-progress-panel .best-day-card {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 8px 12px !important;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.voice-progress-panel .best-day-date {
+    font-size: 12px !important;
+    opacity: 0.9;
+    margin-bottom: 2px !important;
+}
+
+.voice-progress-panel .best-day-level {
+    font-size: 14px !important;
+    font-weight: bold;
+    margin-bottom: 2px !important;
+}
+
+.voice-progress-panel .best-day-sessions {
+    font-size: 12px !important;
+    opacity: 0.9;
+}
+
+/* データ管理 */
+.data-management {
+    border-top: 2px solid #f0f0f0;
+    padding-top: 16px;
+}
+
+.data-management h4 {
+    margin: 0 0 12px 0;
+    color: #495057;
+    font-size: 16px;
+}
+
+.data-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.danger-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.danger-btn:hover {
+    background: #c82333;
+}
+
+.secondary-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.secondary-btn:hover {
+    background: #5a6fd8;
+}
+
+/* エラー・データなし表示 */
+.no-data, .error-message {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+
+.no-data h3, .error-message h3 {
+    margin: 0 0 16px 0;
+    color: #495057;
+}
+
+.error-message {
+    color: #dc3545;
+}
+
+.error-message h3 {
+    color: #dc3545;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .voice-progress-panel {
+        width: 95%;
+        max-height: 85vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .progress-panel-content {
+        padding: 12px;
+        height: calc(85vh - 60px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .period-tabs {
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+    }
+    
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .level-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+    }
+    
+    .level-label {
+        width: auto;
+        text-align: center;
+    }
+    
+    /* モバイル版で閉じるボタンをより大きくタップしやすく */
+    .close-btn {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 28px !important;
+        touch-action: manipulation;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        /* 他の要素と重ならないように右端に固定 */
+        flex-shrink: 0 !important;
+        margin-left: auto !important;
+        /* 強制的に右上に配置 */
+        position: absolute !important;
+        top: 8px !important;
+        right: 8px !important;
+        z-index: 1000 !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-radius: 50% !important;
+    }
+    
+    /* モバイル版でパネルヘッダーを改善 */
+    .progress-panel-header {
+        padding: 12px 60px 12px 16px !important;
+        /* フレックスボックスで適切に配置 */
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 12px !important;
+        position: relative !important;
+    }
+    
+    .progress-panel-header h3 {
+        font-size: 16px !important;
+        /* タイトルが長い場合の対応 */
+        flex: 1 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        margin-right: 60px !important;
+    }
+    
+    /* データエクスポート/インポートエリアの改善 */
+    .data-management {
+        margin-top: 24px;
+        margin-bottom: 40px;
+        padding: 16px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .data-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        justify-content: space-between;
+    }
+    
+    .secondary-btn {
+        flex: 1;
+        padding: 12px 8px;
+        font-size: 14px;
+        min-height: 48px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

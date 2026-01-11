@@ -1,0 +1,120 @@
+{
+  "intransitive-type1": {
+    "displayName": "自動詞第1文型",
+    "grammarKey": "自動詞第1文型",
+    "jsonFile": "V自動詞第1文型.json",
+    "filename": "v-intransitive-type1",
+    "description": "最もシンプルな英語の基本構造「主語 + 動詞」を理解しよう",
+    "category": "基本5文型",
+    "priority": 1,
+    "matrixDisplay": "①自動詞<br>（主語）（動詞）. 第1文型",
+    "content": {
+      "sections": [
+        {
+          "type": "content-section",
+          "title": "自動詞第1文型とは",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "自動詞第1文型は、英語の最も基本的な文型で、「主語 + 動詞」の構造を持ちます。この文型では、動詞が目的語を必要とせず、主語の動作や状態を表現します。"
+            },
+            {
+              "type": "key-point",
+              "title": "自動詞の特徴",
+              "content": "自動詞は目的語を取らない動詞です。動作は主語から発せられますが、その動作が他の対象に向けられることはありません。"
+            },
+            {
+              "type": "example-box",
+              "title": "基本例文",
+              "examples": [
+                "I sleep. （私は眠る）",
+                "She runs. （彼女は走る）",
+                "The sun rises. （太陽が昇る）",
+                "Children play. （子供たちが遊ぶ）"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "content-section",
+          "title": "よく使われる自動詞",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "日常会話でよく使われる自動詞には以下のようなものがあります："
+            },
+            {
+              "type": "example-box",
+              "title": "基本的な自動詞",
+              "examples": [
+                "go（行く）- I go to school.",
+                "come（来る）- He comes here.",
+                "walk（歩く）- We walk in the park.",
+                "swim（泳ぐ）- They swim in the pool.",
+                "laugh（笑う）- She laughs loudly.",
+                "cry（泣く）- The baby cries."
+              ]
+            },
+            {
+              "type": "key-point",
+              "title": "自動詞と他動詞の区別",
+              "content": "同じ動詞でも使い方によって自動詞にも他動詞にもなるものがあります。文脈で判断することが重要です。例：run（自動詞：走る）vs run（他動詞：～を経営する）"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "articles-determiners": {
+    "displayName": "冠詞・定冠詞の付け方",
+    "grammarKey": "冠詞・定冠詞の付け方",
+    "jsonFile": "冠詞定冠詞.json",
+    "filename": "articles-determiners",
+    "description": "名詞チャンク - レベル3（複文）",
+    "category": "名詞チャンク",
+    "priority": 3,
+    "matrixDisplay": "冠詞・定冠詞<br>の付け方",
+    "content": {
+      "sections": [
+        {
+          "type": "content-section",
+          "title": "２．冠詞・定冠詞の付け方",
+          "content": [
+            {
+              "type": "key-point",
+              "title": "要点解説",
+              "content": "冠詞・定冠詞は日本人にとって最も理解・習得が難しい文法事項だと言われる。例えばaをつけるかどうかの前提となる可算名詞・不可算名詞の区別にしたところで、いかにも数えられそうなequipment（装置・設備）が不可算名詞だったり、どう考えても数えられないstorm（嵐）は可算名詞だったりする。"
+            },
+            {
+              "type": "paragraph",
+              "text": "この分野に関してはネイティブスピーカーでなければ100%の理解・運用は難しいのが現実だが、ここではせめてエラーを最小化できるよう、従来の受験文法より厳密な定義を試みる。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "他動詞第3,4文型": {
+    "displayName": "他動詞第3,4文型",
+    "grammarKey": "他動詞第3,4文型",
+    "filename": "他動詞第3,4文型",
+    "jsonFile": "第3,4文型",
+    "description": "第3文型、第4文型を作る「他動詞」を理解しよう",
+    "category": "grammar-basics",
+    "priority": 3,
+    "matrixDisplay": "他動詞第3,4文型",
+    "content": {
+      "sections": [
+        {
+          "title": "他動詞第3,4文型",
+          "content": [
+            {
+              "type": "custom-html",
+              "html": "<h2>（主語）（動詞）（目的語「～を」）. 第3文型　（主語）（動詞）（目的語「～に」）（目的語「～を」）. 第4文型</h2></p><p>例えばhaveはa wonderful eveningなどの「～を」という目的語を要する。askはhimなどの「～に」という目的語を要する。oweは「owe you a formal excuse」のように「～に」「～を」と連続した目的語を要する。これらは「必ず置かなければならない」のであって、「置くことができる」ではない点を勘違いしてはならない。</p><p><div class=\"example-box\"><h4>例文</h4><div class=\"example-sentence\">こうした目的語の要不要は単語によって決定されているので、単語単位で刷り込む必要がある。日本語を土台に置いて、「～に」「～を」という動作の意味上の対象のみから機械的に判断しようとしても不可能である。例えば、「ベッドに横たわる」はI lie on the bed.であるが、日本語で「ベッドに」は「～に」だから目的語かというとそうではない。I lie the bed.とは言えないのである。lieは①で説明した自動詞なので、前置詞onを用いて「ベッドの上に」という副詞句が置かれているのだ。一方、「リサは東京医療学校に通う」はLisa attends Tokyo Medical School.などと言えるが、こちらはTokyo Medical Schoolが目的語である。attendは他動詞であり、出席する場所が「～に」という目的語になるのだ。したがってこの場合は逆にattend to Tokyo Medical Schoolとするのは間違いになるのである。</div></div></p><p>同じ「～に」の取り扱いでも単語によってこのように異なるわけで、何か汎用的な一つのルールを覚えてこれら全てに対処しようとしても無理であることがおわかりいただけるだろうか。「lieはこう使う（第1文型である）」「attendはこう使う（第3文型である）」と個別にマスターする他無い。</p><p>第4文型を取る動詞はgive型（相手の元に何かを届かせるタイプ）とbuy型（相手のために何かをするタイプ）の二つに分かれる。「私はあなたに正式に謝らなければなりません」はbuy型の例でありI owe you a formal excuse.などとなる（直訳すれば「借ります」「あなたに」「正式な謝罪を」）。</p><p><div class=\"key-point\"><h4>重要ポイント</h4><p>なお、第4文型はＯ1をＯ2の後ろに持ってきて、第3文型SVOに書き換えることができる。その場合、give型ではＯ1だったものに対して前置詞toをつけるが、buy型の場合はforをつける。askの書き換えがofになることも刷り込んでおきたい。これらも、後ろに回った「前置詞＋元Ｏ1」は既に目的語ではなく副詞句になっていることに注意。「私は彼にスカーフを与えた」はI gave him a scarf.と言えるが、I gave a scarf to him.と書き換えられる。「私は彼にスカーフを買った」はI bought him a scarf.と言えるが、I bought a scarf for him.と書き換えられる。「私はあなたにお願いがある」はI ask you a favor.と言えるが、I ask a favor of you.と書き換えられる。しつこいようだが、「～に」と訳せるものが何でも目的語なのではない。to him, for him, of youは既に副詞句になってしまっている。</p></div></p><p>この種の言い換えはＯ2の後に来る「前置詞＋名詞」の部分に言いたいことのポイントが来るニュアンスが発生することにも注意が必要。３の「新情報と旧情報」で詳説するが、上の3つの例文ではそれぞれto him, for him, of youに話のポイントがあることが明確になっている。「私が本を与えたのは、彼か、彼女か、あなたか。それはあなただ」というニュアンスである。「誰が与えたのか」「何をしたのか」にはポイントが無い。</p><p>cost, take, save, envyなど、この種の書き換えができない動詞もある。</p>"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

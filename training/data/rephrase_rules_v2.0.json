@@ -1,0 +1,213 @@
+{
+  "version": "2.0",
+  "description": "spaCy完全連携型Rephraseルール辞書 - 5文型フルセット分析結果に基づく",
+  "created_date": "2025-08-10",
+  "analysis_source": "final_rephrase_analysis.py results",
+  
+  "subslot_generation_rules": {
+    "description": "9種類のサブスロット自動生成ルール",
+    "enabled_subslots": [
+      "sub-s", "sub-aux", "sub-v", "sub-o1", "sub-o2", 
+      "sub-c1", "sub-c2", "sub-m1", "sub-m2", "sub-m3"
+    ],
+    
+    "slot_specific_rules": {
+      "S_slot": {
+        "clause_processing": {
+          "pattern": "関係詞節 + 完全文",
+          "examples": [
+            "the manager who had recently taken charge of the project",
+            "the woman who seemed indecisive"
+          ],
+          "subslot_mapping": {
+            "sub-s": "関係詞部分 (the manager who, the woman who)",
+            "sub-aux": "助動詞 (had, had been)",
+            "sub-v": "主動詞 (taken, seemed)",
+            "sub-m2": "時間・頻度副詞 (recently, just)",
+            "sub-o1": "目的語・補語 (charge of the project, indecisive)",
+            "sub-m3": "場所・期間 (from a long absence)"
+          }
+        },
+        "spacy_implementation": {
+          "detection_method": "token.dep_ == 'nsubj' + 関係詞検出",
+          "relative_pronoun_markers": ["who", "that", "which"],
+          "extraction_logic": "関係詞以前を sub-s に、以降を構文解析"
+        }
+      },
+      
+      "M2_slot": {
+        "clause_processing": {
+          "pattern": "接続詞 + 完全文",
+          "examples": [
+            "even though he was under intense pressure",
+            "although it was emotionally hard"
+          ],
+          "subslot_mapping": {
+            "sub-m1": "接続詞 (even though, although, while)",
+            "sub-s": "従属節主語 (he, it, the principal)",
+            "sub-aux": "助動詞 (was, was still)",
+            "sub-v": "動詞 (was, explaining)",
+            "sub-m2": "修飾句 (under intense pressure, emotionally)",
+            "sub-c1": "補語 (hard)",
+            "sub-o1": "目的語 (the policy)"
+          }
+        }
+      },
+      
+      "M3_slot": {
+        "clause_processing": {
+          "pattern": "結果・理由接続詞 + 完全文",
+          "examples": [
+            "so the outcome would reflect their full potential",
+            "because he was afraid of hurting her feelings"
+          ],
+          "subslot_mapping": {
+            "sub-m1": "接続詞 (so, because, since)",
+            "sub-s": "主語 (the outcome, he)",
+            "sub-aux": "助動詞 (would, was)",
+            "sub-v": "動詞 (reflect, afraid of)",
+            "sub-o1": "目的語句 (their full potential, hurting her feelings)"
+          }
+        }
+      },
+      
+      "C2_slot": {
+        "phrase_processing": {
+          "pattern": "動詞 + 目的語 + 修飾句",
+          "examples": [
+            "deliver the final proposal flawlessly",
+            "analyze the complex data meticulously"
+          ],
+          "subslot_mapping": {
+            "sub-v": "動詞 (deliver, analyze)",
+            "sub-o1": "目的語 (the final proposal, the complex data)",
+            "sub-m3": "様態副詞 (flawlessly, meticulously)"
+          }
+        }
+      }
+    }
+  },
+  
+  "clause_type_processing": {
+    "description": "clause型スロットの処理ルール",
+    "total_patterns": 44,
+    "distribution": {
+      "S": 9, "M2": 9, "M3": 9, "O1": 8, 
+      "M1": 4, "O2": 3, "C1": 2
+    },
+    
+    "spacy_detection_rules": {
+      "relative_clause": {
+        "markers": ["who", "that", "which"],
+        "spacy_method": "token.dep_ == 'relcl'",
+        "parent_check": "token.head.pos_ == 'NOUN'"
+      },
+      "adverbial_clause": {
+        "time_markers": ["when", "while", "as"],
+        "reason_markers": ["because", "since", "as"],
+        "contrast_markers": ["although", "even though", "while"],
+        "result_markers": ["so", "so that"],
+        "spacy_method": "token.dep_ == 'advcl'"
+      },
+      "complement_clause": {
+        "markers": ["that", "what", "how"],
+        "spacy_method": "token.dep_ == 'ccomp'"
+      }
+    }
+  },
+  
+  "separated_interrogative_rules": {
+    "description": "分離疑問詞・感嘆詞の処理ルール（文頭移動パターン）",
+    "discovery_source": "analyze_question_patterns.py results - ex009, ex010",
+    
+    "pattern_types": {
+      "wh_question": {
+        "example": "What do you think it is?",
+        "structure": [
+          "order:1 O1: 'what' (文頭移動部分)",
+          "order:2 Aux: 'do'",
+          "order:3 S: 'you'", 
+          "order:4 V: 'think'",
+          "order:5 O1: 'it is' (本来の位置)"
+        ],
+        "technical_note": "同一スロット(O1)内で要素が分離、orderで制御"
+      },
+      "exclamatory": {
+        "example": "What cruelty people are capable of!",
+        "structure": [
+          "order:1 O1: 'what cruelty' (文頭移動部分)",
+          "order:2 S: 'people'",
+          "order:3 V: 'are capable of'"
+        ]
+      }
+    },
+    
+    "spacy_implementation": {
+      "detection_method": "sentence.startswith(interrogative_words)",
+      "interrogative_markers": ["What", "How", "When", "Where", "Why", "Which", "Who"],
+      "processing_logic": [
+        "1. 文頭疑問詞を検出",
+        "2. 対応する本来のスロット位置を特定",
+        "3. 同一スロット内での分離として処理",
+        "4. order値による表示制御"
+      ]
+    },
+    
+    "integration_note": "上位スロットのorderで制御するため、基本スロット処理の後段で実装"
+  },
+  
+  "anti_duplication_rules": {
+    "description_anti_dup": "ago/for重複問題の解決ルール",
+    "problem_case": {
+      "input": "I met him a few days ago",
+      "current_output": {
+        "M2": ["ago", "ago met"],
+        "M3": ["a few days ago"]
+      },
+      "target_output": {
+        "M3": ["a few days ago"]
+      }
+    },
+    "solution_approach": {
+      "priority_order": ["M3", "M2", "M1"],
+      "uniqueness_check": "同一語彙の重複排除",
+      "spacy_dependency": "時間表現の依存関係による一意分類"
+    }
+  },
+  
+  "implementation_templates": {
+    "SpacyRephraseParser_skeleton": {
+      "class_structure": [
+        "def __init__(self, nlp_model)",
+        "def parse_sentence(self, text)",
+        "def identify_main_slots(self, doc)",
+        "def generate_subslots(self, slot_info, tokens)",
+        "def process_clause_structure(self, clause_tokens)",
+        "def resolve_duplications(self, slot_assignments)"
+      ]
+    },
+    "subslot_generator_skeleton": {
+      "functions": [
+        "def extract_subject_with_relative(tokens)",
+        "def identify_auxiliary_verbs(tokens)",
+        "def classify_modifiers(tokens)",
+        "def separate_complements(tokens)"
+      ]
+    }
+  },
+  
+  "quality_assurance": {
+    "test_cases": {
+      "complex_relative": "the manager who had recently taken charge of the project",
+      "nested_clauses": "even though he was under intense pressure so the outcome would reflect their full potential",
+      "complement_phrase": "deliver the final proposal flawlessly",
+      "time_expression": "I met him a few days ago"
+    },
+    "validation_checkers": [
+      "check_subslot_completeness",
+      "check_duplication_elimination", 
+      "check_clause_boundaries",
+      "check_spacy_consistency"
+    ]
+  }
+}

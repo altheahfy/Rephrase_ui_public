@@ -1,0 +1,212 @@
+/* 📱 音声パネル モバイル最適化 CSS */
+
+/* モバイル環境でのパネル位置固定 - 縦画面での拡張版 */
+@media (max-width: 768px) and (orientation: portrait) {
+    #voice-control-panel {
+        position: fixed !important;
+        right: 10px !important;
+        bottom: 20px !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        z-index: 9999 !important;
+        
+        /* 拡張パネルサイズ - 全コンテンツが見えるように */
+        width: 280px !important;
+        max-width: 320px !important;
+        min-width: 280px !important;
+        max-height: calc(100vh - 120px) !important;
+        overflow-y: auto !important;
+        
+        /* 横画面と同じスタイルを維持 */
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 2px solid #667eea !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        transition: all 0.3s ease !important;
+        
+        /* 標準パディング */
+        padding: 12px !important;
+    }
+    
+    /* 標準ボタンサイズ - 読みやすいサイズを維持 */
+    #voice-control-panel .voice-btn {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        margin: 3px !important;
+        min-height: auto !important;
+        border-radius: 3px !important;
+    }
+    
+    /* 標準ステータス表示エリア */
+    #voice-control-panel #voice-status {
+        font-size: 11px !important;
+        padding: 3px 6px !important;
+        border-radius: 12px !important;
+        margin: 8px 0 !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* 標準分析結果エリア */
+    #voice-control-panel #voice-analysis-results {
+        font-size: 11px !important;
+        background: rgba(0,0,0,0.05) !important;
+        border-radius: 6px !important;
+        padding: 8px !important;
+        min-height: 30px !important;
+        max-height: 200px !important;
+        overflow-y: auto !important;
+        color: #333 !important;
+        margin: 8px 0 !important;
+    }
+    
+    /* 標準分析結果内のアイテム */
+    #voice-control-panel .analysis-item {
+        margin: 4px 0 !important;
+        padding: 4px !important;
+        line-height: 1.4 !important;
+        font-size: 11px !important;
+    }
+    
+    /* 標準保存確認ボタン */
+    #voice-control-panel .save-confirmation button {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        margin: 2px !important;
+        min-height: auto !important;
+    }
+}
+
+/* 横画面では音声学習ボタンの下（右端）に配置 */
+@media (max-width: 768px) and (orientation: landscape) {
+    #voice-control-panel {
+        /* 音声学習ボタンの下の行に配置 */
+        position: fixed !important;
+        top: 130px !important;         /* 音声学習ボタン(60px) + ボタン高さ(50px) + 余白(20px) */
+        right: 20px !important;        /* 音声学習ボタンと同じ右端位置 */
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        z-index: 15000 !important;
+        
+        /* 横画面用サイズ - 内容が収まるよう高さを大幅に拡張 */
+        width: 300px !important;
+        max-width: 300px !important;
+        min-width: 300px !important;
+        max-height: calc(100vh - 60px) !important; /* ほぼ全画面の高さを使用 */
+        overflow-y: auto !important;
+        
+        /* 横画面用スタイル - HTMLの元設定を維持 */
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 2px solid #667eea !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        transition: all 0.3s ease !important;
+        
+        /* 横画面用パディング */
+        padding: 12px !important;
+    }
+    
+    /* 横画面用ボタンサイズ - 元の読みやすいサイズ */
+    #voice-control-panel .voice-btn {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        margin: 4px 2px !important;
+        min-height: auto !important;
+        border-radius: 3px !important;
+    }
+    
+    /* 横画面用ステータス表示 */
+    #voice-control-panel #voice-status {
+        font-size: 11px !important;
+        padding: 3px 6px !important;
+        border-radius: 12px !important;
+        margin: 8px 0 !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* 横画面用分析結果エリア */
+    #voice-control-panel #voice-analysis-results {
+        font-size: 11px !important;
+        background: rgba(0,0,0,0.05) !important;
+        border-radius: 6px !important;
+        padding: 8px !important;
+        min-height: 30px !important;
+        max-height: 300px !important; /* 横画面では高さを増やす */
+        overflow-y: auto !important;
+        color: #333 !important;
+        margin: 8px 0 !important;
+    }
+}
+
+/* パネル開くボタン - control-bar内に配置されるため固定位置は不要 */
+#voice-panel-open-btn {
+    /* 位置はcontrol-bar内で自動決定されるため、固定位置を削除 */
+    /* position: fixed !important; */
+    /* top: 60px !important; */
+    /* right: 20px !important; */
+    /* z-index: 15500 !important; */
+    
+    /* 元のデザインを維持 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 20px !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    transition: all 0.2s ease !important;
+    
+    /* 自動サイズ（横長を維持） */
+    width: auto !important;
+    height: auto !important;
+    display: inline-block !important;
+}
+
+/* より小さい画面（iPhone SE等）への対応 - 縦画面でも十分なサイズを確保 */
+@media (max-width: 375px) and (orientation: portrait) {
+    #voice-control-panel {
+        width: 260px !important;
+        max-width: 280px !important;
+        right: 5px !important;
+        bottom: 10px !important;
+        max-height: calc(100vh - 100px) !important;
+    }
+    
+    #voice-control-panel .voice-btn {
+        padding: 5px 8px !important;
+        font-size: 10px !important;
+        margin: 2px !important;
+        min-height: auto !important;
+    }
+    
+    #voice-panel-open-btn {
+        /* 小画面でも読みやすいサイズを維持 */
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+        right: 10px !important;
+        top: 50px !important;
+    }
+}
+
+/* パネルのスムーズなアニメーション */
+#voice-control-panel {
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* タッチデバイスでのスクロール改善 */
+@media (pointer: coarse) {
+    #voice-control-panel {
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    #voice-control-panel #voice-analysis-results {
+        -webkit-overflow-scrolling: touch !important;
+    }
+}
+
+/* PC版（大画面）では元のHTMLスタイルをそのまま使用 - CSSは何も適用しない */

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rephraseとは - 革新的英語学習システム</title>
+  <link href="../../assets/styles/main.css" rel="stylesheet">
+  <link href="../../assets/styles/grammar.css" rel="stylesheet">
+  <!-- 📱 モバイル最適化CSS -->
+  <link href="../../responsive.css" rel="stylesheet">
+  <style>
+    /* Rephraseとは ページ専用CSS */
+    .rephrase-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .rephrase-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .rephrase-hero .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .rephrase-hero .catchphrase {
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .problem-section {
+      background: #fff3f3;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      border-left: 5px solid #ff6b6b;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .problem-section h2 {
+      color: #d63031;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .problem-list li {
+      background: white;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .problem-list li::before {
+      content: "😰";
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #f0f0f0;
+      width: 100%;
+      max-width: none;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .feature-card h3 {
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 2rem;
+    }
+
+    .feature-number {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .feature-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .feature-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .feature-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .feature-image {
+      width: 100%;
+      height: auto;
+      min-height: 250px;
+      object-fit: contain;
+      border-radius: 15px;
+      background: #f8f9fa;
+      padding: 1rem;
+      border: 2px solid #e9ecef;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin: 3rem 0;
+    }
+
+    .cta-button {
+      background: white;
+      color: #4CAF50;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .rephrase-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .rephrase-hero .catchphrase {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .feature-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .feature-card {
+        padding: 2rem;
+      }
+      
+      .feature-card h3 {
+        font-size: 1.5rem;
+      }
+      
+      .feature-number {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヒーローセクション -->
+  <section class="rephrase-hero">
+    <h1>🔄 Rephrase</h1>
+    <p class="subtitle">英語の「なぜ？」を「わかった！」に変える革新的学習システム</p>
+    <div class="catchphrase">
+      「丸暗記から理解へ」文法を見える化する新体験
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- 問題提起セクション -->
+    <section class="problem-section">
+      <h2>📚 こんな英語学習の悩み、ありませんか？</h2>
+      <ul class="problem-list">
+        <li><strong>「文法ルールは覚えたけど、実際に使えない...」</strong><br>
+        理論は分かるのに、実践で活用できずにもどかしい思いをしている</li>
+        
+        <li><strong>「長い文章になると、どこが主語かわからなくなる」</strong><br>
+        複雑な文構造を前に、文法の基本を見失ってしまう</li>
+        
+        <li><strong>「なんとなく理解したつもりだけど、確信が持てない」</strong><br>
+        曖昧な理解のまま進んで、基礎が不安定になっている</li>
+        
+        <li><strong>「単調な文法学習に飽きてしまった」</strong><br>
+        同じパターンの練習ばかりで、モチベーションが続かない</li>
+      </ul>
+    </section>
+
+    <!-- Rephraseの解決方法 -->
+    <section>
+      <h2 style="text-align: center; color: #2c3e50; margin: 3rem 0 2rem;">✨ Rephraseが解決する5つの革新機能</h2>
+      
+      <div class="features-grid">
+        <!-- ①文法のアウトプット練習 -->
+        <div class="feature-card">
+          <h3>
+            <span class="feature-number">①</span>
+            文法のアウトプット練習
+          </h3>
+          <div class="feature-content">
+            <div class="feature-text">
+              <p><strong>「覚える」から「使える」へ</strong></p>
+              <p>受動的な暗記ではなく、実際に文構造を組み立てる能動的な練習で、文法を身体で覚えます。</p>
+              <p>スポーツのように反復練習することで、頭で理解したことを手と目で確認し、確実な定着を図ります。</p>
+              <p>テニスのスイングを何度も練習するように、英語の文法も「練習」で身につけることができます。</p>
+            </div>
+            <div class="feature-images">
+              <img src="../../assets/images/features/output.png" alt="テニスを練習する女性 - 反復練習の重要性" class="feature-image">
+            </div>
+          </div>
+        </div>
+
+        <!-- ②文を「箱」に分解 -->
+        <div class="feature-card">
+          <h3>
+            <span class="feature-number">②</span>
+            文を「箱」に分解
+          </h3>
+          <div class="feature-content">
+            <div class="feature-text">
+              <p><strong>複雑な文も一目瞭然</strong></p>
+              <p>長い文章も主語・動詞・目的語・修飾語などの「箱」に視覚的に分解。文法要素の役割と関係性がビジュアル的に明確になり、構造の理解が格段に深まります。</p>
+              <p>まるでレゴブロックのように、文章を構成パーツに分けて考えることで、どんなに複雑な文でも迷うことなく理解できます。</p>
+              <p>入れ子構造の複雑な文章でも、段階的に「箱」を開いていくことで、全体の構造が明確になります。</p>
+            </div>
+            <div class="feature-images">
+              <img src="../../assets/images/features/box_structure.png" alt="基本的なスロット分解画面" class="feature-image">
+              <img src="../../assets/images/features/subslot_structure.png" alt="入れ子構造の複雑な例文" class="feature-image">
+            </div>
+          </div>
+        </div>
+
+        <!-- ③箱の中身をシャッフル -->
+        <div class="feature-card">
+          <h3>
+            <span class="feature-number">③</span>
+            箱の中身をシャッフル
+          </h3>
+          <div class="feature-content">
+            <div class="feature-text">
+              <p><strong>無限のパターンで飽きない学習</strong></p>
+              <p>同じ文法構造でも単語をランダムに変更。多様な例文パターンで練習することで、特定の文章に依存しない真の文法理解を身につけます。</p>
+              <p>まず、どの「箱」をシャッフルするかを選択。その後、選択した箱の中身が新しい単語に置き換わります。</p>
+              <p>ビフォーアフターの変化を見ることで、文法構造は同じでも表現の幅が広がることを実感できます。</p>
+            </div>
+            <div class="feature-images">
+              <img src="../../assets/images/features/Randomize_option.png" alt="シャッフル選択画面" class="feature-image">
+              <img src="../../assets/images/features/shuffle_before_after.png" alt="シャッフル前後の比較" class="feature-image">
+            </div>
+          </div>
+        </div>
+
+        <!-- ④イメージ画像表示と英語非表示 -->
+        <div class="feature-card">
+          <h3>
+            <span class="feature-number">④</span>
+            イメージ画像表示と英語非表示
+          </h3>
+          <div class="feature-content">
+            <div class="feature-text">
+              <p><strong>日本語に頼らない英語脳育成</strong></p>
+              <p>画像ヒントで単語の意味を推測し、日本語に依存しない学習環境を実現。視覚的な理解で記憶定着率を向上させ、自然な英語思考を育てます。</p>
+              <p><strong>好きな箇所を非表示にできる：</strong> 任意のスロット（単語や句）を隠して練習することで、弱点を集中的に克服できます。</p>
+              <p><strong>この状態でシャッフルすれば『パターンプラクティス』から『全体の英作文』まで自由自在：</strong> 部分的な穴埋め練習から完全な英作文まで、学習者のレベルに応じて難易度を調整可能です。</p>
+              <p>日本語を介さず、画像から直接英語の意味を理解することで、より自然な言語習得が可能になります。</p>
+            </div>
+            <div class="feature-images">
+              <img src="../../assets/images/features/non_text.png" alt="単語が隠されて画像ヒントが表示された学習画面" class="feature-image">
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑤音声解答認識機能 -->
+        <div class="feature-card">
+          <h3>
+            <span class="feature-number">⑤</span>
+            音声解答認識機能
+          </h3>
+          <div class="feature-content">
+            <div class="feature-text">
+              <p><strong>話す練習で実践力アップ</strong></p>
+              <p>構築した文章を実際に発話して確認。音声認識技術で発音と発話速度を総合評価し、「読む・聞く・話す」の3技能を統合的に伸ばします。</p>
+              <p><strong>音声認識：</strong> リアルタイムで発音を分析し、正確性をフィードバック</p>
+              <p><strong>発話速度レベル判定：</strong> 発音チェックに加えて発話速度も合わせたレベル判定機能で、ゲーム感覚で楽しく上達を実感できます</p>
+              <p><strong>AI音声合成：</strong> 模範音声を聞いて、ネイティブ発音の正しい音を確認</p>
+              <p><strong>学習進捗：</strong> 音声練習の成果を可視化して継続的な改善をサポート</p>
+            </div>
+            <div class="feature-images">
+              <img src="../../assets/images/features/voice-recognition.png" alt="音声認識結果画面" class="feature-image">
+              <img src="../../assets/images/features/AI_speaking.png" alt="AI音声合成機能" class="feature-image">
+              <img src="../../assets/images/features/learning-progress.png" alt="学習進捗追跡画面" class="feature-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA（行動喚起）セクション -->
+    <section class="cta-section">
+      <h2>🚀 新しい英語学習を今すぐ体験</h2>
+      <p>Rephraseで「わかったつもり」を「確実な理解」に変えませんか？<br>
+      文法の基礎から応用まで、段階的にスキルアップできます。</p>
+      <a href="../matrix/" class="cta-button">文法マトリックスで学習開始 →</a>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div style="text-align: center; margin: 2rem 0;">
+      <a href="../../" style="color: #667eea; text-decoration: none; font-weight: 500;">
+        ← トップページに戻る
+      </a>
+    </div>
+</body>
+</html>

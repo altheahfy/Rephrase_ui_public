@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>認証確認中... - Rephrase</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    
+    .auth-check-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    h1 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+    
+    p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-check-container">
+    <div class="spinner"></div>
+    <h1>🔐 認証確認中</h1>
+    <p>しばらくお待ちください...</p>
+  </div>
+
+  <!-- 簡易セキュリティユーティリティ -->
+  <script>
+    window.securityUtils = {
+      escapeHtml: function(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      },
+      
+      secureLocalStorageSet: function(key, data) {
+        try {
+          const jsonString = JSON.stringify(data);
+          const encoded = btoa(jsonString);
+          localStorage.setItem(key, encoded);
+        } catch (error) {
+          console.error('Storage set error:', error);
+        }
+      },
+      
+      secureLocalStorageGet: function(key) {
+        try {
+          const encoded = localStorage.getItem(key);
+          if (!encoded) return null;
+          
+          const jsonString = atob(encoded);
+          return JSON.parse(jsonString);
+        } catch (error) {
+          console.error('Storage get error:', error);
+          return null;
+        }
+      }
+    };
+  </script>
+
+  <!-- 認証システム読み込み -->
+  <script src="js/rate-limiter.js"></script>
+  <script src="js/error-handler.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/auth.js"></script>
+
+  <script>
+    // 認証チェック処理
+    function performAuthCheck() {
+      console.log('🔐 認証チェック開始 - auth-check.html');
+      
+      // 現在のlocalStorageの状態を確認
+      const sessionData = localStorage.getItem('userSession');
+      const rephraseSession = localStorage.getItem('rephrase_session');
+      
+      console.log('📊 localStorage状態確認:', {
+        userSession: !!sessionData,
+        rephrase_session: !!rephraseSession,
+        userSessionData: sessionData,
+        rephraseSessionData: rephraseSession
+      });
+      
+      // 認証システムが読み込まれるまで待機
+      function waitForAuth() {
+        console.log('⏳ 認証システム待機中...', {
+          authSystem: !!window.authSystem,
+          securityUtils: !!window.securityUtils
+        });
+        
+        if (window.authSystem && window.securityUtils) {
+          console.log('✅ 認証システム読み込み完了');
+          
+          try {
+            // ログインチェック
+            const isLoggedIn = window.authSystem.isLoggedIn();
+            console.log('🔐 ログイン状態確認結果:', isLoggedIn);
+            
+            // 詳細なデバッグ情報
+            const currentUser = window.authSystem.getCurrentUser();
+            console.log('👤 現在のユーザー情報:', currentUser);
+            
+            if (isLoggedIn && currentUser) {
+              console.log('✅ 認証済み確認 - トレーニングUIへリダイレクト');
+              // 認証済みの場合はトレーニングUIへ（パラメータを転送）
+              setTimeout(() => {
+                const currentParams = new URLSearchParams(window.location.search);
+                const grammarParam = currentParams.get('grammar');
+                if (grammarParam) {
+                  window.location.href = `index.html?grammar=${encodeURIComponent(grammarParam)}`;
+                } else {
+                  window.location.href = 'index.html';
+                }
+              }, 1000);
+            } else {
+              console.log('❌ 未認証または無効セッション - 認証ページへリダイレクト');
+              // 未認証の場合は認証ページへ（リダイレクト先を指定）
+              setTimeout(() => {
+                const currentParams = new URLSearchParams(window.location.search);
+                const grammarParam = currentParams.get('grammar');
+                let redirectTarget = 'index.html';
+                if (grammarParam) {
+                  redirectTarget = `index.html?grammar=${encodeURIComponent(grammarParam)}`;
+                }
+                const redirectUrl = `auth.html?redirect=${encodeURIComponent(redirectTarget)}`;
+                window.location.href = redirectUrl;
+              }, 1000);
+            }
+          } catch (error) {
+            console.error('❌ 認証チェックエラー:', error);
+            // エラーの場合は認証ページへ
+            setTimeout(() => {
+              window.location.href = 'auth.html';
+            }, 1000);
+          }
+        } else {
+          // 認証システムがまだ読み込まれていない場合は100ms後に再試行
+          setTimeout(waitForAuth, 100);
+        }
+      }
+      
+      // 認証チェック開始
+      waitForAuth();
+    }
+
+    // ページ読み込み完了後に認証チェック実行
+    document.addEventListener('DOMContentLoaded', performAuthCheck);
+  </script>
+</body>
+</html>

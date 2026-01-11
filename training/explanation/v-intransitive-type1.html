@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自動詞第1文型 - Rephrase 英語学習システム</title>
+  <link href="../../assets/styles/main.css" rel="stylesheet">
+  <style>
+    /* 文法説明専用CSS */
+    :root {
+      --primary-color: #2196F3;
+      --secondary-color: #FF9800;
+      --accent-color: #4CAF50;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --border-color: #e0e0e0;
+      --shadow: 0 2px 10px rgba(0,0,0,0.1);
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      line-height: 1.8;
+      color: var(--text-color);
+      background-color: #fff;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .page-header {
+      background: var(--gradient);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      color: white;
+    }
+    
+    .main-content {
+      padding: 40px 0;
+    }
+    
+    .content-section {
+      background: white;
+      padding: 40px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+    
+    .content-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-color);
+    }
+    
+    .content-section h3 {
+      color: var(--secondary-color);
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .content-section p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    
+    .key-point {
+      background: #e8f5e8;
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .key-point h4 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+    
+    .example-box {
+      background: #f8f9ff;
+      border-left: 4px solid var(--primary-color);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+    
+    .example-box h4 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .example-sentence {
+      font-style: italic;
+      color: #555;
+      margin: 10px 0;
+    }
+    
+    .training-section {
+      background: #e8f4f8;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background: #5a6fd8;
+      transform: translateY(-2px);
+    }
+    
+    .btn-large {
+      padding: 15px 40px;
+      font-size: 18px;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    h2 {
+      color: #667eea;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+    
+    .description {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .cta-section {
+      text-align: center;
+      padding: 40px 0;
+      background: var(--light-gray);
+      margin-top: 40px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      margin: 0 10px;
+    }
+    
+    .btn:hover {
+      background: #1976D2;
+    }
+    
+    .btn-large {
+      padding: 15px 40px;
+      font-size: 1.1rem;
+    }
+    
+    .btn-secondary {
+      background: var(--secondary-color);
+    }
+    
+    .btn-secondary:hover {
+      background: #e68900;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../../">Rephrase</a> > <a href="../matrix/">文法マトリックス</a> > 自動詞第1文型
+      </div>
+      <h1>🎯 自動詞第1文型</h1>
+      <p>最もシンプルな英語の基本構造「主語 + 動詞」を理解しよう</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <section class="content-section">
+        <h2>１．まずは使用する動詞の種別を決める</h2>
+        <p>
+          動詞チャンクの段階においては何よりもまず、「表現したいその動作に適した単語を思い出して適用すること」が第1であるが、それは文法ではなくボキャビルの分野である。
+        </p>
+        
+        <h3>（１）自動詞、他動詞、第2文型の区別</h3>
+        <p>
+          ただ、動詞には他動詞や自動詞やbe動詞等の種別があり、一つ一つの動詞に適用されるこの「動詞の種類」によって、名詞や形容詞といったその他のチャンクを包括する「語順」という枠自体のルール・意味が変わってしまう。
+        </p>
+        
+        <p>
+          具体的には、動詞の後の目的語や補語や副詞句・節の置き方に、自動詞には自動詞の、他動詞には他動詞のルールがそれぞれ存在するわけである。いわゆる基本文型の話であるが、この点はしっかり押さえておくべきである。
+        </p>
+        
+        <div class="key-point">
+          <h4>💡 重要ポイント</h4>
+          <p>言語は（特に英語は）個々の単語の意味と同程度かそれ以上に、音にならない「枠」の意味が重要なのである。いわば、ボキャビルにもアウトプット用の肝があるというわけだ。</p>
+        </div>
+        
+        <p>
+          現実的には単語単位でその使い方を反射的・感覚的に刷り込む必要がある。言いたい意味に適合する動詞を選択すると同時に、その動詞が取る文型パターンと意味が想起され、それらの位置に適切な名詞や形容詞の置き方ができるよう反応速度を磨かなければならないのだ。
+        </p>
+        
+        <p>
+          動詞という品詞についてはその単語をマスターする際、単に意味だけではなく「例文とセットで」と繰り返し強調される理由がここにある。目的語の取り方・文型パターンまでをセットで覚えなければ意味がないのである。
+        </p>
+        
+        <p>
+          ただ、動詞の数だけ何千ものパターンがあるわけではなく、いわゆる基本文型の5パターンのどれかに分類することが可能である。
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>①自動詞</h2>
+        <h3>（主語）（動詞）. 第1文型</h3>
+        
+        <p>
+          自動詞が形作る第１文型は、「主語が動詞する」で自己完結し、「～に」や「～を」などの名詞チャンクを目的語として置かなくとも成立する形態である。
+        </p>
+        
+        <p>
+          「～に」や「～を」あるいは「～から」などを置きたい場合は別途前置詞を伴って置く（これらの正体は後述する「副詞チャンク」であり、名詞チャンクである目的語とは異なるものである。）。
+        </p>
+        
+        <div class="key-point">
+          <h4>💡 自動詞と他動詞の使い分け</h4>
+          <p>
+            例えばrecoverは「治る」なら自動詞で「from his injury」などを置いて情報を付加するが、「回復する」なら他動詞で、まずは「his strength」などの目的語が直接来る。このように、同じ単語でどちらにも成り得るものは、使う場合に区別して注意しなければならない。
+          </p>
+        </div>
+        
+        <div class="example-box">
+          <h4>📚 例文比較</h4>
+          <div class="example-sentence">
+            <strong>自動詞の例：</strong><br>
+            「彼の怪我はすっかり治りました」<br>
+            → He has recovered completely from his injury.
+          </div>
+          <div class="example-sentence">
+            <strong>他動詞の例：</strong><br>
+            「彼はすっかり体力を回復しました」<br>
+            → He has fully recovered his strength.
+          </div>
+          <p><small>前者が自動詞で後者が他動詞。</small></p>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>学習を続けましょう</h2>
+        <p>文法の基本概念を理解したら、実際のトレーニングで練習してみましょう。</p>
+        <a href="../matrix/" class="btn btn-secondary">📊 マトリクスに戻る</a>
+        <a href="../auth-check.html?grammar=自動詞第1文型" class="btn btn-large">🎯 トレーニング開始</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Rephrase 英語学習システム. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

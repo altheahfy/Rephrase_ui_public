@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - ページが見つかりません | Rephrase</title>
+  <link href="assets/styles/main.css" rel="stylesheet">
+  <style>
+    .error-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .error-code {
+      font-size: 8rem;
+      font-weight: bold;
+      margin: 0;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .error-message {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      opacity: 0.9;
+    }
+    .error-description {
+      font-size: 1rem;
+      margin: 20px 0 40px;
+      opacity: 0.8;
+      max-width: 500px;
+    }
+    .back-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid white;
+      border-radius: 25px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .back-button:hover {
+      background: white;
+      color: #667eea;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .error-code { font-size: 6rem; }
+      .error-message { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-message">ページが見つかりません</h2>
+    <p class="error-description">
+      お探しのページは存在しないか、移動された可能性があります。<br>
+      URLをご確認いただくか、ホームページからお探しのコンテンツにアクセスしてください。
+    </p>
+    <a href="/" class="back-button">🏠 ホームに戻る</a>
+  </div>
+  
+  <script>
+    // 3秒後に自動的にホームページへリダイレクト（オプション）
+    // setTimeout(() => {
+    //   window.location.href = '/';
+    // }, 5000);
+  </script>
+</body>
+</html>
